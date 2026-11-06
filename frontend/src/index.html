@@ -1,12 +1,21 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="utf-8" />
     <title>SleepyDuck</title>
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#020617" />
+    <meta name="theme-color" content="#1E1E2F" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <script>
+      // Runs before first paint so a light-mode reader never sees a dark flash.
+      try {
+        if (localStorage.getItem('sleepyduck-theme') === 'light') {
+          document.documentElement.classList.remove('dark');
+          document.querySelector('meta[name="theme-color"]').content = '#F0EDE8';
+        }
+      } catch {}
+    </script>
   </head>
   <body>
     <app-root></app-root>

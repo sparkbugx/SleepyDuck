@@ -1,69 +1,91 @@
-@import '@fontsource-variable/inter';
+@import '@fontsource-variable/fraunces';
+@import '@fontsource-variable/instrument-sans';
 @import '@fontsource-variable/jetbrains-mono';
 @import 'tailwindcss';
 
-@theme {
-  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono Variable', ui-monospace, monospace;
-}
+@config '../tailwind.config.js';
 
 html {
-  color-scheme: dark;
+  color-scheme: light;
+
+  &.dark {
+    color-scheme: dark;
+  }
 }
 
 body {
-  @apply min-h-dvh bg-slate-950 font-sans text-slate-200 antialiased;
-  background-image:
-    radial-gradient(60rem 32rem at 50% -12rem, rgb(99 102 241 / 0.16), transparent 70%),
-    radial-gradient(40rem 24rem at 100% 0, rgb(34 211 238 / 0.07), transparent 70%);
-  background-repeat: no-repeat;
+  @apply min-h-dvh bg-oasis-sand font-sans text-oasis-ink antialiased dark:bg-oasis-deep dark:text-oasis-sand;
 }
 
 ::selection {
-  background: rgb(99 102 241 / 0.45);
+  @apply bg-oasis-olive text-oasis-sand;
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-cyan-400);
-  outline-offset: 2px;
+  @apply outline-2 outline-offset-2 outline-oasis-olive dark:outline-oasis-sage;
 }
 
-/* A translucent surface with a soft top highlight. */
-.glass {
-  @apply rounded-2xl border border-white/10 bg-slate-900/60 shadow-xl shadow-black/30 backdrop-blur-xl;
-  box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 0.05),
-    0 20px 40px -16px rgb(0 0 0 / 0.5);
+/* Theme-aware tokens. Declared as utilities so the components below can @apply them. */
+@utility text-soft {
+  @apply text-oasis-ash dark:text-oasis-haze;
 }
 
-.btn-primary {
-  @apply inline-flex items-center justify-center gap-2 rounded-xl bg-indigo-500 px-5 py-2.5 text-sm font-semibold text-white transition-all duration-200;
-  box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 0.2),
-    0 8px 24px -8px rgb(99 102 241 / 0.7);
+@utility text-strong {
+  @apply text-oasis-ink dark:text-oasis-sand;
+}
 
-  &:hover {
-    @apply -translate-y-px bg-indigo-400;
-    box-shadow:
-      inset 0 1px 0 rgb(255 255 255 / 0.25),
-      0 12px 32px -8px rgb(34 211 238 / 0.55);
+@utility text-accent {
+  @apply text-oasis-olive dark:text-oasis-sage;
+}
+
+@utility text-fail {
+  @apply text-oasis-clay dark:text-oasis-clay-soft;
+}
+
+@utility rule {
+  @apply border-oasis-mist dark:border-oasis-edge;
+}
+
+@layer components {
+  .surface {
+    @apply rounded-xl border border-oasis-mist bg-oasis-paper shadow-sm dark:border-oasis-edge dark:bg-oasis-card;
   }
 
-  &:active {
-    @apply translate-y-0 scale-[0.98];
+  .eyebrow {
+    @apply font-mono text-xs font-medium tracking-wide uppercase;
   }
-}
 
-.btn-secondary {
-  @apply inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-slate-200 transition-all duration-200 hover:border-white/20 hover:bg-white/10;
-}
+  .btn-primary {
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-oasis-olive px-5 py-2.5 text-sm font-semibold text-oasis-sand transition-all duration-200 hover:bg-oasis-olive-deep active:scale-[0.98] dark:hover:bg-oasis-olive-lift;
+  }
 
-.kbd {
-  @apply inline-flex size-6 shrink-0 items-center justify-center rounded-md border border-white/10 bg-white/5 font-mono text-xs text-slate-400 transition-colors duration-200;
-}
+  .btn-secondary {
+    @apply text-strong inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg border border-oasis-mist px-4 py-2 text-sm font-medium transition-colors duration-200 hover:border-oasis-olive hover:bg-oasis-olive/10 dark:border-oasis-edge dark:hover:border-oasis-sage dark:hover:bg-oasis-sage/10;
+  }
 
-.skeleton {
-  @apply animate-pulse rounded-2xl bg-white/5;
+  .kbd {
+    @apply text-soft inline-flex size-6 shrink-0 items-center justify-center rounded border border-oasis-mist font-mono text-xs transition-colors duration-200 dark:border-oasis-edge;
+  }
+
+  .skeleton {
+    @apply animate-pulse rounded-xl bg-oasis-mist/50 dark:bg-oasis-card;
+  }
+
+  .note {
+    @apply rounded-lg border p-3.5 text-sm leading-relaxed;
+  }
+
+  .note-neutral {
+    @apply rule bg-oasis-sand/60 dark:bg-oasis-deep/50;
+  }
+
+  .note-success {
+    @apply border-oasis-olive/40 bg-oasis-olive/10 dark:border-oasis-sage/40 dark:bg-oasis-sage/10;
+  }
+
+  .note-fail {
+    @apply border-oasis-clay/40 bg-oasis-clay/10 dark:border-oasis-clay-soft/40 dark:bg-oasis-clay-soft/10;
+  }
 }
 
 /* Used with Angular's animate.enter / animate.leave. */

@@ -48,7 +48,7 @@ Answers are checked on the server, and card payloads never include which option 
 | ------ | -------- | ------------- | ------------------------- |
 | Again  | Today    | Today         | Today, interval resets    |
 | Hard   | 1 day    | Interval × 1.2 | Interval × 1.2           |
-| Good   | 1 day    | 6 days        | Interval × ease           |
+| Good   | 2 days   | 6 days        | Interval × ease           |
 | Easy   | 4 days   | 6+ days × 1.3 | Interval × ease × 1.3     |
 
 Ease starts at 2.5 and never falls below 1.3. Intervals are capped at 365 days. A card counts as Mastered at an interval of 21 days or more. "Today" is measured in UTC.
@@ -60,4 +60,105 @@ Add to `Scenarios` in `backend/SleepyDuck.Api/Data/SeedData.cs`, then create a m
 ```sh
 cd backend
 dotnet ef migrations add AddMoreScenarios --project SleepyDuck.Api
+```
+
+## Design system
+
+The "Warm Dark Mode Oasis" palette lives in `frontend/tailwind.config.js` under the `oasis` color namespace.
+
+| Role                          | Token          | Hex       |
+| ----------------------------- | -------------- | --------- |
+| Deep background (dark)        | `oasis-deep`   | `#1E1E2F` |
+| Card background (dark)        | `oasis-card`   | `#2B2B3E` |
+| Accent and success            | `oasis-olive`  | `#4E5B31` |
+| Main background (light)       | `oasis-sand`   | `#F0EDE8` |
+| Borders (light)               | `oasis-mist`   | `#D1D1D1` |
+
+The config also defines supporting tones. `#4E5B31` is too dark to read as text on `#1E1E2F`, so accent text in dark mode uses `oasis-sage` instead. Olive stays in use as a fill behind light text.
+
+Dark mode is class-based and dark is the default. The toggle in the header adds or removes `dark` on `<html>` and saves the choice in `localStorage`. Tailwind 4 reads the JavaScript config through the `@config` line in `src/styles.css`.
+
+## Project structure
+
+```text
+SleepyDuck/
+├── backend/
+│   ├── SleepyDuck.Api/
+│   │   ├── Controllers/                                   # REST endpoints
+│   │   │   ├── DashboardController.cs
+│   │   │   └── ScenariosController.cs
+│   │   ├── Data/
+│   │   │   ├── AppDbContext.cs                            # EF Core model and relationships
+│   │   │   └── SeedData.cs                                # Microsoft 365 scenario deck
+│   │   ├── Dtos/
+│   │   │   └── ApiDtos.cs                                 # API contracts, mirrored in api.models.ts
+│   │   ├── Migrations/                                    # Generated schema and seed migrations
+│   │   ├── Models/                                        # Entities and enums
+│   │   │   ├── Distractor.cs
+│   │   │   ├── Enums.cs
+│   │   │   ├── ScenarioCard.cs
+│   │   │   ├── SequentialStep.cs
+│   │   │   └── UserProgress.cs
+│   │   ├── Properties/
+│   │   │   └── launchSettings.json
+│   │   ├── Services/
+│   │   │   ├── Sm2Scheduler.cs                            # SM-2 scheduling rules
+│   │   │   └── StudyService.cs                            # Queue, answer checking, progress
+│   │   ├── appsettings.json
+│   │   ├── Program.cs
+│   │   └── SleepyDuck.Api.csproj
+│   ├── SleepyDuck.Api.Tests/                              # xUnit tests
+│   │   ├── SeedDataTests.cs
+│   │   ├── SleepyDuck.Api.Tests.csproj
+│   │   └── Sm2SchedulerTests.cs
+│   └── SleepyDuck.sln
+├── frontend/
+│   ├── .vscode/
+│   │   ├── extensions.json
+│   │   ├── launch.json
+│   │   ├── mcp.json
+│   │   └── tasks.json
+│   ├── public/
+│   │   └── favicon.svg
+│   ├── src/
+│   │   ├── app/
+│   │   │   ├── core/
+│   │   │   │   ├── models/
+│   │   │   │   │   ├── api.models.ts                      # Interfaces matching the C# DTOs
+│   │   │   │   │   └── labels.ts                          # Display labels and interval formatting
+│   │   │   │   └── services/
+│   │   │   │       ├── dashboard.service.ts
+│   │   │   │       ├── scenario.service.ts
+│   │   │   │       └── theme.service.ts                   # Light/dark state and persistence
+│   │   │   ├── features/
+│   │   │   │   ├── dashboard/                             # Stats and topic progress
+│   │   │   │   │   ├── dashboard.html
+│   │   │   │   │   └── dashboard.ts
+│   │   │   │   └── study/                                 # Sequential scenario flow
+│   │   │   │       ├── study-session.html
+│   │   │   │       └── study-session.ts
+│   │   │   ├── shared/
+│   │   │   │   └── auto-height.ts                         # Smooth height changes between views
+│   │   │   ├── app.config.ts
+│   │   │   ├── app.routes.ts
+│   │   │   └── app.ts                                     # App shell and theme toggle
+│   │   ├── index.html                                     # Restores the saved theme before first paint
+│   │   ├── main.ts
+│   │   └── styles.css                                     # Design system: tokens, components, animations
+│   ├── .editorconfig
+│   ├── .gitignore
+│   ├── .postcssrc.json
+│   ├── angular.json
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── proxy.conf.json                                    # Forwards /api to the backend in development
+│   ├── README.md
+│   ├── tailwind.config.js                                 # Oasis palette, fonts, class-based dark mode
+│   ├── tsconfig.app.json
+│   ├── tsconfig.json
+│   └── tsconfig.spec.json
+├── .gitignore
+├── docker-compose.yml                                     # Local PostgreSQL
+├── README.md
+└── rules.md                                               # Original project brief
 ```

@@ -25,6 +25,9 @@ public static class Sm2Scheduler
 
     public static readonly TimeSpan RelearnDelay = TimeSpan.FromMinutes(10);
 
+    /// <summary>Longer than Hard's 1 day, so the two buttons mean different things on a new card.</summary>
+    private const int FirstGoodIntervalDays = 2;
+
     private const double HardIntervalMultiplier = 1.2;
     private const double EasyBonus = 1.3;
 
@@ -67,7 +70,7 @@ public static class Sm2Scheduler
 
     private static int GoodInterval(SrsState state) => state.Repetitions switch
     {
-        0 => 1,
+        0 => FirstGoodIntervalDays,
         1 => ReviewingIntervalDays,
         _ => Math.Max(state.IntervalDays + 1, Round(state.IntervalDays * state.EaseFactor)),
     };

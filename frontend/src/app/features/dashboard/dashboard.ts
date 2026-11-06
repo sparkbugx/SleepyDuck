@@ -10,6 +10,14 @@ import { DashboardService } from '../../core/services/dashboard.service';
 /** Matches the backend's default newLimit for the study queue. */
 const NEW_CARDS_PER_SESSION = 10;
 
+type CardSegment = 'mastered' | 'studied' | 'new';
+
+const SEGMENT_CLASSES: Record<CardSegment, string> = {
+  mastered: 'bg-oasis-olive dark:bg-oasis-sage',
+  studied: 'bg-oasis-olive/40 dark:bg-oasis-sage/40',
+  new: 'bg-oasis-mist dark:bg-oasis-edge',
+};
+
 @Component({
   selector: 'app-dashboard',
   imports: [DatePipe, RouterLink],
@@ -21,6 +29,7 @@ export class Dashboard implements OnInit {
   private readonly destroyRef = inject(DestroyRef);
 
   protected readonly categoryLabels = CATEGORY_LABELS;
+  protected readonly segmentClasses = SEGMENT_CLASSES;
   protected readonly stats = signal<DashboardStats | null>(null);
   protected readonly failed = signal(false);
 
@@ -48,8 +57,15 @@ export class Dashboard implements OnInit {
     return Math.round((category.masteredCards / category.totalCards) * 100);
   }
 
-  protected studiedPercent(category: CategoryStats): number {
-    return Math.round(((category.totalCards - category.newCards) / category.totalCards) * 100);
+  /** One segment per card: mastered first, then studied, then untouched. */
+  protected segments(category: CategoryStats): CardSegment[] {
+    const studied = category.totalCards - category.newCards;
+    return Array.from({ length: category.totalCards }, (_, index) => {
+      if (index < category.masteredCards) {
+        return 'mastered';
+      }
+      return index < studied ? 'studied' : 'new';
+    });
   }
 
   protected hasWork(category: CategoryStats): boolean {

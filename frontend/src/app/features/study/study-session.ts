@@ -33,18 +33,18 @@ const WRONG_REVEAL_MS = 1100;
 const CARD_EXIT_MS = 220;
 
 const OPTION_CLASSES: Record<OptionState, string> = {
-  idle: 'cursor-pointer border-white/10 bg-white/[0.03] hover:-translate-y-px hover:border-indigo-400/50 hover:bg-indigo-400/[0.08]',
-  pending: 'border-indigo-400/60 bg-indigo-400/10',
-  correct: 'border-emerald-400/70 bg-emerald-400/10 text-emerald-100',
-  wrong: 'shake border-rose-400/70 bg-rose-400/10 text-rose-100',
-  dimmed: 'border-white/5 bg-transparent opacity-40',
+  idle: 'cursor-pointer border-oasis-mist hover:border-oasis-olive hover:bg-oasis-olive/10 dark:border-oasis-edge dark:hover:border-oasis-sage dark:hover:bg-oasis-sage/10',
+  pending: 'border-oasis-olive bg-oasis-olive/10 dark:border-oasis-sage dark:bg-oasis-sage/10',
+  correct: 'border-oasis-olive bg-oasis-olive text-oasis-sand dark:border-oasis-sage [&_.kbd]:border-oasis-sand/50 [&_.kbd]:text-oasis-sand',
+  wrong: 'shake border-oasis-clay bg-oasis-clay text-oasis-sand dark:border-oasis-clay-soft [&_.kbd]:border-oasis-sand/50 [&_.kbd]:text-oasis-sand',
+  dimmed: 'border-oasis-mist opacity-50 dark:border-oasis-edge',
 };
 
 const RATING_CLASSES: Record<ReviewRating, string> = {
-  Again: 'hover:border-rose-400/50 hover:bg-rose-400/10',
-  Hard: 'hover:border-amber-400/50 hover:bg-amber-400/10',
-  Good: 'hover:border-indigo-400/50 hover:bg-indigo-400/10',
-  Easy: 'hover:border-emerald-400/50 hover:bg-emerald-400/10',
+  Again: 'hover:bg-oasis-clay/10 dark:hover:bg-oasis-clay-soft/10',
+  Hard: 'hover:bg-oasis-ochre/15',
+  Good: 'hover:bg-oasis-olive/10 dark:hover:bg-oasis-sage/10',
+  Easy: 'hover:bg-oasis-olive/20 dark:hover:bg-oasis-sage/20',
 };
 
 @Component({

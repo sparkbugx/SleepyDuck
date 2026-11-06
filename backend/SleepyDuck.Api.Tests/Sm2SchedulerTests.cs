@@ -10,7 +10,7 @@ public class Sm2SchedulerTests
 
     [Theory]
     [InlineData(ReviewRating.Hard, 1)]
-    [InlineData(ReviewRating.Good, 1)]
+    [InlineData(ReviewRating.Good, 2)]
     [InlineData(ReviewRating.Easy, 4)]
     public void New_card_gets_the_first_interval_for_its_rating(ReviewRating rating, int expectedDays)
     {
@@ -33,7 +33,22 @@ public class Sm2SchedulerTests
             state = new SrsState(result.EaseFactor, result.IntervalDays, result.Repetitions);
         }
 
-        Assert.Equal([1, 6, 15, 38], intervals);
+        Assert.Equal([2, 6, 15, 38], intervals);
+    }
+
+    [Theory]
+    [InlineData(0)]
+    [InlineData(1)]
+    [InlineData(3)]
+    public void Ratings_stay_distinct_at_every_repetition(int repetitions)
+    {
+        var state = new SrsState(2.5, IntervalDays: repetitions == 0 ? 0 : 2, repetitions);
+
+        var hard = Sm2Scheduler.Schedule(state, ReviewRating.Hard, Now).IntervalDays;
+        var good = Sm2Scheduler.Schedule(state, ReviewRating.Good, Now).IntervalDays;
+        var easy = Sm2Scheduler.Schedule(state, ReviewRating.Easy, Now).IntervalDays;
+
+        Assert.True(hard < good && good < easy, $"hard={hard} good={good} easy={easy}");
     }
 
     [Fact]
@@ -76,7 +91,7 @@ public class Sm2SchedulerTests
     {
         var result = Sm2Scheduler.Schedule(NewCard, ReviewRating.Good, Now);
 
-        Assert.Equal(new DateTime(2026, 3, 11, 0, 0, 0, DateTimeKind.Utc), result.NextReviewDate);
+        Assert.Equal(new DateTime(2026, 3, 12, 0, 0, 0, DateTimeKind.Utc), result.NextReviewDate);
     }
 
     [Fact]
