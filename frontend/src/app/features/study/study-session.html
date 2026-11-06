@@ -53,7 +53,7 @@
           </div>
         </div>
         @if (failedCount() > 0) {
-          <p class="text-soft mt-6 text-sm">Failed cards are back in your queue today.</p>
+          <p class="text-soft mt-6 text-sm">Failed cards return in about 10 minutes.</p>
         }
         <a routerLink="/" class="btn-primary mt-6">Back to dashboard</a>
       </div>
@@ -147,17 +147,17 @@
                   </div>
 
                   <p class="text-strong mt-5 text-sm font-semibold">How hard was that?</p>
-                  <div class="rule mt-2.5 grid grid-cols-4 divide-x divide-oasis-mist overflow-hidden rounded-lg border dark:divide-oasis-edge">
+                  <div class="rule mt-2.5 grid divide-y divide-oasis-mist overflow-hidden rounded-lg border sm:grid-cols-5 sm:divide-x sm:divide-y-0 dark:divide-oasis-edge">
                     @for (preview of answer()?.ratingPreviews; track preview.rating; let index = $index) {
                       <button
                         type="button"
-                        class="flex cursor-pointer flex-col items-center px-1 py-3 transition-colors duration-200 disabled:cursor-default disabled:opacity-50"
+                        class="flex cursor-pointer items-center justify-between gap-1 px-3.5 py-3 transition-colors sm:flex-col sm:justify-center sm:px-1 duration-200 disabled:cursor-default disabled:opacity-50"
                         [class]="ratingClasses[preview.rating]"
                         [disabled]="submitting()"
                         (click)="rate(preview)"
                       >
-                        <span class="text-strong text-sm font-semibold">{{ preview.rating }}</span>
-                        <span class="text-soft mt-0.5 font-mono text-xs tabular-nums">{{ formatInterval(preview.intervalDays) }}</span>
+                        <span class="text-strong text-sm font-semibold">{{ ratingLabels[preview.rating] }}</span>
+                        <span class="text-soft font-mono text-xs tabular-nums">{{ formatInterval(preview.intervalDays) }}</span>
                         <span class="sr-only">. Press {{ index + 1 }}.</span>
                       </button>
                     }
@@ -179,7 +179,7 @@
                     </span>
                     <div>
                       <h2 class="text-strong font-display text-xl font-semibold">Not the right call</h2>
-                      <p class="text-soft text-xs">Marked as Again. This card is back in your queue today.</p>
+                      <p class="text-soft text-xs">Marked as Again. This card returns in about 10 minutes.</p>
                     </div>
                   </div>
 

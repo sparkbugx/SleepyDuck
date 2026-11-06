@@ -23,7 +23,7 @@
       <h1 class="text-strong font-display text-4xl font-semibold tracking-tight sm:text-5xl">All caught up</h1>
       <p class="text-soft mt-3 text-lg">
         @if (stats.nextReviewDate; as next) {
-          Your next review is due {{ next | date: 'EEEE, MMM d' : 'UTC' }}.
+          Your next review is due {{ next | date: "EEEE, MMM d 'at' h:mm a" }}.
         } @else {
           There's nothing to review right now.
         }

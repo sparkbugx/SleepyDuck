@@ -4,11 +4,14 @@ export type ScenarioCategory =
   | 'EmailDelivery'
   | 'UserLicenseManagement'
   | 'GroupManagement'
-  | 'MailFlowRules';
+  | 'MailFlowRules'
+  | 'VoipSupport'
+  | 'NetworkTroubleshooting'
+  | 'MacNetworkIssues';
 
 export type MasteryLevel = 'New' | 'Learning' | 'Reviewing' | 'Mastered';
 
-export type ReviewRating = 'Again' | 'Hard' | 'Good' | 'Easy';
+export type ReviewRating = 'Again' | 'Hard' | 'Good' | 'Easy' | 'VeryEasy';
 
 export interface StepOption {
   id: string;
@@ -81,6 +84,7 @@ export interface CategoryStats {
   category: ScenarioCategory;
   totalCards: number;
   cardsToReviewToday: number;
+  cardsDueNow: number;
   newCards: number;
   masteredCards: number;
 }
@@ -88,6 +92,7 @@ export interface CategoryStats {
 export interface DashboardStats {
   totalCards: number;
   cardsToReviewToday: number;
+  cardsDueNow: number;
   newCards: number;
   masteredCards: number;
   nextReviewDate: string | null;

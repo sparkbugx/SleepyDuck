@@ -35,7 +35,7 @@ export class Dashboard implements OnInit {
 
   protected readonly sessionSize = computed(() => {
     const stats = this.stats();
-    return stats ? stats.cardsToReviewToday + Math.min(stats.newCards, NEW_CARDS_PER_SESSION) : 0;
+    return stats ? stats.cardsDueNow + Math.min(stats.newCards, NEW_CARDS_PER_SESSION) : 0;
   });
 
   ngOnInit(): void {
@@ -69,6 +69,6 @@ export class Dashboard implements OnInit {
   }
 
   protected hasWork(category: CategoryStats): boolean {
-    return category.cardsToReviewToday + category.newCards > 0;
+    return category.cardsDueNow + category.newCards > 0;
   }
 }

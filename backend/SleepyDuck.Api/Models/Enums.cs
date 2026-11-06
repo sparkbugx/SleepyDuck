@@ -6,6 +6,9 @@ public enum ScenarioCategory
     UserLicenseManagement,
     GroupManagement,
     MailFlowRules,
+    VoipSupport,
+    NetworkTroubleshooting,
+    MacNetworkIssues,
 }
 
 public enum MasteryLevel
@@ -22,4 +25,5 @@ public enum ReviewRating
     Hard,
     Good,
     Easy,
+    VeryEasy,
 }

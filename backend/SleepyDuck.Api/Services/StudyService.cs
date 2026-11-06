@@ -16,8 +16,8 @@ public class StudyService(AppDbContext db, TimeProvider clock)
 {
     private DateTime UtcNow => clock.GetUtcNow().UtcDateTime;
 
-    /// <summary>Cards due before the next UTC midnight count as "today".</summary>
-    private DateTime EndOfToday => UtcNow.Date.AddDays(1);
+    /// <summary>Cards due before the next Guatemala midnight count towards the "today" total.</summary>
+    private DateTime EndOfToday => StudyCalendar.EndOfStudyDayUtc(UtcNow);
 
     public async Task<DashboardStatsDto> GetDashboardStatsAsync(CancellationToken ct)
     {
@@ -33,6 +33,7 @@ public class StudyService(AppDbContext db, TimeProvider clock)
             .ToListAsync(ct);
 
         var endOfToday = EndOfToday;
+        var now = UtcNow;
 
         var categories = cards
             .GroupBy(c => c.Category)
@@ -41,6 +42,7 @@ public class StudyService(AppDbContext db, TimeProvider clock)
                 g.Key,
                 g.Count(),
                 g.Count(c => c.NextReviewDate < endOfToday),
+                g.Count(c => c.NextReviewDate <= now),
                 g.Count(c => c.IsNew),
                 g.Count(c => c.IsMastered)))
             .ToList();
@@ -48,6 +50,7 @@ public class StudyService(AppDbContext db, TimeProvider clock)
         return new DashboardStatsDto(
             cards.Count,
             categories.Sum(c => c.CardsToReviewToday),
+            categories.Sum(c => c.CardsDueNow),
             categories.Sum(c => c.NewCards),
             categories.Sum(c => c.MasteredCards),
             cards.Min(c => c.NextReviewDate),
@@ -76,7 +79,7 @@ public class StudyService(AppDbContext db, TimeProvider clock)
         return card is null ? null : ToDto(card);
     }
 
-    /// <summary>Everything due today, oldest first, followed by up to <paramref name="newLimit"/> new cards.</summary>
+    /// <summary>Everything due right now, oldest first, followed by up to <paramref name="newLimit"/> new cards.</summary>
     public async Task<IReadOnlyList<ScenarioCardDto>> GetStudyQueueAsync(
         ScenarioCategory? category, int newLimit, CancellationToken ct)
     {
@@ -86,9 +89,9 @@ public class StudyService(AppDbContext db, TimeProvider clock)
             cards = cards.Where(c => c.Category == category);
         }
 
-        var endOfToday = EndOfToday;
+        var now = UtcNow;
         var due = await cards
-            .Where(c => c.Progress != null && c.Progress.NextReviewDate < endOfToday)
+            .Where(c => c.Progress != null && c.Progress.NextReviewDate <= now)
             .OrderBy(c => c.Progress!.NextReviewDate)
             .ToListAsync(ct);
 

@@ -21,7 +21,7 @@ public sealed record UserProgressDto(
     DateTime? LastStudiedDate,
     DateTime? NextReviewDate,
     double EaseFactor,
-    int IntervalDays,
+    double IntervalDays,
     int Repetitions,
     int Lapses);
 
@@ -42,7 +42,7 @@ public sealed record ScenarioCardDto(
 
 public sealed record SubmitAnswerRequest([Required] Guid? SelectedOptionId);
 
-public sealed record RatingPreviewDto(ReviewRating Rating, int IntervalDays, DateTime NextReviewDate);
+public sealed record RatingPreviewDto(ReviewRating Rating, double IntervalDays, DateTime NextReviewDate);
 
 /// <param name="IsCorrect">Whether the selected option was the right one.</param>
 /// <param name="CorrectOptionId">The right option for this step.</param>
@@ -70,12 +70,14 @@ public sealed record CategoryStatsDto(
     ScenarioCategory Category,
     int TotalCards,
     int CardsToReviewToday,
+    int CardsDueNow,
     int NewCards,
     int MasteredCards);
 
 public sealed record DashboardStatsDto(
     int TotalCards,
     int CardsToReviewToday,
+    int CardsDueNow,
     int NewCards,
     int MasteredCards,
     DateTime? NextReviewDate,

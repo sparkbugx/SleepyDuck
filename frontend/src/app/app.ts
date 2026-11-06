@@ -20,7 +20,7 @@ import { ThemeService } from './core/services/theme.service';
         </a>
 
         <div class="flex items-center gap-4">
-          <span class="text-soft hidden text-xs sm:block">Microsoft 365 Admin Troubleshooting</span>
+          <span class="text-soft hidden text-xs sm:block">IT Support Interview Prep</span>
           <button
             type="button"
             class="btn-secondary !size-9 !p-0"

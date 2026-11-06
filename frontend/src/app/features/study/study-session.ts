@@ -13,7 +13,7 @@ import { RouterLink } from '@angular/router';
 import { timer } from 'rxjs';
 
 import { AnswerResult, RatingPreview, ReviewRating, ScenarioCard, ScenarioCategory, StepOption } from '../../core/models/api.models';
-import { CATEGORY_LABELS, formatInterval, MASTERY_LABELS } from '../../core/models/labels';
+import { CATEGORY_LABELS, formatInterval, MASTERY_LABELS, RATING_LABELS } from '../../core/models/labels';
 import { ScenarioService } from '../../core/services/scenario.service';
 import { AutoHeight } from '../../shared/auto-height';
 
@@ -45,6 +45,7 @@ const RATING_CLASSES: Record<ReviewRating, string> = {
   Hard: 'hover:bg-oasis-ochre/15',
   Good: 'hover:bg-oasis-olive/10 dark:hover:bg-oasis-sage/10',
   Easy: 'hover:bg-oasis-olive/20 dark:hover:bg-oasis-sage/20',
+  VeryEasy: 'hover:bg-oasis-olive/30 dark:hover:bg-oasis-sage/30',
 };
 
 @Component({
@@ -63,6 +64,7 @@ export class StudySession implements OnInit {
 
   protected readonly categoryLabels = CATEGORY_LABELS;
   protected readonly masteryLabels = MASTERY_LABELS;
+  protected readonly ratingLabels = RATING_LABELS;
   protected readonly formatInterval = formatInterval;
   protected readonly ratingClasses = RATING_CLASSES;
 

@@ -17,7 +17,7 @@ public class UserProgress
     public DateTime? NextReviewDate { get; set; }
 
     public double EaseFactor { get; set; } = Sm2Scheduler.DefaultEase;
-    public int IntervalDays { get; set; }
+    public double IntervalDays { get; set; }
     public int Repetitions { get; set; }
     public int Lapses { get; set; }
 

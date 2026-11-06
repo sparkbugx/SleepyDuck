@@ -1,9 +1,51 @@
 using SleepyDuck.Api.Data;
+using SleepyDuck.Api.Models;
 
 namespace SleepyDuck.Api.Tests;
 
 public class SeedDataTests
 {
+    [Fact]
+    public void Every_category_has_at_least_two_scenarios()
+    {
+        foreach (var category in Enum.GetValues<ScenarioCategory>())
+        {
+            Assert.True(SeedData.Cards.Count(c => c.Category == category) >= 2, category.ToString());
+        }
+    }
+
+    [Fact]
+    public void No_step_repeats_an_option()
+    {
+        var distractorsByStep = SeedData.Distractors.ToLookup(d => d.SequentialStepId);
+
+        Assert.All(SeedData.Steps, step =>
+        {
+            var options = distractorsByStep[step.Id].Select(d => d.Text).Append(step.CorrectAction).ToList();
+
+            Assert.Equal(options.Count, options.Distinct().Count());
+        });
+    }
+
+    public static TheoryData<ScenarioCategory> Categories => new(Enum.GetValues<ScenarioCategory>());
+
+    [Theory]
+    [MemberData(nameof(Categories))]
+    public void Option_length_is_not_a_reliable_way_to_guess(ScenarioCategory category)
+    {
+        var cards = SeedData.Cards.Where(c => c.Category == category).Select(c => c.Id).ToHashSet();
+        var steps = SeedData.Steps.Where(s => cards.Contains(s.ScenarioCardId)).ToList();
+        var distractorsByStep = SeedData.Distractors.ToLookup(d => d.SequentialStepId);
+
+        var correctIsLongest = steps.Count(step =>
+            step.CorrectAction.Length > distractorsByStep[step.Id].Max(d => d.Text.Length));
+        var correctIsShortest = steps.Count(step =>
+            step.CorrectAction.Length < distractorsByStep[step.Id].Min(d => d.Text.Length));
+
+        Assert.True(correctIsLongest * 3 <= steps.Count, $"longest on {correctIsLongest} of {steps.Count} steps");
+        Assert.True(correctIsShortest * 3 <= steps.Count, $"shortest on {correctIsShortest} of {steps.Count} steps");
+    }
+
     [Fact]
     public void Every_scenario_is_multi_step()
     {
