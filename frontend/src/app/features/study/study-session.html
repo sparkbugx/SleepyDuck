@@ -1,0 +1,212 @@
+<div class="mx-auto max-w-2xl">
+  <div class="mb-5 flex items-center gap-4">
+    <a routerLink="/" class="rounded text-sm text-slate-400 transition-colors duration-200 hover:text-white">Exit</a>
+    <div
+      class="h-1 flex-1 overflow-hidden rounded-full bg-white/10"
+      role="progressbar"
+      aria-label="Session progress"
+      [attr.aria-valuenow]="sessionPercent()"
+      aria-valuemin="0"
+      aria-valuemax="100"
+    >
+      <div class="h-full rounded-full bg-gradient-to-r from-indigo-400 to-cyan-400 transition-all duration-500 ease-out" [style.width.%]="sessionPercent()"></div>
+    </div>
+    @if (cards().length) {
+      <span class="text-xs tabular-nums text-slate-500">
+        {{ cardIndex() + 1 }} / {{ cards().length }}
+      </span>
+    }
+  </div>
+
+  @switch (phase()) {
+    @case ('loading') {
+      <div class="skeleton h-96" aria-busy="true" aria-label="Loading your session"></div>
+    }
+
+    @case ('load-error') {
+      <div class="glass enter-up p-8 text-center">
+        <h1 class="text-lg font-semibold text-white">Your session couldn't be loaded</h1>
+        <p class="mt-2 text-sm text-slate-400">Check that the API is running, then try again.</p>
+        <button type="button" class="btn-secondary mt-6" (click)="load()">Try again</button>
+      </div>
+    }
+
+    @case ('empty') {
+      <div class="glass enter-up p-10 text-center">
+        <h1 class="text-2xl font-semibold tracking-tight text-white">Nothing due</h1>
+        <p class="mt-2 text-sm text-slate-400">You're all caught up on this deck.</p>
+        <a routerLink="/" class="btn-primary mt-6">Back to dashboard</a>
+      </div>
+    }
+
+    @case ('complete') {
+      <div class="glass enter-up p-10 text-center">
+        <h1 class="text-2xl font-semibold tracking-tight text-white">Session complete</h1>
+        <div class="mt-6 flex justify-center gap-10">
+          <div>
+            <p class="text-3xl font-semibold tabular-nums text-emerald-300">{{ clearedCount() }}</p>
+            <p class="mt-1 text-sm text-slate-400">Cleared</p>
+          </div>
+          <div>
+            <p class="text-3xl font-semibold tabular-nums text-rose-300">{{ failedCount() }}</p>
+            <p class="mt-1 text-sm text-slate-400">To relearn</p>
+          </div>
+        </div>
+        @if (failedCount() > 0) {
+          <p class="mt-6 text-sm text-slate-400">Failed cards are back in your queue today.</p>
+        }
+        <a routerLink="/" class="btn-primary mt-6">Back to dashboard</a>
+      </div>
+    }
+
+    @default {
+      @for (card of visibleCard(); track card.id) {
+        <article class="glass enter-up p-5 sm:p-7" [class.exit-card]="exiting()" [class.pointer-events-none]="exiting()">
+          <div class="flex items-center gap-2 text-xs">
+            <span class="rounded-full border border-cyan-400/20 bg-cyan-400/10 px-2.5 py-0.5 font-medium text-cyan-300">
+              {{ categoryLabels[card.category] }}
+            </span>
+            <span class="text-slate-500">{{ masteryLabels[card.progress?.masteryLevel ?? 'New'] }}</span>
+          </div>
+
+          <h1 class="mt-3 text-xl font-semibold tracking-tight text-white sm:text-2xl">{{ card.title }}</h1>
+          <p class="mt-2 text-[15px] leading-relaxed text-slate-300">{{ card.problemStatement }}</p>
+
+          <div class="mt-5 flex items-center gap-1.5" aria-hidden="true">
+            @for (step of card.steps; track step.id; let index = $index) {
+              <span
+                class="h-1 flex-1 rounded-full transition-all duration-500"
+                [class.bg-emerald-400]="index < clearedSteps().length"
+                [class.bg-indigo-400]="index === clearedSteps().length && phase() === 'answering'"
+                [class.bg-rose-400]="index === clearedSteps().length && phase() === 'failed'"
+                [class.bg-white/10]="index > clearedSteps().length"
+              ></span>
+            }
+          </div>
+
+          <div appAutoHeight class="-mx-1 mt-1">
+            <div class="grid p-1 [&>*]:[grid-area:1/1]">
+              @if (phase() === 'answering') {
+                @for (step of visibleStep(); track step.id) {
+                  <section animate.enter="enter-right" animate.leave="leave-left" class="pt-4">
+                    <p class="font-mono text-xs uppercase tracking-wider text-indigo-300">
+                      Step {{ step.order }} of {{ card.steps.length }}
+                    </p>
+                    <h2 class="mt-1.5 font-medium text-white">{{ step.prompt }}</h2>
+
+                    <div class="mt-4 space-y-2.5">
+                      @for (option of step.options; track option.id; let index = $index) {
+                        <button
+                          type="button"
+                          class="flex w-full items-start gap-3 rounded-xl border p-3.5 text-left text-sm leading-relaxed transition-all duration-200 [overflow-wrap:anywhere]"
+                          [class]="optionClasses(option)"
+                          [disabled]="selectedOptionId() !== null"
+                          (click)="choose(option)"
+                        >
+                          <span class="kbd" aria-hidden="true">{{ index + 1 }}</span>
+                          <span>{{ option.text }}</span>
+                        </button>
+                      }
+                    </div>
+
+                    @if (error(); as message) {
+                      <p class="enter-up mt-3 text-sm text-rose-300" role="alert">{{ message }}</p>
+                    }
+                  </section>
+                }
+              }
+
+              @if (phase() === 'success') {
+                <section animate.enter="enter-up" class="pt-5" aria-live="polite">
+                  <div class="flex items-center gap-3">
+                    <span class="pop flex size-9 items-center justify-center rounded-full bg-emerald-400/15 text-emerald-300">
+                      <svg class="size-5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                        <path d="M4.500 10.500l3.500 3.500 7.500-8" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                    </span>
+                    <h2 class="text-lg font-semibold text-white">Incident resolved</h2>
+                  </div>
+
+                  <ol class="mt-4 space-y-3">
+                    @for (cleared of clearedSteps(); track $index) {
+                      <li class="rounded-xl border border-white/5 bg-white/[0.02] p-3.5">
+                        <p class="text-sm font-medium text-emerald-200 [overflow-wrap:anywhere]">
+                          <span class="mr-1 font-mono text-xs text-slate-500">{{ $index + 1 }}</span>
+                          {{ cleared.action }}
+                        </p>
+                        <p class="mt-1 text-sm leading-relaxed text-slate-400">{{ cleared.explanation }}</p>
+                      </li>
+                    }
+                  </ol>
+
+                  <div class="mt-4 rounded-xl border border-indigo-400/20 bg-indigo-400/[0.06] p-4">
+                    <h3 class="text-xs font-semibold uppercase tracking-wider text-indigo-300">Technical explanation</h3>
+                    <p class="mt-2 text-sm leading-relaxed text-slate-300">{{ answer()?.technicalExplanation }}</p>
+                  </div>
+
+                  <p class="mt-5 text-sm font-medium text-slate-300">How hard was that?</p>
+                  <div class="mt-2.5 grid grid-cols-2 gap-2.5 sm:grid-cols-4">
+                    @for (preview of answer()?.ratingPreviews; track preview.rating; let index = $index) {
+                      <button
+                        type="button"
+                        class="group flex cursor-pointer flex-col items-center rounded-xl border border-white/10 bg-white/[0.03] px-3 py-3 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97] disabled:cursor-default disabled:opacity-50"
+                        [class]="ratingClasses[preview.rating]"
+                        [disabled]="submitting()"
+                        (click)="rate(preview)"
+                      >
+                        <span class="text-sm font-semibold text-white">{{ preview.rating }}</span>
+                        <span class="mt-0.5 text-xs tabular-nums text-slate-400">{{ formatInterval(preview.intervalDays) }}</span>
+                        <span class="sr-only">. Press {{ index + 1 }}.</span>
+                      </button>
+                    }
+                  </div>
+
+                  @if (error(); as message) {
+                    <p class="enter-up mt-3 text-sm text-rose-300" role="alert">{{ message }}</p>
+                  }
+                </section>
+              }
+
+              @if (phase() === 'failed') {
+                <section animate.enter="enter-up" class="pt-5" aria-live="polite">
+                  <div class="flex items-center gap-3">
+                    <span class="pop flex size-9 items-center justify-center rounded-full bg-rose-400/15 text-rose-300">
+                      <svg class="size-5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.500" aria-hidden="true">
+                        <path d="M5.500 5.500l9 9m0-9l-9 9" stroke-linecap="round" />
+                      </svg>
+                    </span>
+                    <div>
+                      <h2 class="text-lg font-semibold text-white">Not the right call</h2>
+                      <p class="text-xs text-slate-400">Marked as Again. This card is back in your queue today.</p>
+                    </div>
+                  </div>
+
+                  <div class="mt-4 space-y-3">
+                    <div class="rounded-xl border border-rose-400/20 bg-rose-400/[0.05] p-3.5">
+                      <p class="text-xs font-semibold uppercase tracking-wider text-rose-300">Your choice</p>
+                      <p class="mt-1.5 text-sm font-medium text-slate-100 [overflow-wrap:anywhere]">{{ selectedOption()?.text }}</p>
+                      <p class="mt-1 text-sm leading-relaxed text-slate-400">{{ answer()?.distractorExplanation }}</p>
+                    </div>
+                    <div class="rounded-xl border border-emerald-400/20 bg-emerald-400/[0.05] p-3.5">
+                      <p class="text-xs font-semibold uppercase tracking-wider text-emerald-300">Correct action</p>
+                      <p class="mt-1.5 text-sm font-medium text-slate-100 [overflow-wrap:anywhere]">{{ answer()?.correctAction }}</p>
+                      <p class="mt-1 text-sm leading-relaxed text-slate-400">{{ answer()?.stepExplanation }}</p>
+                    </div>
+                    <div class="rounded-xl border border-indigo-400/20 bg-indigo-400/[0.06] p-4">
+                      <h3 class="text-xs font-semibold uppercase tracking-wider text-indigo-300">Technical explanation</h3>
+                      <p class="mt-2 text-sm leading-relaxed text-slate-300">{{ answer()?.technicalExplanation }}</p>
+                    </div>
+                  </div>
+
+                  <div class="mt-5 flex justify-end">
+                    <button type="button" class="btn-primary cursor-pointer" (click)="nextCard()">Continue</button>
+                  </div>
+                </section>
+              }
+            </div>
+          </div>
+        </article>
+      }
+    }
+  }
+</div>
