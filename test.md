@@ -174,3 +174,6 @@ I followed the README's Ubuntu steps in a new Ubuntu 24.04 container, on a real 
 ## Where the one-off checks are
 
 The migration, undo-a-fix, end-to-end, and Ubuntu checks were temporary scripts, and they aren't part of this repository. Only the tests in `backend/SleepyDuck.Api.Tests/` can be rerun from the project.
+
+
+## First test completed
