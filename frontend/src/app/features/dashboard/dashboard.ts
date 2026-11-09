@@ -4,7 +4,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
 
 import { CategoryStats, DashboardStats } from '../../core/models/api.models';
-import { CATEGORY_LABELS } from '../../core/models/labels';
+import { CATEGORY_GROUPS, CATEGORY_LABELS } from '../../core/models/labels';
 import { DashboardService } from '../../core/services/dashboard.service';
 
 /** Matches the backend's default newLimit for the study queue. */
@@ -36,6 +36,16 @@ export class Dashboard implements OnInit {
   protected readonly sessionSize = computed(() => {
     const stats = this.stats();
     return stats ? stats.cardsDueNow + Math.min(stats.newCards, NEW_CARDS_PER_SESSION) : 0;
+  });
+
+  protected readonly groupedCategories = computed(() => {
+    const stats = this.stats();
+    if (!stats) return [];
+    const byCategory = new Map(stats.categories.map(c => [c.category, c]));
+    return CATEGORY_GROUPS.map(group => ({
+      label: group.label,
+      categories: group.categories.map(cat => byCategory.get(cat)).filter((c): c is CategoryStats => !!c),
+    }));
   });
 
   ngOnInit(): void {

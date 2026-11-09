@@ -50,39 +50,44 @@
 
   <section class="enter-up mt-12" style="animation-delay: 120ms">
     <h2 class="text-soft eyebrow">Topics</h2>
-    <ul class="rule mt-3 divide-y divide-oasis-mist border-y dark:divide-oasis-edge">
-      @for (category of stats.categories; track category.category) {
-        <li class="flex items-center gap-4 py-3.5">
-          <div class="min-w-0 flex-1">
-            <div class="flex items-baseline justify-between gap-3">
-              <p class="text-strong truncate font-medium">{{ categoryLabels[category.category] }}</p>
-              <p class="text-soft shrink-0 text-xs tabular-nums">
-                {{ category.masteredCards }} of {{ category.totalCards }} mastered
-              </p>
-            </div>
-            <div
-              class="mt-2.5 flex gap-1"
-              role="progressbar"
-              [attr.aria-label]="categoryLabels[category.category] + ' mastery'"
-              [attr.aria-valuenow]="masteredPercent(category)"
-              aria-valuemin="0"
-              aria-valuemax="100"
-            >
-              @for (segment of segments(category); track $index) {
-                <span class="h-1.5 flex-1 rounded-sm transition-colors duration-500" [class]="segmentClasses[segment]"></span>
+    @for (group of groupedCategories(); track group.label) {
+      <div class="mt-6">
+        <h3 class="text-strong mb-2 text-sm font-semibold">{{ group.label }}</h3>
+        <ul class="rule divide-y divide-oasis-mist border-y dark:divide-oasis-edge">
+          @for (category of group.categories; track category.category) {
+            <li class="flex items-center gap-4 py-3.5">
+              <div class="min-w-0 flex-1">
+                <div class="flex items-baseline justify-between gap-3">
+                  <p class="text-strong truncate font-medium">{{ categoryLabels[category.category] }}</p>
+                  <p class="text-soft shrink-0 text-xs tabular-nums">
+                    {{ category.masteredCards }} of {{ category.totalCards }} mastered
+                  </p>
+                </div>
+                <div
+                  class="mt-2.5 flex gap-1"
+                  role="progressbar"
+                  [attr.aria-label]="categoryLabels[category.category] + ' mastery'"
+                  [attr.aria-valuenow]="masteredPercent(category)"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                >
+                  @for (segment of segments(category); track $index) {
+                    <span class="h-1.5 flex-1 rounded-sm transition-colors duration-500" [class]="segmentClasses[segment]"></span>
+                  }
+                </div>
+              </div>
+              @if (hasWork(category)) {
+                <a routerLink="/study" [queryParams]="{ category: category.category }" class="btn-secondary shrink-0 !px-3 !py-1.5 !text-xs">
+                  Study
+                </a>
+              } @else {
+                <span class="text-soft shrink-0 px-3 py-1.5 text-xs">Done</span>
               }
-            </div>
-          </div>
-          @if (hasWork(category)) {
-            <a routerLink="/study" [queryParams]="{ category: category.category }" class="btn-secondary shrink-0 !px-3 !py-1.5 !text-xs">
-              Study
-            </a>
-          } @else {
-            <span class="text-soft shrink-0 px-3 py-1.5 text-xs">Done</span>
+            </li>
           }
-        </li>
-      }
-    </ul>
+        </ul>
+      </div>
+    }
   </section>
 } @else {
   <div aria-busy="true" aria-label="Loading dashboard">

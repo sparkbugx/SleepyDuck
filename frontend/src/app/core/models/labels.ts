@@ -1,5 +1,21 @@
 import { MasteryLevel, ReviewRating, ScenarioCategory } from './api.models';
 
+export interface CategoryGroup {
+  label: string;
+  categories: ScenarioCategory[];
+}
+
+export const CATEGORY_GROUPS: CategoryGroup[] = [
+  {
+    label: 'Microsoft 365 Administration',
+    categories: ['EmailDelivery', 'UserLicenseManagement', 'GroupManagement', 'MailFlowRules'],
+  },
+  {
+    label: 'VOIP & Network Support',
+    categories: ['VoipSupport', 'NetworkTroubleshooting', 'MacNetworkIssues'],
+  },
+];
+
 export const CATEGORY_LABELS: Record<ScenarioCategory, string> = {
   EmailDelivery: 'Email Delivery',
   UserLicenseManagement: 'Users & Licenses',
