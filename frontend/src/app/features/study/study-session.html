@@ -1,6 +1,6 @@
 <div class="mx-auto max-w-2xl">
   <div class="mb-5 flex items-center gap-4">
-    <a routerLink="/" class="text-soft rounded text-sm transition-colors duration-200 hover:text-oasis-ink dark:hover:text-oasis-sand">Exit</a>
+    <a routerLink="/dashboard" class="text-soft rounded text-sm transition-colors duration-200 hover:text-oasis-ink dark:hover:text-oasis-sand">Exit</a>
     <div
       class="h-1 flex-1 overflow-hidden rounded-sm bg-oasis-mist dark:bg-oasis-edge"
       role="progressbar"
@@ -35,7 +35,7 @@
       <div class="surface enter-up p-10 text-center">
         <h1 class="text-strong font-display text-3xl font-semibold tracking-tight">Nothing due</h1>
         <p class="text-soft mt-2 text-sm">You're all caught up on this deck.</p>
-        <a routerLink="/" class="btn-primary mt-6">Back to dashboard</a>
+        <a routerLink="/dashboard" class="btn-primary mt-6">Back to dashboard</a>
       </div>
     }
 
@@ -55,7 +55,7 @@
         @if (failedCount() > 0) {
           <p class="text-soft mt-6 text-sm">Failed cards return in about 10 minutes.</p>
         }
-        <a routerLink="/" class="btn-primary mt-6">Back to dashboard</a>
+        <a routerLink="/dashboard" class="btn-primary mt-6">Back to dashboard</a>
       </div>
     }
 

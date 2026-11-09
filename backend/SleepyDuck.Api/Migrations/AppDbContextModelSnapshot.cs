@@ -216,6 +216,90 @@ namespace SleepyDuck.Api.Migrations
                         },
                         new
                         {
+                            Id = new Guid("4b090082-9182-b263-0904-dc9da3c29545"),
+                            Explanation = "The MSOnline module is retired, and it never managed mailboxes or inbox rules.",
+                            SequentialStepId = new Guid("e7de2726-9058-4dab-6026-21eb4d335180"),
+                            Text = "Connect-MsolService -Credential (Get-Credential)"
+                        },
+                        new
+                        {
+                            Id = new Guid("91aaae22-83bb-2d39-02f4-da8f0514d4e4"),
+                            Explanation = "Basic authentication for remote PowerShell has been turned off in Exchange Online, so this connection fails.",
+                            SequentialStepId = new Guid("e7de2726-9058-4dab-6026-21eb4d335180"),
+                            Text = "New-PSSession -ConfigurationName Microsoft.Exchange -ConnectionUri https://outlook.office365.com/powershell-liveid/ -Authentication Basic"
+                        },
+                        new
+                        {
+                            Id = new Guid("8ad481b2-9100-1e99-8609-7ad225e78444"),
+                            Explanation = "Microsoft Graph PowerShell doesn't load Exchange cmdlets, so Get-InboxRule isn't available in that session.",
+                            SequentialStepId = new Guid("e7de2726-9058-4dab-6026-21eb4d335180"),
+                            Text = "Connect-MgGraph -Scopes 'Mail.ReadWrite', then run Get-InboxRule"
+                        },
+                        new
+                        {
+                            Id = new Guid("d9621d3f-e941-6078-c4b6-829d36f3229e"),
+                            Explanation = "Trace records what transport did, and it already shows Delivered. It can't see what happened to a message after it reached the mailbox.",
+                            SequentialStepId = new Guid("6d2abeae-2397-c7a3-b761-089f45177081"),
+                            Text = "Get-MessageTraceV2 -RecipientAddress grace@contoso.example -StartDate (Get-Date).AddDays(-7) -EndDate (Get-Date)"
+                        },
+                        new
+                        {
+                            Id = new Guid("e67cbf07-aefa-62a6-6720-1f331ef06ae8"),
+                            Explanation = "This reports item counts and mailbox size, not why particular messages disappear.",
+                            SequentialStepId = new Guid("6d2abeae-2397-c7a3-b761-089f45177081"),
+                            Text = "Get-MailboxStatistics -Identity grace@contoso.example"
+                        },
+                        new
+                        {
+                            Id = new Guid("3a71048b-6910-de7e-2a48-8f6f23ba144a"),
+                            Explanation = "Folder permissions show who can open the Inbox. They don't show rules that move mail out of it.",
+                            SequentialStepId = new Guid("6d2abeae-2397-c7a3-b761-089f45177081"),
+                            Text = "Get-MailboxFolderPermission -Identity grace@contoso.example:\\Inbox"
+                        },
+                        new
+                        {
+                            Id = new Guid("b7062ebf-d4aa-9356-31d8-993495ca0df2"),
+                            Explanation = "Outlook doesn't create hidden rules, and the keywords target exactly the wire transfer conversation.",
+                            SequentialStepId = new Guid("61b306d2-dcbe-00e0-cb44-f92732a4ee51"),
+                            Text = "Grace created a cleanup rule by mistake and forgot about it"
+                        },
+                        new
+                        {
+                            Id = new Guid("daf92b36-ad46-f8a5-872e-9dffd9c50712"),
+                            Explanation = "Defender actions show up in message trace and quarantine, not as an inbox rule in the user's mailbox.",
+                            SequentialStepId = new Guid("61b306d2-dcbe-00e0-cb44-f92732a4ee51"),
+                            Text = "A Defender for Office 365 policy moved the messages as suspected phishing"
+                        },
+                        new
+                        {
+                            Id = new Guid("f671c797-9d91-e995-69c2-931c894c5665"),
+                            Explanation = "A client sync fault doesn't create a server-side rule with keyword conditions.",
+                            SequentialStepId = new Guid("61b306d2-dcbe-00e0-cb44-f92732a4ee51"),
+                            Text = "An Outlook sync problem on Grace's laptop is filing new mail into RSS Subscriptions, so the messages land there automatically"
+                        },
+                        new
+                        {
+                            Id = new Guid("5e4fcaee-5ede-b2df-2a1d-5e47c5631296"),
+                            Explanation = "The attacker keeps a valid session and can recreate or re-enable the rule at any time.",
+                            SequentialStepId = new Guid("497b1140-0863-3bb1-9706-231416a7b32c"),
+                            Text = "Disable the rule with Disable-InboxRule so it can be turned back on later if Grace says it was intentional"
+                        },
+                        new
+                        {
+                            Id = new Guid("65c9f5eb-d38f-3cfa-06c1-8eb512967eec"),
+                            Explanation = "Hiding the mailbox from the address book doesn't touch the rule or the attacker's access.",
+                            SequentialStepId = new Guid("497b1140-0863-3bb1-9706-231416a7b32c"),
+                            Text = "Set-Mailbox -Identity grace@contoso.example -HiddenFromAddressListsEnabled $true"
+                        },
+                        new
+                        {
+                            Id = new Guid("29aef724-c86c-772b-479b-c1dfcf522135"),
+                            Explanation = "Deleting the rule alone leaves the attacker signed in with a valid token, free to create it again.",
+                            SequentialStepId = new Guid("497b1140-0863-3bb1-9706-231416a7b32c"),
+                            Text = "Delete the rule with Remove-InboxRule, then ask Grace to watch the Inbox closely for the rest of the week and report anything else that goes missing"
+                        },
+                        new
+                        {
                             Id = new Guid("480e3db2-90e4-0621-c76d-f5414350be80"),
                             Explanation = "A mail contact is an external address entry with no sign-in or license.",
                             SequentialStepId = new Guid("941e7c17-066e-1729-ea54-2d58af65c26d"),
@@ -381,6 +465,90 @@ namespace SleepyDuck.Api.Migrations
                             Explanation = "Language settings have no effect on usage location.",
                             SequentialStepId = new Guid("838d0d9a-847e-2dbd-3839-3b5ba965d837"),
                             Text = "Change the tenant's default language"
+                        },
+                        new
+                        {
+                            Id = new Guid("87735e36-9a00-8770-6efd-f6704eb9f568"),
+                            Explanation = "No MFA prompt was shown, so the methods were never used. Re-registering removes working methods without touching the block.",
+                            SequentialStepId = new Guid("3b41f970-ac1e-417f-a972-41a2dc3fbc75"),
+                            Text = "Require Luis to re-register MFA from the Authentication methods page"
+                        },
+                        new
+                        {
+                            Id = new Guid("f1963da8-6a21-965f-d489-a874bdd777ca"),
+                            Explanation = "A missing license causes service errors after sign-in, not a Conditional Access block during it.",
+                            SequentialStepId = new Guid("3b41f970-ac1e-417f-a972-41a2dc3fbc75"),
+                            Text = "Check that Luis still has an E3 license assigned"
+                        },
+                        new
+                        {
+                            Id = new Guid("9b439ebd-6741-7e0a-5aee-3818b54384fc"),
+                            Explanation = "Mailbox auditing records actions inside the mailbox. It doesn't hold Conditional Access results.",
+                            SequentialStepId = new Guid("3b41f970-ac1e-417f-a972-41a2dc3fbc75"),
+                            Text = "Search the Microsoft Purview audit log for Luis's mailbox activity since the last successful sign-in yesterday"
+                        },
+                        new
+                        {
+                            Id = new Guid("3577e16b-f6fe-4477-89ed-ced21d24a952"),
+                            Explanation = "MFA failures return codes such as 500121, and a lockout returns 50053. The log shows a policy block.",
+                            SequentialStepId = new Guid("0c432c4d-2b22-b689-6f3a-b783aa2ce4f7"),
+                            Text = "Luis failed the MFA challenge too many times and the account was locked out"
+                        },
+                        new
+                        {
+                            Id = new Guid("909be570-2a63-773b-cda8-1b0ca8be7d78"),
+                            Explanation = "An expired password returns 50055 and prompts for a change. It isn't a Conditional Access result.",
+                            SequentialStepId = new Guid("0c432c4d-2b22-b689-6f3a-b783aa2ce4f7"),
+                            Text = "Luis's password expired while traveling"
+                        },
+                        new
+                        {
+                            Id = new Guid("9a857f51-46e5-851c-178d-b668789a1f52"),
+                            Explanation = "The request reached Entra ID and was evaluated, because the sign-in log has an entry with a policy result.",
+                            SequentialStepId = new Guid("0c432c4d-2b22-b689-6f3a-b783aa2ce4f7"),
+                            Text = "The hotel Wi-Fi is blocking traffic to login.microsoftonline.com, so the token request never completes"
+                        },
+                        new
+                        {
+                            Id = new Guid("eb7b3260-87c1-f619-ac80-ac3e20f3c1de"),
+                            Explanation = "Report-only stops enforcement for every user in scope, not just Luis.",
+                            SequentialStepId = new Guid("063e942b-84c2-66c3-3815-01f571f03414"),
+                            Text = "Switch the policy to Report-only mode until Luis returns"
+                        },
+                        new
+                        {
+                            Id = new Guid("4532c6ff-2bc7-cef8-4556-24e06abb1096"),
+                            Explanation = "The IP can change, and trusting it opens the policy to anyone on that network, including attackers.",
+                            SequentialStepId = new Guid("063e942b-84c2-66c3-3815-01f571f03414"),
+                            Text = "Add the hotel's public IP address to a trusted named location"
+                        },
+                        new
+                        {
+                            Id = new Guid("20923825-bb61-f636-a595-3ddc8c70591f"),
+                            Explanation = "That allows sign-ins from Portugal for the entire organization, and removing it later is easy to forget.",
+                            SequentialStepId = new Guid("063e942b-84c2-66c3-3815-01f571f03414"),
+                            Text = "Add Portugal to the allowed countries location in the policy, then remove it when the trip ends"
+                        },
+                        new
+                        {
+                            Id = new Guid("43fc4fbd-bdd1-c307-160f-ee082e97d234"),
+                            Explanation = "Clearing the cache doesn't change policy evaluation, and waiting without testing proves nothing.",
+                            SequentialStepId = new Guid("2c7d8b12-d8a4-1d97-e00a-9bf9d70aa62c"),
+                            Text = "Ask Luis to clear the browser cache and try again in an hour"
+                        },
+                        new
+                        {
+                            Id = new Guid("616afcc5-9d02-42f1-8daf-1cb0efb9b4af"),
+                            Explanation = "A saved change proves the policy was edited, not that this user's sign-in will pass.",
+                            SequentialStepId = new Guid("2c7d8b12-d8a4-1d97-e00a-9bf9d70aa62c"),
+                            Text = "Check the policy's Last modified date and audit log entry to make sure the change was saved correctly"
+                        },
+                        new
+                        {
+                            Id = new Guid("4f50d496-ec11-9b18-47d4-9c9960a46a1f"),
+                            Explanation = "The office is inside the allowed countries, so this test can't reproduce Luis's situation.",
+                            SequentialStepId = new Guid("2c7d8b12-d8a4-1d97-e00a-9bf9d70aa62c"),
+                            Text = "Sign in with a test account from the office network"
                         },
                         new
                         {
@@ -552,6 +720,174 @@ namespace SleepyDuck.Api.Migrations
                         },
                         new
                         {
+                            Id = new Guid("0652492f-8da9-54c1-1f7c-c0a320e971cc"),
+                            Explanation = "The invitation failed before any guest account was created, so there's no account to check.",
+                            SequentialStepId = new Guid("f2457426-5608-421d-48c7-4da2540fc244"),
+                            Text = "The consultant's guest account in Entra ID, to see whether sign-in is blocked"
+                        },
+                        new
+                        {
+                            Id = new Guid("d8b9749e-5600-8fa5-999d-bbc414a9db9e"),
+                            Explanation = "Teams guest access controls the guest experience in Teams, not sharing from SharePoint.",
+                            SequentialStepId = new Guid("f2457426-5608-421d-48c7-4da2540fc244"),
+                            Text = "The guest access settings in the Teams admin center"
+                        },
+                        new
+                        {
+                            Id = new Guid("0c9b4df9-ce9f-cc8b-c914-c0e7e1d9c27c"),
+                            Explanation = "A DLP block shows a policy tip about sensitive content, and it would affect adatum.example as well.",
+                            SequentialStepId = new Guid("f2457426-5608-421d-48c7-4da2540fc244"),
+                            Text = "The data loss prevention policy matches in Microsoft Purview for the files the owners tried to share with the consultant"
+                        },
+                        new
+                        {
+                            Id = new Guid("a1e12b5b-f789-9584-51c2-d462c2912088"),
+                            Explanation = "You just confirmed the site allows New and existing guests.",
+                            SequentialStepId = new Guid("8abc1259-4578-20fe-b5b3-92e0d403c3cb"),
+                            Text = "The site's sharing level is more restrictive than the organization's"
+                        },
+                        new
+                        {
+                            Id = new Guid("204b2563-59a4-b9a3-063d-08d37a7cb6ce"),
+                            Explanation = "Verification happens after an invitation is sent. This one was blocked before it was sent.",
+                            SequentialStepId = new Guid("8abc1259-4578-20fe-b5b3-92e0d403c3cb"),
+                            Text = "The consultant's Microsoft account hasn't been verified yet"
+                        },
+                        new
+                        {
+                            Id = new Guid("426294d2-2f48-c7fd-af81-77baa64d0e6b"),
+                            Explanation = "A block in the partner's tenant fails at redemption, not with your organization's sharing policy message.",
+                            SequentialStepId = new Guid("8abc1259-4578-20fe-b5b3-92e0d403c3cb"),
+                            Text = "Fabrikam's own tenant has a cross-tenant access policy that blocks B2B collaboration with outside organizations"
+                        },
+                        new
+                        {
+                            Id = new Guid("035f19a3-62a5-985a-371c-f982dcdbaed4"),
+                            Explanation = "Anyone links remove identity checks for all content, and they still wouldn't satisfy the domain restriction.",
+                            SequentialStepId = new Guid("464963e8-41e7-2f0a-b974-f85e9779d400"),
+                            Text = "Change the organization's sharing level to Anyone so links work without sign-in"
+                        },
+                        new
+                        {
+                            Id = new Guid("e62736a6-0a05-4276-c4af-b8e08889b446"),
+                            Explanation = "That opens sharing to every external domain to admit one partner.",
+                            SequentialStepId = new Guid("464963e8-41e7-2f0a-b974-f85e9779d400"),
+                            Text = "Turn off 'Limit external sharing by domain' at the organization level so the consultant can be invited right away"
+                        },
+                        new
+                        {
+                            Id = new Guid("5597811f-58bc-f387-45fc-3d8c25c1b450"),
+                            Explanation = "That costs a license, bypasses guest governance, and gives a non-employee a full internal identity.",
+                            SequentialStepId = new Guid("464963e8-41e7-2f0a-b974-f85e9779d400"),
+                            Text = "Create an internal account for the consultant and assign it an E3 license"
+                        },
+                        new
+                        {
+                            Id = new Guid("7ee24511-3d8c-b938-b13b-47a3e27db1e7"),
+                            Explanation = "That confirms the setting, not that the consultant can reach the file.",
+                            SequentialStepId = new Guid("8a7412cf-1371-43c7-2d96-9fc2d62e9afb"),
+                            Text = "Check that fabrikam.example now appears in the allowed domains list"
+                        },
+                        new
+                        {
+                            Id = new Guid("b4d0c541-9f49-7b1e-a3fb-d60496179991"),
+                            Explanation = "adatum.example already worked, so this test can't prove the fix.",
+                            SequentialStepId = new Guid("8a7412cf-1371-43c7-2d96-9fc2d62e9afb"),
+                            Text = "Share a test file with an adatum.example user"
+                        },
+                        new
+                        {
+                            Id = new Guid("1d479b58-b97c-b015-2bac-b8652818070d"),
+                            Explanation = "Those events come from before the change and say nothing about a new attempt.",
+                            SequentialStepId = new Guid("8a7412cf-1371-43c7-2d96-9fc2d62e9afb"),
+                            Text = "Search the unified audit log for SharingInvitationCreated events from the site's owners over the last week"
+                        },
+                        new
+                        {
+                            Id = new Guid("3ec47406-8fae-c087-b3b9-5025533b4308"),
+                            Explanation = "Guests can redeem with a work account, a Microsoft account or a one-time passcode, so the partner's account isn't what's blocking Mei.",
+                            SequentialStepId = new Guid("c592c3bc-9a51-6552-3f57-d4dcb0433bcd"),
+                            Text = "Ask the partner to create a Microsoft account first"
+                        },
+                        new
+                        {
+                            Id = new Guid("04b4bac5-2644-9445-18bf-793e47aa7aa0"),
+                            Explanation = "The search result reflects policy, not a client fault, and reinstalling removes nothing that blocks guests.",
+                            SequentialStepId = new Guid("c592c3bc-9a51-6552-3f57-d4dcb0433bcd"),
+                            Text = "Reinstall the Teams client on Mei's computer"
+                        },
+                        new
+                        {
+                            Id = new Guid("06589de0-cfdb-d4e5-94e2-32ca1738f7ab"),
+                            Explanation = "Toggling a setting that's already on changes nothing, and it disrupts existing guests.",
+                            SequentialStepId = new Guid("c592c3bc-9a51-6552-3f57-d4dcb0433bcd"),
+                            Text = "Turn guest access off and on again in the Teams admin center, then wait for the change to replicate across the tenant before trying again"
+                        },
+                        new
+                        {
+                            Id = new Guid("302f453e-5c6e-ca21-e810-a41ec95c3cc4"),
+                            Explanation = "Encryption affects who can open labeled files, not who can be added as a member.",
+                            SequentialStepId = new Guid("f430db22-4555-1b5b-092d-f0e293522887"),
+                            Text = "Whether the label applies encryption to the team's files"
+                        },
+                        new
+                        {
+                            Id = new Guid("685c9c94-e52b-c6ca-dc51-bc79f45387ba"),
+                            Explanation = "Adding guests to a team doesn't need Teams Premium.",
+                            SequentialStepId = new Guid("f430db22-4555-1b5b-092d-f0e293522887"),
+                            Text = "Whether Mei has a Teams Premium license"
+                        },
+                        new
+                        {
+                            Id = new Guid("933c7b85-65d8-aa2f-cdd0-b3499318142d"),
+                            Explanation = "That setting is tenant-wide, but other teams can already add the guest.",
+                            SequentialStepId = new Guid("f430db22-4555-1b5b-092d-f0e293522887"),
+                            Text = "Whether the Entra external collaboration settings restrict guest invitations to admin roles"
+                        },
+                        new
+                        {
+                            Id = new Guid("15998e8e-6f81-e296-43c8-3c2a2c36abb9"),
+                            Explanation = "This drops the label's other protections and bypasses the data owner's decision.",
+                            SequentialStepId = new Guid("d084c57d-b6c7-1f50-07a0-f865cad1e9d1"),
+                            Text = "Remove the sensitivity label from the team so the default settings apply"
+                        },
+                        new
+                        {
+                            Id = new Guid("e04a4f39-45b2-44f7-d43a-5d349d7a8c2e"),
+                            Explanation = "This sidesteps the classification and gives an outside person an internal identity and license.",
+                            SequentialStepId = new Guid("d084c57d-b6c7-1f50-07a0-f865cad1e9d1"),
+                            Text = "Create a member account for the partner in your tenant so the label's guest restriction doesn't apply"
+                        },
+                        new
+                        {
+                            Id = new Guid("e335cdee-db39-4c02-4d56-4b60c3af02e3"),
+                            Explanation = "Admin roles don't override a label's guest setting, and the role grants far too much access.",
+                            SequentialStepId = new Guid("d084c57d-b6c7-1f50-07a0-f865cad1e9d1"),
+                            Text = "Assign Mei the Teams Administrator role"
+                        },
+                        new
+                        {
+                            Id = new Guid("c508f2ef-6ed6-8f5e-2f09-3ef6d682b0fb"),
+                            Explanation = "Guest access normally works within minutes. The missing step is switching organizations.",
+                            SequentialStepId = new Guid("60dbfd7e-99e4-5f80-f1f6-e7abed929318"),
+                            Text = "Wait 24 hours for the guest account to sync to Teams"
+                        },
+                        new
+                        {
+                            Id = new Guid("ce208e75-3f13-bf9f-0226-9773a81a01bc"),
+                            Explanation = "The invitation was already redeemed, so another one changes nothing.",
+                            SequentialStepId = new Guid("60dbfd7e-99e4-5f80-f1f6-e7abed929318"),
+                            Text = "Resend the invitation from the Entra admin center"
+                        },
+                        new
+                        {
+                            Id = new Guid("40af6080-7833-63f5-8cc1-4094791fe289"),
+                            Explanation = "A clean browser session still opens in the guest's home organization.",
+                            SequentialStepId = new Guid("60dbfd7e-99e4-5f80-f1f6-e7abed929318"),
+                            Text = "Sign in to Teams on the web in a new private browser window, which clears the cached tenant list from the last session"
+                        },
+                        new
+                        {
                             Id = new Guid("bb26846f-02ba-26f2-0575-173704c0687c"),
                             Explanation = "Client rules are per mailbox, can be changed by users, and can't insert a disclaimer.",
                             SequentialStepId = new Guid("ff17c50d-64bc-3ab3-c65c-1ab209a66d20"),
@@ -717,6 +1053,90 @@ namespace SleepyDuck.Api.Migrations
                             Explanation = "Service health reports Microsoft outages, not whether your rule fired.",
                             SequentialStepId = new Guid("801fb6ed-6c3f-95a7-9828-690e0b11d9ae"),
                             Text = "Check the Exchange admin center service health page only"
+                        },
+                        new
+                        {
+                            Id = new Guid("aa467904-f1c9-20aa-84a8-9304f6eb36f5"),
+                            Explanation = "Their copies don't tell you who else received it.",
+                            SequentialStepId = new Guid("7159f258-9824-2105-ccae-acebca7cb3fc"),
+                            Text = "Ask the three reporters to forward the message to the service desk"
+                        },
+                        new
+                        {
+                            Id = new Guid("5040c497-85b5-4fcd-e7b3-8361cd2639bb"),
+                            Explanation = "Rule reports show which rules matched, not a full list of recipients.",
+                            SequentialStepId = new Guid("7159f258-9824-2105-ccae-acebca7cb3fc"),
+                            Text = "Run a mail flow rule report for messages from payroll-portal.example"
+                        },
+                        new
+                        {
+                            Id = new Guid("9db73bda-9311-7bed-1dfe-a2fe86d2260c"),
+                            Explanation = "Service health reports Microsoft service issues, not campaigns aimed at your users.",
+                            SequentialStepId = new Guid("7159f258-9824-2105-ccae-acebca7cb3fc"),
+                            Text = "Check the Service health page in the Microsoft 365 admin center for an active phishing advisory affecting the tenant"
+                        },
+                        new
+                        {
+                            Id = new Guid("18d6231f-e9ef-bf72-e9be-a2c3984de383"),
+                            Explanation = "Mail flow rules act on messages in transit, so they can't touch copies that were already delivered.",
+                            SequentialStepId = new Guid("72ec1818-d0bc-e20e-0322-953997a0d723"),
+                            Text = "Create a mail flow rule that deletes messages from payroll-portal.example"
+                        },
+                        new
+                        {
+                            Id = new Guid("20b7f8ce-6954-70cd-c02f-e2e4f8330e78"),
+                            Explanation = "ZAP only acts when a verdict changes, and you can't count on its timing while users are clicking.",
+                            SequentialStepId = new Guid("72ec1818-d0bc-e20e-0322-953997a0d723"),
+                            Text = "Wait for zero-hour auto purge to remove them"
+                        },
+                        new
+                        {
+                            Id = new Guid("4bb00f17-6fef-44dd-4153-85b79bf8329f"),
+                            Explanation = "People miss warnings, and some will click before they read it.",
+                            SequentialStepId = new Guid("72ec1818-d0bc-e20e-0322-953997a0d723"),
+                            Text = "Email all staff a warning, then ask each recipient to delete the message and empty Deleted Items"
+                        },
+                        new
+                        {
+                            Id = new Guid("a4c552d0-a928-8e53-1f0a-444167405c29"),
+                            Explanation = "The attacker sends from its own domain and passes its own SPF and DKIM. Your DMARC policy only protects your domain.",
+                            SequentialStepId = new Guid("fce75af6-65e2-355a-ba86-18691e800a33"),
+                            Text = "Publish a DMARC policy of p=reject for your own domain"
+                        },
+                        new
+                        {
+                            Id = new Guid("17bfefb0-2c76-8c72-58d0-99ef99e470da"),
+                            Explanation = "Campaigns rotate sending IPs, and an IP block does nothing about the URL in other messages.",
+                            SequentialStepId = new Guid("fce75af6-65e2-355a-ba86-18691e800a33"),
+                            Text = "Block the sending IP address in the connection filter policy"
+                        },
+                        new
+                        {
+                            Id = new Guid("c63cd41e-b003-a076-c3dd-2235b4f93e20"),
+                            Explanation = "Impersonation protection guards domains you own or care about. The attacker's domain isn't impersonating anything.",
+                            SequentialStepId = new Guid("fce75af6-65e2-355a-ba86-18691e800a33"),
+                            Text = "Add payroll-portal.example to the protected domains for impersonation in the anti-phishing policy"
+                        },
+                        new
+                        {
+                            Id = new Guid("ed8b6d3f-35f0-c92c-4572-85fa507316dd"),
+                            Explanation = "Credential phishing steals passwords in the browser, and a malware scan doesn't undo that.",
+                            SequentialStepId = new Guid("03a808f5-e30b-8239-33fc-4b53b61f7f8c"),
+                            Text = "Run a full antivirus scan on both users' computers"
+                        },
+                        new
+                        {
+                            Id = new Guid("e3da0902-4709-490c-5872-0a82ef5e5817"),
+                            Explanation = "Training is worthwhile later, but it doesn't contain a possible compromise now.",
+                            SequentialStepId = new Guid("03a808f5-e30b-8239-33fc-4b53b61f7f8c"),
+                            Text = "Assign both users a phishing awareness training module"
+                        },
+                        new
+                        {
+                            Id = new Guid("21ba96b2-ee8c-8d2b-8083-384022975291"),
+                            Explanation = "That protects against the next message, not against credentials that may already be stolen.",
+                            SequentialStepId = new Guid("03a808f5-e30b-8239-33fc-4b53b61f7f8c"),
+                            Text = "Move both users into the Strict preset security policy so future phishing messages are quarantined before they reach the Inbox"
                         },
                         new
                         {
@@ -1399,6 +1819,14 @@ namespace SleepyDuck.Api.Migrations
                         },
                         new
                         {
+                            Id = new Guid("bf707aa9-af50-2825-fddb-590cb6d999eb"),
+                            Category = "EmailDelivery",
+                            ProblemStatement = "Grace, the CFO's assistant, says replies from the bank about a pending wire transfer never arrive, but the bank insists it sent them. Message trace shows every reply as Delivered to Grace's mailbox. Security wants the ticket worked entirely from PowerShell so that every action is scripted and recorded.",
+                            TechnicalExplanation = "When message trace says Delivered but the user never sees the message, something inside the mailbox moved or deleted it after delivery. In business email compromise, attackers commonly create inbox rules that move mail matching words such as 'bank', 'wire' or 'invoice' to a folder nobody checks, and these rules are often hidden from Outlook. Get-InboxRule with -IncludeHidden returns rules that Outlook doesn't show, and Get-Mailbox reveals mailbox-level forwarding set through ForwardingSmtpAddress. Removing the rule only fixes the symptom. The account has to be treated as compromised: reset the password and revoke its sessions so existing refresh tokens stop working, or the attacker can simply create the rule again. Connect with the Exchange Online PowerShell V3 module, because Basic authentication for remote PowerShell is turned off and the MSOnline module is retired.",
+                            Title = "Hidden inbox rule found with PowerShell"
+                        },
+                        new
+                        {
                             Id = new Guid("cbe103d6-0767-bf3e-c7c5-4d18dd6f4d37"),
                             Category = "UserLicenseManagement",
                             ProblemStatement = "Dana joins the Warehouse team on Monday. They need a Microsoft 365 E3 license, but HR policy says warehouse staff shouldn't have access to SharePoint or Viva Engage.",
@@ -1412,6 +1840,14 @@ namespace SleepyDuck.Api.Migrations
                             ProblemStatement = "The 50-person Marketing department needs E3 without Viva Engage. People join and leave constantly, and assigning licenses by hand has been causing mistakes. After you make the change, a few users show a licensing error.",
                             TechnicalExplanation = "Group-based licensing in Microsoft Entra ID assigns a license to every member of a group, so a dynamic or well-managed group handles joiners and leavers automatically. Each group assignment can also disable service plans. Group-based licensing requires Microsoft Entra ID P1, which Microsoft 365 E3 includes. Assignment errors don't stop the rest of the group from being processed. They appear per user on the group's license page, and the most common causes are a missing usage location, not enough available licenses, and conflicting service plans.",
                             Title = "Licensing a whole department at scale"
+                        },
+                        new
+                        {
+                            Id = new Guid("dc625090-483f-4846-95a4-f7c8b8d9fcc9"),
+                            Category = "UserLicenseManagement",
+                            ProblemStatement = "Luis from Sales is at a client site in Lisbon and can't sign in to Outlook or Teams. The browser shows error AADSTS53003, 'Access has been blocked by Conditional Access policies'. No MFA prompt appears, and the same account worked from the office yesterday.",
+                            TechnicalExplanation = "Microsoft Entra ID evaluates every sign-in against the Conditional Access policies that apply to it, and the sign-in log records the result of each policy. AADSTS53003 means a policy's grant control was Block, which is why no MFA prompt appeared: a block is applied before any challenge is offered. Country-based named locations are resolved from the sign-in's public IP address, so a user abroad falls outside an 'allowed countries' location. The supported way to make an exception is an exclusion group with a documented end date, ideally governed by an access review. Disabling the policy, switching it to Report-only, or trusting a hotel IP weakens protection for everyone. The What If tool evaluates a simulated sign-in against every policy, so you can prove the exception works before the user tries again.",
+                            Title = "Conditional Access blocks a traveling user"
                         },
                         new
                         {
@@ -1431,6 +1867,22 @@ namespace SleepyDuck.Api.Migrations
                         },
                         new
                         {
+                            Id = new Guid("c892bf25-98a8-f270-b2c2-9ccd15cc1750"),
+                            Category = "GroupManagement",
+                            ProblemStatement = "The Project Atlas team keeps its files on a Microsoft 365 Group site. Owners can share with partners at adatum.example, but sharing with a new consultant at fabrikam.example fails with 'Your organization's policies don't allow you to share with these users.' Organization-level external sharing is set to New and existing guests.",
+                            TechnicalExplanation = "SharePoint and OneDrive sharing works in layers. The organization-level setting in the SharePoint admin center is the most permissive level allowed, and each site can match it or be more restrictive. Domain restrictions apply on top of both, either for the whole organization under Policies > Sharing ('Limit external sharing by domain') or for a single site. Sharing with a domain that isn't on an allow list fails with this policy message, which is why one partner works and another doesn't. SharePoint also uses Microsoft Entra B2B for guests, so an allow or deny list in the Entra external collaboration settings can block the invitation too, and the two lists should agree. The narrow fix is adding the approved domain to the allow list, not loosening the sharing level or removing the restriction for everyone.",
+                            Title = "External sharing blocked for one partner"
+                        },
+                        new
+                        {
+                            Id = new Guid("0a9c0e04-1982-c0cb-7c90-748d8bba604c"),
+                            Category = "GroupManagement",
+                            ProblemStatement = "Mei owns the Vendor Onboarding team in Microsoft Teams. When Mei types partner@fabrikam.example to add a member, Teams shows 'We didn't find any matches' and never offers to add a guest. Guest access is On in the Teams admin center, and fabrikam.example is an approved sharing domain.",
+                            TechnicalExplanation = "Adding a guest to a team requires several settings to agree. Guest access must be on in the Teams admin center, the Microsoft Entra external collaboration settings must let the owner invite guests, and the Microsoft 365 Groups settings must allow owners to add people outside the organization. A sensitivity label applied to the team can also block guests for that one team, because container labels control the group's guest setting. If any layer says no, Teams doesn't offer 'Add as a guest'. Testing whether the problem affects every team or only one tells you right away whether to look at a tenant-wide setting or at the team's label. A label reflects a classification decision, so changing it needs the data owner's approval. After accepting the invitation, the guest also has to switch to the host organization in Teams before the team appears.",
+                            Title = "Team owner can't add a guest"
+                        },
+                        new
+                        {
                             Id = new Guid("b380cf20-1ffe-0fef-51f6-1dbccd700a3a"),
                             Category = "MailFlowRules",
                             ProblemStatement = "After a phishing incident, Security wants a warning added to the bottom of every email that comes from outside the company, stating that the message originated externally.",
@@ -1444,6 +1896,14 @@ namespace SleepyDuck.Api.Migrations
                             ProblemStatement = "Your external disclaimer rule worked for weeks, but now emails from one vendor, vendor.example, arrive with no disclaimer. Other external mail is unaffected.",
                             TechnicalExplanation = "Exchange Online evaluates mail flow rules in priority order, with 0 as the highest priority. If a matching rule has 'Stop processing more rules' turned on, later rules don't run for that message. This is a common cause of a rule that works for most mail but not for a specific sender. Message trace details list the rules that a message matched, so they show what actually happened, rather than what the rule list suggests should have happened. The safest fix is to move the disclaimer rule above the other rule, or to turn off the stop setting if it's no longer needed.",
                             Title = "Disclaimer rule skips some messages"
+                        },
+                        new
+                        {
+                            Id = new Guid("342cc552-23d1-4282-8205-22cb79b47a8e"),
+                            Category = "MailFlowRules",
+                            ProblemStatement = "At 10:40, three users report an email titled 'Payroll update required' that links to a fake Microsoft sign-in page. It came from hr-notice@payroll-portal.example and passed SPF and DKIM for that domain. The tenant has Microsoft Defender for Office 365 Plan 2.",
+                            TechnicalExplanation = "Threat Explorer in Defender for Office 365 Plan 2 finds every copy of a campaign by sender, subject or URL, and shows each copy's delivery location along with URL clicks recorded by Safe Links. You can act on the results directly, for example with a soft delete, and the Action center tracks the remediation. Zero-hour auto purge (ZAP) can also remove delivered messages when a verdict changes, but you can't rely on its timing during an active campaign. A sender that passes SPF and DKIM for its own lookalike domain isn't spoofing you, so your own DMARC policy won't stop it, and the Tenant Allow/Block List is the place to block the domain and the URL. Anyone who clicked through to the credential page may have given away a password, so reset it, revoke their sessions and review their sign-ins.",
+                            Title = "Responding to a credential phishing campaign"
                         },
                         new
                         {
@@ -1612,6 +2072,46 @@ namespace SleepyDuck.Api.Migrations
                         },
                         new
                         {
+                            Id = new Guid("e7de2726-9058-4dab-6026-21eb4d335180"),
+                            CorrectAction = "Connect-ExchangeOnline -UserPrincipalName admin@contoso.example",
+                            CorrectOptionId = new Guid("d3bae316-da15-9833-bd01-f5f769e6eee6"),
+                            Explanation = "The Exchange Online PowerShell V3 module signs in with modern authentication, supports MFA, and loads the Exchange Online cmdlets.",
+                            Order = 1,
+                            Prompt = "How do you start the PowerShell session?",
+                            ScenarioCardId = new Guid("bf707aa9-af50-2825-fddb-590cb6d999eb")
+                        },
+                        new
+                        {
+                            Id = new Guid("6d2abeae-2397-c7a3-b761-089f45177081"),
+                            CorrectAction = "Get-InboxRule -Mailbox grace@contoso.example -IncludeHidden | Format-List Name,Description",
+                            CorrectOptionId = new Guid("b4d0af24-66be-f9e3-2f54-ba667ea2551c"),
+                            Explanation = "Inbox rules act after delivery, and -IncludeHidden returns rules that Outlook doesn't display. The Description property spells out each rule's conditions and actions.",
+                            Order = 2,
+                            Prompt = "Trace already shows Delivered. Which command shows what happens to the mail inside the mailbox?",
+                            ScenarioCardId = new Guid("bf707aa9-af50-2825-fddb-590cb6d999eb")
+                        },
+                        new
+                        {
+                            Id = new Guid("61b306d2-dcbe-00e0-cb44-f92732a4ee51"),
+                            CorrectAction = "The mailbox is probably compromised, and an attacker created the rule to hide the bank's replies",
+                            CorrectOptionId = new Guid("3844b8c9-e9c0-bfe2-d6da-ffb16c2e6cbc"),
+                            Explanation = "A one-character name, a hidden rule, and finance keywords moved to an unused folder are classic signs of business email compromise.",
+                            Order = 3,
+                            Prompt = "The output shows a hidden rule named '.' that moves messages containing 'bank' or 'wire' to RSS Subscriptions and marks them as read. What does this indicate?",
+                            ScenarioCardId = new Guid("bf707aa9-af50-2825-fddb-590cb6d999eb")
+                        },
+                        new
+                        {
+                            Id = new Guid("497b1140-0863-3bb1-9706-231416a7b32c"),
+                            CorrectAction = "Remove the rule, clear any mailbox forwarding with Set-Mailbox, reset the password, and run Revoke-MgUserSignInSession",
+                            CorrectOptionId = new Guid("4d4327bd-d2ba-2c3d-2e6c-0b3c2f23521a"),
+                            Explanation = "Removing the rule and forwarding stops the hiding, while the password reset and session revocation lock out the attacker so the rule can't be recreated.",
+                            Order = 4,
+                            Prompt = "How do you contain this from PowerShell?",
+                            ScenarioCardId = new Guid("bf707aa9-af50-2825-fddb-590cb6d999eb")
+                        },
+                        new
+                        {
                             Id = new Guid("941e7c17-066e-1729-ea54-2d58af65c26d"),
                             CorrectAction = "Microsoft 365 admin center > Users > Active users > Add a user",
                             CorrectOptionId = new Guid("935002ba-bee2-9779-943a-b312ca61f234"),
@@ -1689,6 +2189,46 @@ namespace SleepyDuck.Api.Migrations
                             Order = 4,
                             Prompt = "The error says the users have no usage location. How do you fix it?",
                             ScenarioCardId = new Guid("f89d8adf-76a1-3564-5e6d-4c663173c0ae")
+                        },
+                        new
+                        {
+                            Id = new Guid("3b41f970-ac1e-417f-a972-41a2dc3fbc75"),
+                            CorrectAction = "Open Luis's failed sign-in in the Entra sign-in logs and review its Conditional Access tab",
+                            CorrectOptionId = new Guid("7d6513d9-9842-821b-5d57-503f7049d217"),
+                            Explanation = "The sign-in log entry shows the error code, the location, and the result of every policy evaluated, including the one that blocked access.",
+                            Order = 1,
+                            Prompt = "Where do you find out why the sign-in was blocked?",
+                            ScenarioCardId = new Guid("dc625090-483f-4846-95a4-f7c8b8d9fcc9")
+                        },
+                        new
+                        {
+                            Id = new Guid("0c432c4d-2b22-b689-6f3a-b783aa2ce4f7"),
+                            CorrectAction = "The policy blocked the sign-in because Portugal isn't in the allowed countries location",
+                            CorrectOptionId = new Guid("91a68799-ba2d-22f3-5d17-733430c93f96"),
+                            Explanation = "Country locations come from the sign-in's public IP. Luis's IP maps to Portugal, which the policy blocks.",
+                            Order = 2,
+                            Prompt = "The log shows error 53003, location Portugal, and the policy 'Block sign-ins outside allowed countries' with the result Failure. What is the cause?",
+                            ScenarioCardId = new Guid("dc625090-483f-4846-95a4-f7c8b8d9fcc9")
+                        },
+                        new
+                        {
+                            Id = new Guid("063e942b-84c2-66c3-3815-01f571f03414"),
+                            CorrectAction = "Add Luis to a travel exclusion group that the policy excludes, with a set removal date",
+                            CorrectOptionId = new Guid("036ac3e0-c3b8-9245-68ef-35468cb7a221"),
+                            Explanation = "The exception covers only the approved user for the approved period, and the policy keeps protecting everyone else.",
+                            Order = 3,
+                            Prompt = "Management approves access for the two-week trip. How do you apply it?",
+                            ScenarioCardId = new Guid("dc625090-483f-4846-95a4-f7c8b8d9fcc9")
+                        },
+                        new
+                        {
+                            Id = new Guid("2c7d8b12-d8a4-1d97-e00a-9bf9d70aa62c"),
+                            CorrectAction = "Use What If for Luis with Portugal as the country, and check the block policy isn't applied",
+                            CorrectOptionId = new Guid("47535515-8039-9bc4-c932-4a40b9b40605"),
+                            Explanation = "What If simulates the sign-in against every policy, so it proves the exclusion works. Luis's next sign-in log entry then confirms it in production.",
+                            Order = 4,
+                            Prompt = "How do you confirm the exception before Luis tries again?",
+                            ScenarioCardId = new Guid("dc625090-483f-4846-95a4-f7c8b8d9fcc9")
                         },
                         new
                         {
@@ -1772,6 +2312,86 @@ namespace SleepyDuck.Api.Migrations
                         },
                         new
                         {
+                            Id = new Guid("f2457426-5608-421d-48c7-4da2540fc244"),
+                            CorrectAction = "The Project Atlas site's sharing settings in the SharePoint admin center, then any domain limits",
+                            CorrectOptionId = new Guid("0270171a-9e67-92af-ebbe-95486b07d401"),
+                            Explanation = "Below the organization level, the site setting and domain restrictions are the layers that can block one partner but not another.",
+                            Order = 1,
+                            Prompt = "The organization level already allows guests. Where do you look first?",
+                            ScenarioCardId = new Guid("c892bf25-98a8-f270-b2c2-9ccd15cc1750")
+                        },
+                        new
+                        {
+                            Id = new Guid("8abc1259-4578-20fe-b5b3-92e0d403c3cb"),
+                            CorrectAction = "fabrikam.example isn't on the organization's allowed domains list",
+                            CorrectOptionId = new Guid("bb2bb18c-7ecb-0589-c5f3-82f69ef0cb9f"),
+                            Explanation = "An allow list blocks every domain that isn't on it, which is why adatum.example works and fabrikam.example doesn't.",
+                            Order = 2,
+                            Prompt = "The site allows New and existing guests and has no domain list. Under Policies > Sharing, the organization limits sharing to allowed domains, and only adatum.example is listed. What's the cause?",
+                            ScenarioCardId = new Guid("c892bf25-98a8-f270-b2c2-9ccd15cc1750")
+                        },
+                        new
+                        {
+                            Id = new Guid("464963e8-41e7-2f0a-b974-f85e9779d400"),
+                            CorrectAction = "Add fabrikam.example to the allowed domains, and to the Entra B2B allow list if one is used",
+                            CorrectOptionId = new Guid("637ec6aa-8892-4b6e-08c6-3ea3d727db9f"),
+                            Explanation = "This admits exactly the approved partner, and keeping the Entra list in step prevents a second block when the guest is invited.",
+                            Order = 3,
+                            Prompt = "Security approves Fabrikam as a partner. What do you change?",
+                            ScenarioCardId = new Guid("c892bf25-98a8-f270-b2c2-9ccd15cc1750")
+                        },
+                        new
+                        {
+                            Id = new Guid("8a7412cf-1371-43c7-2d96-9fc2d62e9afb"),
+                            CorrectAction = "Have an owner share again, then confirm the consultant can redeem the invitation and open the file",
+                            CorrectOptionId = new Guid("fa35dc3d-26ac-ad12-e8af-2f41da5a7254"),
+                            Explanation = "Only the full path proves it works, from invitation to sign-in to file access. Sharing changes can take a few minutes to apply.",
+                            Order = 4,
+                            Prompt = "How do you confirm the fix?",
+                            ScenarioCardId = new Guid("c892bf25-98a8-f270-b2c2-9ccd15cc1750")
+                        },
+                        new
+                        {
+                            Id = new Guid("c592c3bc-9a51-6552-3f57-d4dcb0433bcd"),
+                            CorrectAction = "Try adding the same guest to a different team to see whether the block is tenant-wide or only on this team",
+                            CorrectOptionId = new Guid("0e74996b-99eb-69eb-650d-338073472253"),
+                            Explanation = "Guest blocks come either from tenant-wide settings or from one team's label or group setting. One test tells you which layer to inspect.",
+                            Order = 1,
+                            Prompt = "What's the quickest way to narrow down the problem?",
+                            ScenarioCardId = new Guid("0a9c0e04-1982-c0cb-7c90-748d8bba604c")
+                        },
+                        new
+                        {
+                            Id = new Guid("f430db22-4555-1b5b-092d-f0e293522887"),
+                            CorrectAction = "Whether that label's group settings stop owners from adding guests",
+                            CorrectOptionId = new Guid("dce58029-463c-b6d4-f87c-6a46bbbe3203"),
+                            Explanation = "Container sensitivity labels can control guest access for a Microsoft 365 group, and they override what the owner can do in that team.",
+                            Order = 2,
+                            Prompt = "Other teams can add the guest. Vendor Onboarding has the sensitivity label 'Confidential - Internal'. What do you check?",
+                            ScenarioCardId = new Guid("0a9c0e04-1982-c0cb-7c90-748d8bba604c")
+                        },
+                        new
+                        {
+                            Id = new Guid("d084c57d-b6c7-1f50-07a0-f865cad1e9d1"),
+                            CorrectAction = "Get the data owner's approval for a label that allows guests, then relabel the team",
+                            CorrectOptionId = new Guid("afcefab1-8966-a130-15c7-9bb76d63d92b"),
+                            Explanation = "The label records a classification decision, so the owner of the data must approve the change instead of IT working around it.",
+                            Order = 3,
+                            Prompt = "The label blocks guests by design, but the business needs the partner in this team. What is the right fix?",
+                            ScenarioCardId = new Guid("0a9c0e04-1982-c0cb-7c90-748d8bba604c")
+                        },
+                        new
+                        {
+                            Id = new Guid("60dbfd7e-99e4-5f80-f1f6-e7abed929318"),
+                            CorrectAction = "Switch to the Contoso organization in Teams, using the account switcher on the profile picture",
+                            CorrectOptionId = new Guid("b7df667c-36a7-5b9c-1ef3-b94e1bba3d31"),
+                            Explanation = "Guest membership lives in the host tenant, and Teams only shows that tenant's teams after the guest switches to it.",
+                            Order = 4,
+                            Prompt = "The guest accepted the invitation but says the team doesn't show up in Teams. What do you tell them?",
+                            ScenarioCardId = new Guid("0a9c0e04-1982-c0cb-7c90-748d8bba604c")
+                        },
+                        new
+                        {
                             Id = new Guid("ff17c50d-64bc-3ab3-c65c-1ab209a66d20"),
                             CorrectAction = "Exchange admin center > Mail flow > Rules > Add a rule",
                             CorrectOptionId = new Guid("d460fca6-883a-6606-b9f2-8ffce267c6a3"),
@@ -1849,6 +2469,46 @@ namespace SleepyDuck.Api.Migrations
                             Order = 4,
                             Prompt = "How do you confirm the change worked?",
                             ScenarioCardId = new Guid("6b1529d8-0a15-c1cd-a50b-dad56cd70d27")
+                        },
+                        new
+                        {
+                            Id = new Guid("7159f258-9824-2105-ccae-acebca7cb3fc"),
+                            CorrectAction = "Search Threat Explorer in the Defender portal by sender address and subject for today",
+                            CorrectOptionId = new Guid("124ca41d-746d-d99c-beb1-5876e3769954"),
+                            Explanation = "Explorer returns every matching message with its recipients, delivery location and URL clicks in one view.",
+                            Order = 1,
+                            Prompt = "How do you find everyone who received the message?",
+                            ScenarioCardId = new Guid("342cc552-23d1-4282-8205-22cb79b47a8e")
+                        },
+                        new
+                        {
+                            Id = new Guid("72ec1818-d0bc-e20e-0322-953997a0d723"),
+                            CorrectAction = "Select the messages in Explorer, take a Soft delete action, and track it in the Action center",
+                            CorrectOptionId = new Guid("b1bcbdba-725f-b6c4-780e-a56f3b78800f"),
+                            Explanation = "Remediating from Explorer pulls delivered copies out of every mailbox at once, and the Action center records the result.",
+                            Order = 2,
+                            Prompt = "Explorer shows 140 recipients, with 128 copies still in Inboxes. How do you remove them?",
+                            ScenarioCardId = new Guid("342cc552-23d1-4282-8205-22cb79b47a8e")
+                        },
+                        new
+                        {
+                            Id = new Guid("fce75af6-65e2-355a-ba86-18691e800a33"),
+                            CorrectAction = "Add block entries for the domain and URL in the Tenant Allow/Block List",
+                            CorrectOptionId = new Guid("926b859f-b559-4c9a-ff26-102e7e81b2a3"),
+                            Explanation = "Block entries stop new mail from the domain, and Safe Links blocks the URL at click time even in messages that get through.",
+                            Order = 3,
+                            Prompt = "How do you block further messages and the link itself?",
+                            ScenarioCardId = new Guid("342cc552-23d1-4282-8205-22cb79b47a8e")
+                        },
+                        new
+                        {
+                            Id = new Guid("03a808f5-e30b-8239-33fc-4b53b61f7f8c"),
+                            CorrectAction = "Treat both accounts as compromised: reset passwords, revoke sessions, and review sign-ins",
+                            CorrectOptionId = new Guid("e1b4ccce-9836-e4aa-9fec-348b544d8ead"),
+                            Explanation = "A click through to a credential page may have captured a password, and revoking sessions cuts off any tokens the attacker already has.",
+                            Order = 4,
+                            Prompt = "Explorer's URL clicks show that two users clicked through the Safe Links warning. What do you do next?",
+                            ScenarioCardId = new Guid("342cc552-23d1-4282-8205-22cb79b47a8e")
                         },
                         new
                         {
