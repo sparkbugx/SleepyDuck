@@ -9,6 +9,8 @@ public enum ScenarioCategory
     VoipSupport,
     NetworkTroubleshooting,
     MacNetworkIssues,
+    ActiveDirectory,
+    WindowsServer,
 }
 
 public enum MasteryLevel

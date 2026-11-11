@@ -50,6 +50,8 @@ Seed the PostgreSQL database (via EF Core Data Seeding) with robust, multi-step 
 - **VOIP Support:** e.g., One-way audio and SIP 408 Request Timeout errors.
 - **Network Troubleshooting:** e.g., Packet loss analysis with MTR and ping, and DHCP scope exhaustion.
 - **Mac Network Issues:** e.g., The macOS DNS cache and mDNSResponder, and 802.1X Wi-Fi drops.
+- **Active Directory:** e.g., Repeated account lockouts, a failed trust relationship, replication error 1722, and a GPO that doesn't apply.
+- **Windows Server:** e.g., A full system drive, Remote Desktop that can't connect, a service logon failure, and access denied on a file share.
 
 ## UI/UX & DESIGN SYSTEM REQUIREMENTS
 - **Aesthetics:** The "Warm Dark Mode Oasis": warm, calm, and high in contrast. Cards must feel tactile, with soft borders and gentle hover feedback.

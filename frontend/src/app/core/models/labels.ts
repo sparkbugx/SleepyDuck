@@ -14,6 +14,10 @@ export const CATEGORY_GROUPS: CategoryGroup[] = [
     label: 'VOIP & Network Support',
     categories: ['VoipSupport', 'NetworkTroubleshooting', 'MacNetworkIssues'],
   },
+  {
+    label: 'Active Directory & Windows Server',
+    categories: ['ActiveDirectory', 'WindowsServer'],
+  },
 ];
 
 export const CATEGORY_LABELS: Record<ScenarioCategory, string> = {
@@ -24,6 +28,8 @@ export const CATEGORY_LABELS: Record<ScenarioCategory, string> = {
   VoipSupport: 'VOIP Support',
   NetworkTroubleshooting: 'Network Troubleshooting',
   MacNetworkIssues: 'Mac Network Issues',
+  ActiveDirectory: 'Active Directory',
+  WindowsServer: 'Windows Server',
 };
 
 export const MASTERY_LABELS: Record<MasteryLevel, string> = {

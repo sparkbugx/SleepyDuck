@@ -1,6 +1,6 @@
 # SleepyDuck
 
-Sequential Scenario Flashcards: spaced repetition (SM-2) applied to multi-step IT support troubleshooting, tuned for interview cramming. Topics cover Microsoft 365 administration, VOIP support, network troubleshooting, and Mac network issues. Each card is an incident you work through step by step. One wrong action fails the card.
+Sequential Scenario Flashcards: spaced repetition (SM-2) applied to multi-step IT support troubleshooting, tuned for interview cramming. Topics cover Microsoft 365 administration, VOIP support, network troubleshooting, Mac network issues, Active Directory, and Windows Server. Each card is an incident you work through step by step. One wrong action fails the card.
 
 | Folder      | Stack                                                                    |
 | ----------- | ------------------------------------------------------------------------ |
@@ -157,6 +157,51 @@ Open http://localhost:4200.
 
 Press `Ctrl+C` in the API and frontend terminals, then run `docker compose down` from the project root. Your progress stays in a Docker volume until you add `-v`.
 
+## Topics
+
+The dashboard groups the deck into three sections. There are 27 cards.
+
+| Section                            | Topic                   | Cards |
+| ---------------------------------- | ----------------------- | ----- |
+| Microsoft 365 Administration       | Email Delivery          | 3     |
+|                                    | Users & Licenses        | 3     |
+|                                    | Group Management        | 4     |
+|                                    | Mail Flow Rules         | 3     |
+| VOIP & Network Support             | VOIP Support            | 2     |
+|                                    | Network Troubleshooting | 2     |
+|                                    | Mac Network Issues      | 2     |
+| Active Directory & Windows Server  | Active Directory        | 4     |
+|                                    | Windows Server          | 4     |
+
+### Active Directory
+
+| Card                                                  | What it drills                                                                 |
+| ----------------------------------------------------- | ------------------------------------------------------------------------------ |
+| Account keeps locking after a password change         | Event 4740 on the PDC emulator, Caller Computer Name, event 4625 logon types   |
+| Trust relationship with the domain failed             | Machine account passwords, `Test-ComputerSecureChannel -Repair`                |
+| New accounts missing at a branch (replication error 1722) | `repadmin /replsummary`, `dcdiag /test:dns`, DNS settings on a domain controller |
+| Group Policy isn't applying to a security group       | `gpresult /h`, Security Filtering, Read permission for computers (MS16-072)    |
+
+### Windows Server
+
+| Card                                         | What it drills                                                                     |
+| -------------------------------------------- | ---------------------------------------------------------------------------------- |
+| System drive full on a web server            | Finding what uses the space, IIS logs, WinSxS cleanup with `Dism`, `/ResetBase`    |
+| Remote Desktop can't connect to a server     | `qwinsta`, localhost test, `Test-NetConnection` on port 3389, firewall rules       |
+| Service fails to start with a logon failure  | Error 1069, events 7038 and 7041, saved service passwords, gMSAs                   |
+| Access denied on a file share                | Share and NTFS permissions, access tokens, `whoami /groups`                        |
+
+These two topics were checked against Microsoft Learn before they were written:
+
+- [4740(S): A user account was locked out](https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-4740)
+- [Domain member: Maximum machine account password age](https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/security-policy-settings/domain-member-maximum-machine-account-password-age)
+- [Troubleshoot a failed trust relationship](https://learn.microsoft.com/en-us/troubleshoot/azure/virtual-machines/windows/troubleshoot-broken-secure-channel)
+- [Troubleshoot replication error 1722](https://learn.microsoft.com/en-us/troubleshoot/windows-server/active-directory/replication-error-1722-rpc-server-unavailable)
+- [Can't apply user Group Policy settings if computer objects don't have GPO Read permissions](https://learn.microsoft.com/en-us/troubleshoot/windows-server/group-policy/cannot-apply-user-gpo-when-computer-objects-dont-have-read-permissions)
+- [Clean up the WinSxS folder](https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/clean-up-the-winsxs-folder)
+- [Remote Desktop can't connect to the remote computer](https://learn.microsoft.com/en-us/troubleshoot/windows-server/remote/remote-desktop-cannot-connect-remote-computer)
+- [Error 1069 when starting a service](https://learn.microsoft.com/en-us/troubleshoot/sql/database-engine/startup-shutdown/error-1069-service-cannot-start)
+
 ## API
 
 | Method | Route                                  | Purpose                                                   |
@@ -206,6 +251,8 @@ Add to `Scenarios` in `backend/SleepyDuck.Api/Data/SeedData.cs`, then create a m
 cd backend
 dotnet ef migrations add AddMoreScenarios --project SleepyDuck.Api
 ```
+
+A new topic also needs a value in `ScenarioCategory` in `Models/Enums.cs`, the same value in `api.models.ts`, and a label and section in `labels.ts`. Every topic needs at least 2 cards, and the tests check that option length doesn't give the answer away.
 
 ## Design system
 

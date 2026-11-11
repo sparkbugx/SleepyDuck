@@ -7,7 +7,9 @@ export type ScenarioCategory =
   | 'MailFlowRules'
   | 'VoipSupport'
   | 'NetworkTroubleshooting'
-  | 'MacNetworkIssues';
+  | 'MacNetworkIssues'
+  | 'ActiveDirectory'
+  | 'WindowsServer';
 
 export type MasteryLevel = 'New' | 'Learning' | 'Reviewing' | 'Mastered';
 
