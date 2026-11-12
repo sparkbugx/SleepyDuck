@@ -1,7 +1,7 @@
 # ROLE: Senior Full-Stack Architect, UI/UX Visionary, & EdTech Expert
 
 ## PROJECT VISION
-You are building a premium, highly interactive "Sequential Scenario Flashcard" application. It merges the Spaced Repetition System (SRS) of Anki with multi-step IT troubleshooting simulations, and it's tuned for short-term interview cramming rather than long-term retention. The absolute priority is a **beautiful, premium, and engaging UI/UX** with its own warm identity, the "Warm Dark Mode Oasis": clean typography, smooth micro-interactions, and flawless state transitions.
+You are building a premium, highly interactive "Sequential Scenario Flashcard" application. It merges the Spaced Repetition System (SRS) of Anki with multi-step IT troubleshooting simulations, and it's tuned for short-term interview cramming rather than long-term retention. The absolute priority is a **striking and engaging UI/UX** with its own identity, a raw black-and-white ink look: bold typography, hard edges, and flawless state transitions.
 
 ## TECH STACK & FOLDER STRATEGY
 You must build and output the complete Full-Stack architecture. Divide the project into two distinct folders:
@@ -54,15 +54,15 @@ Seed the PostgreSQL database (via EF Core Data Seeding) with robust, multi-step 
 - **Windows Server:** e.g., A full system drive, Remote Desktop that can't connect, a service logon failure, and access denied on a file share.
 
 ## UI/UX & DESIGN SYSTEM REQUIREMENTS
-- **Aesthetics:** The "Warm Dark Mode Oasis": warm, calm, and high in contrast. Cards must feel tactile, with soft borders and gentle hover feedback.
+- **Aesthetics:** Raw black-and-white ink, like a gritty comic or dark manga page: brutalist, harsh, and high in contrast. Square corners everywhere, thick solid borders, and solid offset shadows with no blur. No glass, soft shadows, gradients, or rounded corners. A subtle film-grain overlay covers the app.
+- **Typography:** Headings are bold, uppercase, and monospaced. Scenario body text stays in a readable sans-serif.
 - **Light and Dark Mode:** Dark Mode is the default. A toggle in the header switches themes, and the choice is saved in `localStorage`. Tailwind uses `darkMode: 'class'`, with the `dark` class on `<html>`.
-- **Oasis Palette:** Defined in `frontend/tailwind.config.js` under the `oasis` color namespace:
-  - Deep background (dark): `#1E1E2F`
-  - Card background (dark): `#2B2B3E`
-  - Accent and success: `#4E5B31`
-  - Main background (light): `#F0EDE8`
-  - Borders (light): `#D1D1D1`
-- **Contrast:** Text must stay readable in both themes. `#4E5B31` is too dark to read as text on `#1E1E2F`, so it's used as a fill behind light text, and accent text in dark mode uses a lighter sage tone.
+- **Ink Palette:** Defined in `frontend/tailwind.config.js` under the `ink` color namespace:
+  - Light mode: off-white paper background `#F4F4F0`, with charcoal `#1A1A1A` for text, borders, and hard shadows
+  - Dark mode: off-black background `#121212`, with soft off-white `#E0E0E0` for text, borders, and hard shadows
+  - No pure black or pure white, because the cards are read for long sessions
+  - Failure only: Crimson `#DC143C`
+- **Contrast:** Text must stay readable in both themes. Success is shown by inverting black and white, not with a color. Crimson is too dim to read as text on black, so failure text in dark mode uses a brighter red.
 - **Animations:** State changes (moving from step 1 to step 2, revealing results, or clicking SRS rating buttons) must slide or fade seamlessly using Tailwind `transition-all` or Angular Animations. No jarring UI jumps.
 
 ## EXECUTION INSTRUCTIONS

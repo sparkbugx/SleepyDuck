@@ -5,31 +5,29 @@ export default {
   theme: {
     extend: {
       colors: {
-        oasis: {
-          // Warm Dark Mode Oasis palette
-          deep: '#1E1E2F', // Deep Background (Dark)
-          card: '#2B2B3E', // Secondary/Card Background (Dark)
-          olive: '#4E5B31', // Accent/Success
-          sand: '#F0EDE8', // Main Background (Light), also primary text on dark
-          mist: '#D1D1D1', // Secondary/Border (Light)
+        ink: {
+          // Ink on paper, softened for long reading sessions. No pure black or pure white.
+          // Light theme
+          paper: '#F4F4F0', // Background: newspaper off-white
+          charcoal: '#1A1A1A', // Text, borders, and hard shadows
 
-          // Supporting tones, tuned to pass WCAG AA against the palette above
-          paper: '#FAF8F4', // Card background (Light)
-          edge: '#46465E', // Border (Dark)
-          ink: '#25252F', // Primary text (Light)
-          ash: '#5A5962', // Secondary text (Light)
-          haze: '#B9B7C2', // Secondary text (Dark)
-          sage: '#B7C68B', // Accent text (Dark), where olive is too dim to read
-          'olive-deep': '#3D4826', // Primary button hover (Light)
-          'olive-lift': '#5F6F3C', // Primary button hover (Dark)
-          clay: '#A23B26', // Failure (Light), and failure fills
-          'clay-soft': '#EDA892', // Failure text (Dark)
-          ochre: '#B8862B', // "Hard" rating tint
+          // Dark theme
+          coal: '#121212', // Background: muted off-black
+          bone: '#E0E0E0', // Text, borders, and hard shadows
+
+          // Grays, used only for secondary text and hard shadows on filled buttons
+          graphite: '#4D4D4D', // Secondary text (Light)
+          smoke: '#A0A0A0', // Secondary text (Dark)
+          steel: '#8A8A8A', // Offset shadow behind filled buttons, in both themes
+
+          // The single accent, reserved for failure
+          blood: '#DC143C', // Crimson: failure fills and borders, failure text (Light)
+          'blood-bright': '#FF4060', // Failure text (Dark), where crimson is too dim to read
         },
       },
       fontFamily: {
         sans: ['"Instrument Sans Variable"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        display: ['"Fraunces Variable"', 'ui-serif', 'Georgia', 'serif'],
+        display: ['"JetBrains Mono Variable"', 'ui-monospace', 'monospace'],
         mono: ['"JetBrains Mono Variable"', 'ui-monospace', 'monospace'],
       },
     },

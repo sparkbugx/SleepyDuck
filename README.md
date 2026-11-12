@@ -256,17 +256,37 @@ A new topic also needs a value in `ScenarioCategory` in `Models/Enums.cs`, the s
 
 ## Design system
 
-The "Warm Dark Mode Oasis" palette lives in `frontend/tailwind.config.js` under the `oasis` color namespace.
+The look is raw black-and-white ink: brutalist, high in contrast, and square. The palette lives in `frontend/tailwind.config.js` under the `ink` color namespace.
 
-| Role                          | Token          | Hex       |
-| ----------------------------- | -------------- | --------- |
-| Deep background (dark)        | `oasis-deep`   | `#1E1E2F` |
-| Card background (dark)        | `oasis-card`   | `#2B2B3E` |
-| Accent and success            | `oasis-olive`  | `#4E5B31` |
-| Main background (light)       | `oasis-sand`   | `#F0EDE8` |
-| Borders (light)               | `oasis-mist`   | `#D1D1D1` |
+| Role                                         | Token              | Hex       |
+| -------------------------------------------- | ------------------ | --------- |
+| Background (light)                           | `ink-paper`        | `#F4F4F0` |
+| Text, borders, and hard shadows (light)      | `ink-charcoal`     | `#1A1A1A` |
+| Background (dark)                            | `ink-coal`         | `#121212` |
+| Text, borders, and hard shadows (dark)       | `ink-bone`         | `#E0E0E0` |
+| Secondary text (light)                       | `ink-graphite`     | `#4D4D4D` |
+| Secondary text (dark)                        | `ink-smoke`        | `#A0A0A0` |
+| Offset shadow behind filled buttons          | `ink-steel`        | `#8A8A8A` |
+| Failure fills, borders, and text (light)     | `ink-blood`        | `#DC143C` |
+| Failure text (dark)                          | `ink-blood-bright` | `#FF4060` |
 
-The config also defines supporting tones. `#4E5B31` is too dark to read as text on `#1E1E2F`, so accent text in dark mode uses `oasis-sage` instead. Olive stays in use as a fill behind light text.
+There is no pure black or pure white. The cards are read for long cramming sessions, so both themes use softened tones to reduce eye strain.
+
+Crimson is the only color, and it's reserved for failure. Success is shown by inverting the two main tones. Crimson text is too dim to read on the dark background, so failure text in dark mode uses `ink-blood-bright`.
+
+| Rule        | How it's done                                                                                   |
+| ----------- | ----------------------------------------------------------------------------------------------- |
+| Corners     | Always square. Nothing is rounded                                                               |
+| Borders     | 2px to 4px, solid, in the foreground color                                                      |
+| Shadows     | Solid offset blocks with no blur, from the `shadow-hard` and `shadow-hard-sm` utilities         |
+| Hover       | Controls invert. Buttons shift onto their shadow when pressed                                   |
+| In progress | Diagonal hatching from the `hatch` utility, on progress marks and loading placeholders          |
+| Grain       | A film-grain overlay on `body::before` in `src/styles.css`, inverted in dark mode               |
+| Type        | Headings are JetBrains Mono, extra bold and uppercase (the `heading` class). Body text is Instrument Sans |
+
+The sign-in page is always light, because its artwork is ink on paper.
+
+The two mascot images are black ink on white. The `ink-art` class blends them into the page so no white box shows: light mode multiplies them onto the paper, and dark mode inverts them and screens them onto the background.
 
 Dark mode is class-based and dark is the default. The toggle in the header adds or removes `dark` on `<html>` and saves the choice in `localStorage`. Tailwind 4 reads the JavaScript config through the `@config` line in `src/styles.css`.
 
@@ -314,7 +334,10 @@ SleepyDuck/
 │   │   ├── mcp.json
 │   │   └── tasks.json
 │   ├── public/
-│   │   └── favicon.svg
+│   │   ├── bonsai.jpeg                                    # Sign-in artwork
+│   │   ├── favicon.svg
+│   │   ├── mascot-1.jpg                                   # Portrait, framed on the dashboard
+│   │   └── mascot-2.jpg                                   # Full figure, shown when the queue is cleared
 │   ├── src/
 │   │   ├── app/
 │   │   │   ├── core/
@@ -348,7 +371,7 @@ SleepyDuck/
 │   ├── package.json
 │   ├── proxy.conf.json                                    # Forwards /api to the backend in development
 │   ├── README.md
-│   ├── tailwind.config.js                                 # Oasis palette, fonts, class-based dark mode
+│   ├── tailwind.config.js                                 # Ink palette, fonts, class-based dark mode
 │   ├── tsconfig.app.json
 │   ├── tsconfig.json
 │   └── tsconfig.spec.json

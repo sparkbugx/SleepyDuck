@@ -149,7 +149,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("a2cc52b8-32bc-fb47-8faa-f9b6be9c06ed"),
                             Explanation = "SPF failures are reported by the receiving system and have nothing to do with a forwarding policy.",
                             SequentialStepId = new Guid("caf329a9-cc48-c862-b83a-adbafdf11b1b"),
-                            Text = "The domain's SPF record is failing"
+                            Text = "The domain's SPF (Sender Policy Framework) record is failing"
                         },
                         new
                         {
@@ -331,7 +331,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("37565c03-96de-a4bc-caac-d9e509142ab9"),
                             Explanation = "MFA is registered by the user later and doesn't block license assignment.",
                             SequentialStepId = new Guid("a36f3e7c-c851-b3ce-5b5f-8261ccd91317"),
-                            Text = "A completed MFA registration"
+                            Text = "A completed MFA (multi-factor authentication) registration"
                         },
                         new
                         {
@@ -735,7 +735,7 @@ namespace SleepyDuck.Api.Migrations
                         new
                         {
                             Id = new Guid("0c9b4df9-ce9f-cc8b-c914-c0e7e1d9c27c"),
-                            Explanation = "A DLP block shows a policy tip about sensitive content, and it would affect adatum.example as well.",
+                            Explanation = "A DLP (data loss prevention) block shows a policy tip about sensitive content, and it would affect adatum.example as well.",
                             SequentialStepId = new Guid("f2457426-5608-421d-48c7-4da2540fc244"),
                             Text = "The data loss prevention policy matches in Microsoft Purview for the files the owners tried to share with the consultant"
                         },
@@ -758,7 +758,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("426294d2-2f48-c7fd-af81-77baa64d0e6b"),
                             Explanation = "A block in the partner's tenant fails at redemption, not with your organization's sharing policy message.",
                             SequentialStepId = new Guid("8abc1259-4578-20fe-b5b3-92e0d403c3cb"),
-                            Text = "Fabrikam's own tenant has a cross-tenant access policy that blocks B2B collaboration with outside organizations"
+                            Text = "Fabrikam's own tenant has a cross-tenant access policy that blocks B2B (business-to-business) collaboration with outside organizations"
                         },
                         new
                         {
@@ -982,7 +982,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("7afbc17a-757b-70c9-1e15-6decf95f63f5"),
                             Explanation = "SPF affects sender authentication. It wouldn't selectively skip a transport rule.",
                             SequentialStepId = new Guid("5fe20ef1-1f7b-cd82-6161-354cf1b74257"),
-                            Text = "Check the vendor's SPF record"
+                            Text = "Check the vendor's SPF (Sender Policy Framework) record"
                         },
                         new
                         {
@@ -1003,7 +1003,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("3a3d9577-8936-8ded-7251-0257cd724c08"),
                             Explanation = "That wouldn't produce a failure for just one sender.",
                             SequentialStepId = new Guid("c920ade0-50a2-4281-bdb3-79714daf7a0d"),
-                            Text = "Whether the disclaimer text is over a length limit, or contains HTML that the rule can't insert into the vendor's messages"
+                            Text = "Whether the disclaimer text is over a length limit, or contains HTML (Hypertext Markup Language) that the rule can't insert into the vendor's messages"
                         },
                         new
                         {
@@ -1085,7 +1085,7 @@ namespace SleepyDuck.Api.Migrations
                         new
                         {
                             Id = new Guid("20b7f8ce-6954-70cd-c02f-e2e4f8330e78"),
-                            Explanation = "ZAP only acts when a verdict changes, and you can't count on its timing while users are clicking.",
+                            Explanation = "ZAP (zero-hour auto purge) only acts when a verdict changes, and you can't count on its timing while users are clicking.",
                             SequentialStepId = new Guid("72ec1818-d0bc-e20e-0322-953997a0d723"),
                             Text = "Wait for zero-hour auto purge to remove them"
                         },
@@ -1101,14 +1101,14 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("a4c552d0-a928-8e53-1f0a-444167405c29"),
                             Explanation = "The attacker sends from its own domain and passes its own SPF and DKIM. Your DMARC policy only protects your domain.",
                             SequentialStepId = new Guid("fce75af6-65e2-355a-ba86-18691e800a33"),
-                            Text = "Publish a DMARC policy of p=reject for your own domain"
+                            Text = "Publish a DMARC (Domain-based Message Authentication, Reporting and Conformance) policy of p=reject for your own domain"
                         },
                         new
                         {
                             Id = new Guid("17bfefb0-2c76-8c72-58d0-99ef99e470da"),
                             Explanation = "Campaigns rotate sending IPs, and an IP block does nothing about the URL in other messages.",
                             SequentialStepId = new Guid("fce75af6-65e2-355a-ba86-18691e800a33"),
-                            Text = "Block the sending IP address in the connection filter policy"
+                            Text = "Block the sending IP (Internet Protocol) address in the connection filter policy"
                         },
                         new
                         {
@@ -1150,7 +1150,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("c491f14c-8826-4811-4196-b996ec9498bd"),
                             Explanation = "The phones show as registered and can make and receive calls, so registration isn't the problem.",
                             SequentialStepId = new Guid("6ed8f58a-a744-11bb-2126-12be215bda38"),
-                            Text = "SIP registration is failing intermittently at the branch"
+                            Text = "SIP (Session Initiation Protocol) registration is failing intermittently at the branch"
                         },
                         new
                         {
@@ -1162,14 +1162,14 @@ namespace SleepyDuck.Api.Migrations
                         new
                         {
                             Id = new Guid("e40a12c1-8d60-2324-7be9-d0af906cb580"),
-                            Explanation = "Ping proves basic reachability with ICMP. It says nothing about which addresses and ports RTP is using.",
+                            Explanation = "Ping proves basic reachability with ICMP (Internet Control Message Protocol). It says nothing about which addresses and ports RTP is using.",
                             SequentialStepId = new Guid("9d2372ef-5c7c-50c9-2269-c4dbad4d333a"),
-                            Text = "Run a sustained ping from a phone's VLAN to the hosted PBX address"
+                            Text = "Run a sustained ping from a phone's VLAN (virtual local area network) to the hosted PBX address"
                         },
                         new
                         {
                             Id = new Guid("1ef30f6d-e145-2a62-9f7f-663f8beff3dd"),
-                            Explanation = "CDRs show that the call connected and how long it lasted. They don't show which way the media was flowing.",
+                            Explanation = "CDRs (call detail records) show that the call connected and how long it lasted. They don't show which way the media was flowing.",
                             SequentialStepId = new Guid("9d2372ef-5c7c-50c9-2269-c4dbad4d333a"),
                             Text = "Review the call detail records in the hosted PBX portal to see which direction of each call failed"
                         },
@@ -1183,30 +1183,30 @@ namespace SleepyDuck.Api.Migrations
                         new
                         {
                             Id = new Guid("c858e2cb-1469-9c66-afb5-356c113f6c6c"),
-                            Explanation = "Missing QoS markings lower priority under congestion. They don't remove one direction of audio completely.",
+                            Explanation = "Missing QoS (quality of service) markings lower priority under congestion. They don't remove one direction of audio completely.",
                             SequentialStepId = new Guid("6d7f1865-4c10-3114-9e5a-22d813c5a1a8"),
-                            Text = "DSCP markings are missing from the voice traffic, so the ISP is dropping the return RTP packets"
+                            Text = "DSCP (Differentiated Services Code Point) markings are missing from the voice traffic, so the ISP (internet service provider) is dropping the return RTP packets"
                         },
                         new
                         {
                             Id = new Guid("7250e01a-749d-f73d-2146-d0bc98c9fae2"),
                             Explanation = "A small jitter buffer causes choppy audio from late packets. Here no return packets arrive at all.",
                             SequentialStepId = new Guid("6d7f1865-4c10-3114-9e5a-22d813c5a1a8"),
-                            Text = "The jitter buffer on the phones is too small for this WAN link"
+                            Text = "The jitter buffer on the phones is too small for this WAN (wide area network) link"
                         },
                         new
                         {
                             Id = new Guid("fbad0072-7ed7-c0b0-b4b4-3f0a2033a9be"),
                             Explanation = "A key mismatch would show RTP packets arriving but undecodable. This capture shows no return stream at all.",
                             SequentialStepId = new Guid("6d7f1865-4c10-3114-9e5a-22d813c5a1a8"),
-                            Text = "The SRTP keys don't match, so the phone is discarding the audio"
+                            Text = "The SRTP (Secure Real-time Transport Protocol) keys don't match, so the phone is discarding the audio"
                         },
                         new
                         {
                             Id = new Guid("99e42082-f570-da27-e005-d0f238a95d15"),
                             Explanation = "Port 5060 carries SIP signaling, which already works. RTP uses a range of UDP ports.",
                             SequentialStepId = new Guid("c7faa051-2a06-39ce-1657-2d77bd0ce29d"),
-                            Text = "Open TCP port 5060 inbound from the hosted PBX to the phones so their audio can reach the branch"
+                            Text = "Open TCP (Transmission Control Protocol) port 5060 inbound from the hosted PBX to the phones so their audio can reach the branch"
                         },
                         new
                         {
@@ -1255,14 +1255,14 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("b6326f9b-e01d-bd56-b5fd-6ef99ede8435"),
                             Explanation = "An unknown destination returns 404 Not Found, usually straight away rather than after 32 seconds.",
                             SequentialStepId = new Guid("e527425e-6370-df76-1dc4-db9ec3a8d762"),
-                            Text = "The PBX searched its dial plan, found no such extension, and rejected the call with a timeout"
+                            Text = "The PBX (private branch exchange) searched its dial plan, found no such extension, and rejected the call with a timeout"
                         },
                         new
                         {
                             Id = new Guid("eda27977-a3ce-a622-4683-d0b6c34ead2a"),
                             Explanation = "Authentication challenges return 401 or 407, and they arrive immediately.",
                             SequentialStepId = new Guid("e527425e-6370-df76-1dc4-db9ec3a8d762"),
-                            Text = "The caller failed digest authentication on the PBX"
+                            Text = "The caller failed digest authentication on the PBX (private branch exchange)"
                         },
                         new
                         {
@@ -1276,7 +1276,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("6ec397f0-5958-26ec-3d74-3673c533c591"),
                             Explanation = "No media is set up for a call that never connected, so there are no RTP statistics to read.",
                             SequentialStepId = new Guid("52ce1b34-42bb-920e-f7df-5b25a7b5f887"),
-                            Text = "Check the RTP packet statistics for the failed call on the PBX to see where audio stopped flowing"
+                            Text = "Check the RTP (Real-time Transport Protocol) packet statistics for the failed call on the PBX to see where audio stopped flowing"
                         },
                         new
                         {
@@ -1379,7 +1379,7 @@ namespace SleepyDuck.Api.Migrations
                         new
                         {
                             Id = new Guid("2d5856ff-6304-b4a3-617f-e89b79261b65"),
-                            Explanation = "The ARP table shows local IP-to-MAC mappings and tells you nothing beyond the LAN.",
+                            Explanation = "The ARP (Address Resolution Protocol) table shows local IP-to-MAC mappings and tells you nothing beyond the LAN.",
                             SequentialStepId = new Guid("de253677-1db2-549e-2dc2-35fc21a057ca"),
                             Text = "arp -a"
                         },
@@ -1409,7 +1409,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("8efd53bc-b6e1-67a8-001d-2e9d1a9c2043"),
                             Explanation = "A host blocking ICMP would show 100% loss. It wouldn't show a clean 0%.",
                             SequentialStepId = new Guid("4fb282d0-d4f4-ed6d-1709-4aac04ae40f6"),
-                            Text = "The destination is hiding its true loss by blocking ICMP"
+                            Text = "The destination is hiding its true loss by blocking ICMP (Internet Control Message Protocol)"
                         },
                         new
                         {
@@ -1444,7 +1444,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("d25780cf-6fae-db32-e489-dcc369b881c8"),
                             Explanation = "Jumbo frames generally don't work across an ISP link, and this could add new faults.",
                             SequentialStepId = new Guid("aeb378c3-7bc3-be9c-01c0-28bca1357a1d"),
-                            Text = "Raise the WAN interface MTU to 9000 to improve throughput"
+                            Text = "Raise the WAN interface MTU (maximum transmission unit) to 9000 to improve throughput"
                         },
                         new
                         {
@@ -1477,23 +1477,23 @@ namespace SleepyDuck.Api.Migrations
                         new
                         {
                             Id = new Guid("81d30037-002b-6cf2-806f-a882ffb8fa80"),
-                            Explanation = "DNS resolves names and has no part in assigning a client's IP address.",
+                            Explanation = "DNS resolves names and has no part in assigning a client's IP (Internet Protocol) address.",
                             SequentialStepId = new Guid("b8a8f230-7cd2-3774-3659-42c5c02bdd07"),
-                            Text = "A DNS server has handed out an address from the wrong zone"
+                            Text = "A DNS (Domain Name System) server has handed out an address from the wrong zone"
                         },
                         new
                         {
                             Id = new Guid("ebea3b74-0c06-f68b-f8f2-e769ed88a873"),
                             Explanation = "A DHCP reservation would give an address from the scope, not a 169.254.x.x address.",
                             SequentialStepId = new Guid("b8a8f230-7cd2-3774-3659-42c5c02bdd07"),
-                            Text = "The client was given a reserved address by the DHCP server because its MAC is in the exclusion list"
+                            Text = "The client was given a reserved address by the DHCP server because its MAC (media access control) is in the exclusion list"
                         },
                         new
                         {
                             Id = new Guid("e3cdfc1b-fcfc-413e-38d5-35e46137a36e"),
                             Explanation = "NAT doesn't assign addresses to clients, and 169.254.x.x isn't a NAT range.",
                             SequentialStepId = new Guid("b8a8f230-7cd2-3774-3659-42c5c02bdd07"),
-                            Text = "The default gateway is performing NAT for the guest VLAN"
+                            Text = "The default gateway is performing NAT (Network Address Translation) for the guest VLAN"
                         },
                         new
                         {
@@ -1535,7 +1535,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("5f2f4070-04f6-deb2-80b5-f4c6633b7e51"),
                             Explanation = "ARP is separate from DHCP, and the scope statistics already explain the failure.",
                             SequentialStepId = new Guid("6df6fd12-6ad1-216d-b137-9d14be120a0c"),
-                            Text = "The gateway's ARP cache is full and is blocking new devices"
+                            Text = "The gateway's ARP (Address Resolution Protocol) cache is full and is blocking new devices"
                         },
                         new
                         {
@@ -1556,7 +1556,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("a46b90b1-cb89-d9e0-c063-acd68f8f905b"),
                             Explanation = "Static addresses don't scale for visitors, and they would collide with addresses the scope hands out.",
                             SequentialStepId = new Guid("a1516d18-5455-b304-22e4-45110fd25ad4"),
-                            Text = "Assign static IP addresses to each device that can't connect"
+                            Text = "Assign static IP (Internet Protocol) addresses to each device that can't connect"
                         },
                         new
                         {
@@ -1661,7 +1661,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("489c3817-f7c6-0a14-808b-e00816f438af"),
                             Explanation = "DNS is already answering correctly, so a TTL change can't affect this Mac's answer.",
                             SequentialStepId = new Guid("8a7e8678-b58e-7a7e-5a25-03b9887dde9b"),
-                            Text = "Ask the DNS team to lower the record's TTL and wait for the old answer to age out of the cache"
+                            Text = "Ask the DNS team to lower the record's TTL (time to live) and wait for the old answer to age out of the cache"
                         },
                         new
                         {
@@ -1680,9 +1680,9 @@ namespace SleepyDuck.Api.Migrations
                         new
                         {
                             Id = new Guid("4837be8e-c4f9-ce45-cec0-3d498221ef82"),
-                            Explanation = "802.1X happens before an IP address is assigned, and these drops are authentication failures.",
+                            Explanation = "802.1X happens before an IP (Internet Protocol) address is assigned, and these drops are authentication failures.",
                             SequentialStepId = new Guid("4bdf0807-333d-6f83-56ef-401d5e3c7539"),
-                            Text = "Check the DHCP lease for each Mac on the staff VLAN"
+                            Text = "Check the DHCP (Dynamic Host Configuration Protocol) lease for each Mac on the staff VLAN (virtual local area network)"
                         },
                         new
                         {
@@ -1717,7 +1717,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("40cce026-bde9-b83d-6a2d-88d6a040921e"),
                             Explanation = "The certificate is presented in the EAP exchange, not looked up through DNS.",
                             SequentialStepId = new Guid("1b4e9af1-6bd6-e9be-bb73-7783c80fd720"),
-                            Text = "DNS caching delayed the new certificate from reaching the Macs"
+                            Text = "DNS (Domain Name System) caching delayed the new certificate from reaching the Macs"
                         },
                         new
                         {
@@ -1808,7 +1808,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("132e813f-8b42-bd31-f944-ba2404333338"),
                             Explanation = "DNS logs record name resolution, not authentication failures.",
                             SequentialStepId = new Guid("e8673c4e-05bf-a7b6-0142-4ce806209b8a"),
-                            Text = "The DNS Server log on the nearest domain controller"
+                            Text = "The DNS (Domain Name System) Server log on the nearest domain controller"
                         },
                         new
                         {
@@ -1920,7 +1920,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("4e8947af-7831-58aa-1bc3-2f09b7817d4d"),
                             Explanation = "A reply shows the network path works. It says nothing about whether the domain trusts this PC.",
                             SequentialStepId = new Guid("0df582d4-5cfb-142b-b463-c2a9c99f77b9"),
-                            Text = "Ping the domain controller's IP address"
+                            Text = "Ping the domain controller's IP (Internet Protocol) address"
                         },
                         new
                         {
@@ -1962,7 +1962,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("efb5fb9e-3a68-978c-7dde-2a305c369a36"),
                             Explanation = "The computer starts its own password changes, and Active Directory doesn't expire machine passwords for being offline.",
                             SequentialStepId = new Guid("81b4863b-3305-e700-519f-7b935733ab79"),
-                            Text = "The VM had been off for more than 30 days, so Active Directory expired its machine account password"
+                            Text = "The VM (virtual machine) had been off for more than 30 days, so Active Directory expired its machine account password"
                         },
                         new
                         {
@@ -1976,7 +1976,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("f52ff85e-dabb-6c0c-5d51-8f0404c13381"),
                             Explanation = "The secure channel is based on the machine account password, not the address.",
                             SequentialStepId = new Guid("81b4863b-3305-e700-519f-7b935733ab79"),
-                            Text = "The revert gave the VM a different IP address"
+                            Text = "The revert gave the VM (virtual machine) a different IP address"
                         },
                         new
                         {
@@ -2093,9 +2093,9 @@ namespace SleepyDuck.Api.Migrations
                         new
                         {
                             Id = new Guid("10cc3734-0031-aa3e-e984-75315db1327f"),
-                            Explanation = "Policy is processed on the client. Refreshing a DC's own policy does nothing for a sales PC.",
+                            Explanation = "Policy is processed on the client. Refreshing a DC (domain controller)'s own policy does nothing for a sales PC.",
                             SequentialStepId = new Guid("d243f093-453e-c659-371e-cbfea2afe06f"),
-                            Text = "Run gpupdate /force on the domain controller that holds the PDC emulator role, and then wait 90 minutes"
+                            Text = "Run gpupdate /force on the domain controller that holds the PDC (primary domain controller) emulator role, and then wait 90 minutes"
                         },
                         new
                         {
@@ -2123,7 +2123,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("aab06f51-5fbd-627f-828b-da4e0ae8ec5f"),
                             Explanation = "A WMI filter on another GPO has no effect on this one.",
                             SequentialStepId = new Guid("47128444-22c0-6c9c-a6c6-08e9092d61bb"),
-                            Text = "The WMI filter on the Default Domain Policy"
+                            Text = "The WMI (Windows Management Instrumentation) filter on the Default Domain Policy"
                         },
                         new
                         {
@@ -2249,7 +2249,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("c8450ca1-8111-3521-f02c-798ba267e769"),
                             Explanation = "Changing ownership of the component store breaks servicing, and the store already compresses unused components.",
                             SequentialStepId = new Guid("d416ab8d-e55a-d48e-bbc5-60b9c0393fce"),
-                            Text = "Take ownership of the folder from TrustedInstaller, then turn on NTFS compression for it from the Properties page"
+                            Text = "Take ownership of the folder from TrustedInstaller, then turn on NTFS (New Technology File System) compression for it from the Properties page"
                         },
                         new
                         {
@@ -2417,7 +2417,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("9504817a-86de-bed4-2de7-6f616fbd4228"),
                             Explanation = "Name resolution isn't mentioned anywhere in this error.",
                             SequentialStepId = new Guid("f93efc9c-07c6-acbc-49de-3b76c3114274"),
-                            Text = "The DNS Server log on a domain controller"
+                            Text = "The DNS (Domain Name System) Server log on a domain controller"
                         },
                         new
                         {
@@ -2508,7 +2508,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("28d290c1-67d7-3438-b582-c4cb284ed62c"),
                             Explanation = "Neither set overrides the other. Each can only narrow the result.",
                             SequentialStepId = new Guid("5cd1b589-61da-ec0e-197d-1d25db78d540"),
-                            Text = "Share permissions override NTFS permissions"
+                            Text = "Share permissions override NTFS (New Technology File System) permissions"
                         },
                         new
                         {
@@ -2522,7 +2522,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("b0a3677e-d2e3-d465-7341-196900a74d41"),
                             Explanation = "NTFS permissions apply to every kind of access. It's share permissions that only apply over the network.",
                             SequentialStepId = new Guid("5cd1b589-61da-ec0e-197d-1d25db78d540"),
-                            Text = "NTFS permissions are skipped for network access, and they only apply to people signed in at the server itself"
+                            Text = "NTFS (New Technology File System) permissions are skipped for network access, and they only apply to people signed in at the server itself"
                         },
                         new
                         {
@@ -2654,7 +2654,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("6f67ae98-4a03-2943-e2d3-cd7ab58e559a"),
                             Category = "EmailDelivery",
                             ProblemStatement = "Marco, a contractor manager, set an inbox rule to forward project mail to a partner's external address. Every forwarded message now bounces, and the bounce message includes the code 5.7.520.",
-                            TechnicalExplanation = "NDR 5.7.520 means 'Access denied, your organization does not allow external forwarding'. Automatic external forwarding is controlled by the outbound spam filter policy, whose default setting (Automatic - System-controlled) behaves as Off. Attackers often use forwarding rules to exfiltrate mail from compromised mailboxes, so leave the Default policy alone and enable forwarding only through a custom policy scoped to the people with an approved business need. Check any remote domain settings as well, because they can also stop automatic forwarding.",
+                            TechnicalExplanation = "NDR (non-delivery report) 5.7.520 means 'Access denied, your organization does not allow external forwarding'. Automatic external forwarding is controlled by the outbound spam filter policy, whose default setting (Automatic - System-controlled) behaves as Off. Attackers often use forwarding rules to exfiltrate mail from compromised mailboxes, so leave the Default policy alone and enable forwarding only through a custom policy scoped to the people with an approved business need. Check any remote domain settings as well, because they can also stop automatic forwarding.",
                             Title = "Auto-forward bounces with 5.7.520"
                         },
                         new
@@ -2685,8 +2685,8 @@ namespace SleepyDuck.Api.Migrations
                         {
                             Id = new Guid("dc625090-483f-4846-95a4-f7c8b8d9fcc9"),
                             Category = "UserLicenseManagement",
-                            ProblemStatement = "Luis from Sales is at a client site in Lisbon and can't sign in to Outlook or Teams. The browser shows error AADSTS53003, 'Access has been blocked by Conditional Access policies'. No MFA prompt appears, and the same account worked from the office yesterday.",
-                            TechnicalExplanation = "Microsoft Entra ID evaluates every sign-in against the Conditional Access policies that apply to it, and the sign-in log records the result of each policy. AADSTS53003 means a policy's grant control was Block, which is why no MFA prompt appeared: a block is applied before any challenge is offered. Country-based named locations are resolved from the sign-in's public IP address, so a user abroad falls outside an 'allowed countries' location. The supported way to make an exception is an exclusion group with a documented end date, ideally governed by an access review. Disabling the policy, switching it to Report-only, or trusting a hotel IP weakens protection for everyone. The What If tool evaluates a simulated sign-in against every policy, so you can prove the exception works before the user tries again.",
+                            ProblemStatement = "Luis from Sales is at a client site in Lisbon and can't sign in to Outlook or Teams. The browser shows error AADSTS53003, 'Access has been blocked by Conditional Access policies'. No MFA (multi-factor authentication) prompt appears, and the same account worked from the office yesterday.",
+                            TechnicalExplanation = "Microsoft Entra ID evaluates every sign-in against the Conditional Access policies that apply to it, and the sign-in log records the result of each policy. AADSTS53003 means a policy's grant control was Block, which is why no MFA (multi-factor authentication) prompt appeared: a block is applied before any challenge is offered. Country-based named locations are resolved from the sign-in's public IP (Internet Protocol) address, so a user abroad falls outside an 'allowed countries' location. The supported way to make an exception is an exclusion group with a documented end date, ideally governed by an access review. Disabling the policy, switching it to Report-only, or trusting a hotel IP weakens protection for everyone. The What If tool evaluates a simulated sign-in against every policy, so you can prove the exception works before the user tries again.",
                             Title = "Conditional Access blocks a traveling user"
                         },
                         new
@@ -2710,7 +2710,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("c892bf25-98a8-f270-b2c2-9ccd15cc1750"),
                             Category = "GroupManagement",
                             ProblemStatement = "The Project Atlas team keeps its files on a Microsoft 365 Group site. Owners can share with partners at adatum.example, but sharing with a new consultant at fabrikam.example fails with 'Your organization's policies don't allow you to share with these users.' Organization-level external sharing is set to New and existing guests.",
-                            TechnicalExplanation = "SharePoint and OneDrive sharing works in layers. The organization-level setting in the SharePoint admin center is the most permissive level allowed, and each site can match it or be more restrictive. Domain restrictions apply on top of both, either for the whole organization under Policies > Sharing ('Limit external sharing by domain') or for a single site. Sharing with a domain that isn't on an allow list fails with this policy message, which is why one partner works and another doesn't. SharePoint also uses Microsoft Entra B2B for guests, so an allow or deny list in the Entra external collaboration settings can block the invitation too, and the two lists should agree. The narrow fix is adding the approved domain to the allow list, not loosening the sharing level or removing the restriction for everyone.",
+                            TechnicalExplanation = "SharePoint and OneDrive sharing works in layers. The organization-level setting in the SharePoint admin center is the most permissive level allowed, and each site can match it or be more restrictive. Domain restrictions apply on top of both, either for the whole organization under Policies > Sharing ('Limit external sharing by domain') or for a single site. Sharing with a domain that isn't on an allow list fails with this policy message, which is why one partner works and another doesn't. SharePoint also uses Microsoft Entra B2B (business-to-business) for guests, so an allow or deny list in the Entra external collaboration settings can block the invitation too, and the two lists should agree. The narrow fix is adding the approved domain to the allow list, not loosening the sharing level or removing the restriction for everyone.",
                             Title = "External sharing blocked for one partner"
                         },
                         new
@@ -2741,16 +2741,16 @@ namespace SleepyDuck.Api.Migrations
                         {
                             Id = new Guid("342cc552-23d1-4282-8205-22cb79b47a8e"),
                             Category = "MailFlowRules",
-                            ProblemStatement = "At 10:40, three users report an email titled 'Payroll update required' that links to a fake Microsoft sign-in page. It came from hr-notice@payroll-portal.example and passed SPF and DKIM for that domain. The tenant has Microsoft Defender for Office 365 Plan 2.",
-                            TechnicalExplanation = "Threat Explorer in Defender for Office 365 Plan 2 finds every copy of a campaign by sender, subject or URL, and shows each copy's delivery location along with URL clicks recorded by Safe Links. You can act on the results directly, for example with a soft delete, and the Action center tracks the remediation. Zero-hour auto purge (ZAP) can also remove delivered messages when a verdict changes, but you can't rely on its timing during an active campaign. A sender that passes SPF and DKIM for its own lookalike domain isn't spoofing you, so your own DMARC policy won't stop it, and the Tenant Allow/Block List is the place to block the domain and the URL. Anyone who clicked through to the credential page may have given away a password, so reset it, revoke their sessions and review their sign-ins.",
+                            ProblemStatement = "At 10:40, three users report an email titled 'Payroll update required' that links to a fake Microsoft sign-in page. It came from hr-notice@payroll-portal.example and passed SPF (Sender Policy Framework) and DKIM (DomainKeys Identified Mail) for that domain. The tenant has Microsoft Defender for Office 365 Plan 2.",
+                            TechnicalExplanation = "Threat Explorer in Defender for Office 365 Plan 2 finds every copy of a campaign by sender, subject or URL (uniform resource locator), and shows each copy's delivery location along with URL clicks recorded by Safe Links. You can act on the results directly, for example with a soft delete, and the Action center tracks the remediation. Zero-hour auto purge (ZAP) can also remove delivered messages when a verdict changes, but you can't rely on its timing during an active campaign. A sender that passes SPF (Sender Policy Framework) and DKIM (DomainKeys Identified Mail) for its own lookalike domain isn't spoofing you, so your own DMARC (Domain-based Message Authentication, Reporting and Conformance) policy won't stop it, and the Tenant Allow/Block List is the place to block the domain and the URL. Anyone who clicked through to the credential page may have given away a password, so reset it, revoke their sessions and review their sign-ins.",
                             Title = "Responding to a credential phishing campaign"
                         },
                         new
                         {
                             Id = new Guid("1b904159-4dbb-c44f-8839-9e0df34b7b47"),
                             Category = "VoipSupport",
-                            ProblemStatement = "Every desk phone at a branch office can place and answer calls through the company's hosted PBX, but on all calls the staff hear nothing while the people they call hear them clearly. Phones show as registered, and the problem began after the branch firewall was replaced.",
-                            TechnicalExplanation = "SIP sets up a call, and RTP carries the audio as a separate UDP stream, so a call can connect perfectly with audio failing in one direction. Each side uses the SDP body in the SIP messages to announce the IP address and port where it wants to receive RTP. When a phone behind NAT advertises its private address, the far end sends audio to an address it can't route to. This is the classic one-way audio pattern, and it fits here because the new firewall changed how NAT was handled. Fix it with proper NAT traversal, such as STUN, or an SBC or PBX that uses symmetric RTP. Also disable SIP ALG if the firewall's rewriting is making things worse, and make sure the RTP UDP port range is allowed. Compare captures from both sides of the firewall, because they show whether a stream was never sent or was lost on the way.",
+                            ProblemStatement = "Every desk phone at a branch office can place and answer calls through the company's hosted PBX (private branch exchange), but on all calls the staff hear nothing while the people they call hear them clearly. Phones show as registered, and the problem began after the branch firewall was replaced.",
+                            TechnicalExplanation = "SIP (Session Initiation Protocol) sets up a call, and RTP (Real-time Transport Protocol) carries the audio as a separate UDP (User Datagram Protocol) stream, so a call can connect perfectly with audio failing in one direction. Each side uses the SDP (Session Description Protocol) body in the SIP messages to announce the IP (Internet Protocol) address and port where it wants to receive RTP. When a phone behind NAT (Network Address Translation) advertises its private address, the far end sends audio to an address it can't route to. This is the classic one-way audio pattern, and it fits here because the new firewall changed how NAT was handled. Fix it with proper NAT traversal, such as STUN (Session Traversal Utilities for NAT), or an SBC (session border controller) or PBX (private branch exchange) that uses symmetric RTP. Also disable SIP ALG (Application Layer Gateway) if the firewall's rewriting is making things worse, and make sure the RTP UDP port range is allowed. Compare captures from both sides of the firewall, because they show whether a stream was never sent or was lost on the way.",
                             Title = "One-way audio at a branch office"
                         },
                         new
@@ -2758,39 +2758,39 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("2a935101-a258-07c0-d4cf-7d4141dd7a76"),
                             Category = "VoipSupport",
                             ProblemStatement = "Calls to a remote worker's extension fail after about 32 seconds, and the caller's phone shows 408 Request Timeout. The phone sits behind a home router and shows as registered. Oddly, it's reachable for a minute or two right after it's rebooted, and calls made from that phone always work.",
-                            TechnicalExplanation = "A SIP 408 means a request got no final response within the allowed time. For an INVITE over UDP, Timer B expires at 64 times T1, which is 32 seconds with the default 500 ms T1, and that matches this ticket. Retransmissions with no provisional response show the INVITE isn't reaching the phone, or the phone's reply isn't getting back. Outbound calls work because the phone opens its own path through the router. Inbound calls depend on a NAT or firewall UDP mapping staying open. When the mapping expires between registrations, the PBX's registration is still valid, but its INVITE is dropped at the router. Keep-alives sent more often than the router's UDP timeout hold the mapping open. Avoid changing SIP timers, because a longer wait just delays the same failure.",
+                            TechnicalExplanation = "A SIP (Session Initiation Protocol) 408 means a request got no final response within the allowed time. For an INVITE over UDP (User Datagram Protocol), Timer B expires at 64 times T1, which is 32 seconds with the default 500 ms T1, and that matches this ticket. Retransmissions with no provisional response show the INVITE isn't reaching the phone, or the phone's reply isn't getting back. Outbound calls work because the phone opens its own path through the router. Inbound calls depend on a NAT (Network Address Translation) or firewall UDP mapping staying open. When the mapping expires between registrations, the PBX (private branch exchange)'s registration is still valid, but its INVITE is dropped at the router. Keep-alives sent more often than the router's UDP timeout hold the mapping open. Avoid changing SIP timers, because a longer wait just delays the same failure.",
                             Title = "SIP 408 Request Timeout on a remote phone"
                         },
                         new
                         {
                             Id = new Guid("6f34a4ec-fd2b-e8f6-1e43-9a284dd34538"),
                             Category = "NetworkTroubleshooting",
-                            ProblemStatement = "Users at a branch office report choppy video calls and stalls in a cloud app at 203.0.113.50, starting this morning. Everything on the local file server works normally. You're on a Linux machine on the branch LAN.",
-                            TechnicalExplanation = "Ping is the quickest way to scope a problem: test the default gateway first, then an external target. MTR then combines ping and traceroute by sending a stream of probes to every hop. The rule for reading it is that loss only matters if it continues through to the final destination. A router in the middle showing loss when the hops after it don't is usually just rate limiting the ICMP or TTL-expired replies it generates, and it's forwarding traffic fine. Real loss starts at one hop and carries through to the end, which points to that hop or the link leading to it. Paths are often asymmetric, so run MTR from the far side too if you can, and check interface errors and utilization on your own equipment before escalating. Give the ISP timestamped MTR reports from both directions.",
+                            ProblemStatement = "Users at a branch office report choppy video calls and stalls in a cloud app at 203.0.113.50, starting this morning. Everything on the local file server works normally. You're on a Linux machine on the branch LAN (local area network).",
+                            TechnicalExplanation = "Ping is the quickest way to scope a problem: test the default gateway first, then an external target. MTR (My Traceroute) then combines ping and traceroute by sending a stream of probes to every hop. The rule for reading it is that loss only matters if it continues through to the final destination. A router in the middle showing loss when the hops after it don't is usually just rate limiting the ICMP (Internet Control Message Protocol) or TTL-expired replies it generates, and it's forwarding traffic fine. Real loss starts at one hop and carries through to the end, which points to that hop or the link leading to it. Paths are often asymmetric, so run MTR from the far side too if you can, and check interface errors and utilization on your own equipment before escalating. Give the ISP (internet service provider) timestamped MTR reports from both directions.",
                             Title = "Diagnosing packet loss with ping and MTR"
                         },
                         new
                         {
                             Id = new Guid("e5b5a9b9-099b-c951-5fe7-002659158d1c"),
                             Category = "NetworkTroubleshooting",
-                            ProblemStatement = "At 9 AM, new devices on the staff and guest VLAN 20 (192.168.20.0/24) can't get online and show 169.254.x.x addresses. Devices that were already connected still work. The VLAN uses a Windows DHCP server, and a conference has been running at the office all week.",
-                            TechnicalExplanation = "A 169.254.x.x address is an APIPA link-local address, which a client assigns itself when no DHCP server offers a lease. Devices that already hold a lease keep working, which is the classic sign of exhaustion rather than a server outage. A /24 has only 254 usable addresses, and a Windows DHCP scope defaults to an 8-day lease, so visitors' phones keep addresses long after leaving. Phones using private (randomized) MAC addresses can make this worse, since one device can look like several clients. Shorten the lease on busy guest networks, and reclaim stale leases. Changing the duration only affects new leases and renewals, so it needs some time or lease cleanup. Turn on conflict detection while reclaiming, since a device might still be using a removed address. Then fix capacity properly by widening the subnet or moving guests to their own VLAN.",
+                            ProblemStatement = "At 9 AM, new devices on the staff and guest VLAN (virtual local area network) 20 (192.168.20.0/24) can't get online and show 169.254.x.x addresses. Devices that were already connected still work. The VLAN uses a Windows DHCP (Dynamic Host Configuration Protocol) server, and a conference has been running at the office all week.",
+                            TechnicalExplanation = "A 169.254.x.x address is an APIPA (Automatic Private IP Addressing) link-local address, which a client assigns itself when no DHCP (Dynamic Host Configuration Protocol) server offers a lease. Devices that already hold a lease keep working, which is the classic sign of exhaustion rather than a server outage. A /24 has only 254 usable addresses, and a Windows DHCP scope defaults to an 8-day lease, so visitors' phones keep addresses long after leaving. Phones using private (randomized) MAC (media access control) addresses can make this worse, since one device can look like several clients. Shorten the lease on busy guest networks, and reclaim stale leases. Changing the duration only affects new leases and renewals, so it needs some time or lease cleanup. Turn on conflict detection while reclaiming, since a device might still be using a removed address. Then fix capacity properly by widening the subnet or moving guests to their own VLAN (virtual local area network).",
                             Title = "Resolving DHCP scope exhaustion"
                         },
                         new
                         {
                             Id = new Guid("95e42524-b675-8aab-3bae-f938012f09ed"),
                             Category = "MacNetworkIssues",
-                            ProblemStatement = "Your team moved intranet.corp.example to a new server this morning and updated DNS. Windows laptops reach the new site, but a MacBook still loads the old server. The Mac has a normal internet connection, and browsing elsewhere works fine.",
-                            TechnicalExplanation = "macOS caches DNS results in the mDNSResponder daemon, and most apps resolve names through that system resolver. Tools such as dig and nslookup query DNS servers directly and skip the system resolver, while dscacheutil -q host follows the path that apps use. That makes comparing them a good test: if dig shows the new address and dscacheutil shows the old one, the fault is on the Mac rather than in DNS. Clear it with sudo dscacheutil -flushcache followed by sudo killall -HUP mDNSResponder. The HUP signal tells the daemon to drop its cache without stopping it. If the old answer survives a flush, look at what the system resolver checks besides DNS, such as an entry in /etc/hosts, or a scoped resolver from a VPN, which scutil --dns will list.",
+                            ProblemStatement = "Your team moved intranet.corp.example to a new server this morning and updated DNS (Domain Name System). Windows laptops reach the new site, but a MacBook still loads the old server. The Mac has a normal internet connection, and browsing elsewhere works fine.",
+                            TechnicalExplanation = "macOS caches DNS (Domain Name System) results in the mDNSResponder daemon, and most apps resolve names through that system resolver. Tools such as dig and nslookup query DNS servers directly and skip the system resolver, while dscacheutil -q host follows the path that apps use. That makes comparing them a good test: if dig shows the new address and dscacheutil shows the old one, the fault is on the Mac rather than in DNS. Clear it with sudo dscacheutil -flushcache followed by sudo killall -HUP mDNSResponder. The HUP (hang-up) signal tells the daemon to drop its cache without stopping it. If the old answer survives a flush, look at what the system resolver checks besides DNS, such as an entry in /etc/hosts, or a scoped resolver from a VPN (virtual private network), which scutil --dns will list.",
                             Title = "Stale DNS cache on macOS"
                         },
                         new
                         {
                             Id = new Guid("cd16467d-d0a1-c6dd-0137-f60b5f5aeb29"),
                             Category = "MacNetworkIssues",
-                            ProblemStatement = "MacBooks on the WPA2-Enterprise SSID CorpSecure started dropping off Wi-Fi about 8 hours after connecting, and they fail to rejoin. It started the day after the RADIUS server's certificate was renewed. Windows laptops are fine. The Macs connect using a configuration profile from your MDM.",
-                            TechnicalExplanation = "802.1X authenticates a device before it's given network access. With PEAP or EAP-TLS, the client validates the RADIUS server's certificate during the TLS handshake. On macOS, the eapolclient process handles this, and an MDM profile normally defines which certificates and server names to trust. Macs stay connected on an existing session, then fail when reauthentication happens, which explains drops long after the certificate change. Here the 8-hour pattern matches the session timeout. Windows machines were fine because they trust the new chain another way. The right fix is to push an updated profile containing the new CA chain and trusted server names. Telling users to click Trust or turning off validation trains people to accept a fake access point, which is how credentials get stolen. On Windows NPS, event 6272 means access was granted and 6273 means it was denied.",
+                            ProblemStatement = "MacBooks on the WPA2-Enterprise (Wi-Fi Protected Access 2, Enterprise mode) SSID (service set identifier) CorpSecure started dropping off Wi-Fi about 8 hours after connecting, and they fail to rejoin. It started the day after the RADIUS (Remote Authentication Dial-In User Service) server's certificate was renewed. Windows laptops are fine. The Macs connect using a configuration profile from your MDM (mobile device management).",
+                            TechnicalExplanation = "802.1X authenticates a device before it's given network access. With PEAP (Protected Extensible Authentication Protocol) or EAP-TLS (Extensible Authentication Protocol with Transport Layer Security), the client validates the RADIUS (Remote Authentication Dial-In User Service) server's certificate during the TLS handshake. On macOS, the eapolclient process handles this, and an MDM (mobile device management) profile normally defines which certificates and server names to trust. Macs stay connected on an existing session, then fail when reauthentication happens, which explains drops long after the certificate change. Here the 8-hour pattern matches the session timeout. Windows machines were fine because they trust the new chain another way. The right fix is to push an updated profile containing the new CA (certificate authority) chain and trusted server names. Telling users to click Trust or turning off validation trains people to accept a fake access point, which is how credentials get stolen. On Windows NPS (Network Policy Server), event 6272 means access was granted and 6273 means it was denied.",
                             Title = "802.1X Wi-Fi drops on MacBooks"
                         },
                         new
@@ -2798,7 +2798,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("652a4793-984d-cf69-18d2-336dda12226c"),
                             Category = "ActiveDirectory",
                             ProblemStatement = "Dana changed her domain password on Monday. Since then her account locks out every 20 minutes or so, even while she's away from her desk. The help desk has unlocked it six times, and each unlock lasts only a few minutes.",
-                            TechnicalExplanation = "An account locks when the count of bad passwords passes the lockout threshold, so a lockout that repeats on a timer means something is still sending the old password. A domain controller that sees a bad password checks it with the PDC emulator, which always has the newest password, and lockouts are processed there. That makes the PDC emulator's Security log the place to look for event 4740, 'A user account was locked out'. Find that DC with (Get-ADDomain).PDCEmulator. The event's Caller Computer Name field names the computer the failed attempt came from. On that computer, event 4625 records each failed logon with its logon type: 2 is interactive, 3 is network, 4 is batch (scheduled tasks), 5 is service, and 10 is Remote Desktop. Usual culprits are scheduled tasks, services, mapped drives, saved entries in Credential Manager, disconnected Remote Desktop sessions, and mail apps on phones. Event 4740 is only logged when Audit User Account Management is enabled.",
+                            TechnicalExplanation = "An account locks when the count of bad passwords passes the lockout threshold, so a lockout that repeats on a timer means something is still sending the old password. A domain controller that sees a bad password checks it with the PDC (primary domain controller) emulator, which always has the newest password, and lockouts are processed there. That makes the PDC emulator's Security log the place to look for event 4740, 'A user account was locked out'. Find that DC (domain controller) with (Get-ADDomain).PDCEmulator. The event's Caller Computer Name field names the computer the failed attempt came from. On that computer, event 4625 records each failed logon with its logon type: 2 is interactive, 3 is network, 4 is batch (scheduled tasks), 5 is service, and 10 is Remote Desktop. Usual culprits are scheduled tasks, services, mapped drives, saved entries in Credential Manager, disconnected Remote Desktop sessions, and mail apps on phones. Event 4740 is only logged when Audit User Account Management is enabled.",
                             Title = "Account keeps locking after a password change"
                         },
                         new
@@ -2806,7 +2806,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("d4b16ac7-5976-0af5-8fbd-2d0d1bb56417"),
                             Category = "ActiveDirectory",
                             ProblemStatement = "After a bad software install, a technician reverted the virtual desktop VDI-ACCT07 to a checkpoint taken ten weeks ago. Now every domain user who tries to sign in to it gets 'The trust relationship between this workstation and the primary domain failed'.",
-                            TechnicalExplanation = "Every domain-joined computer has its own account in Active Directory, with a password that the computer and the domain both know. The computer uses it to build a secure channel to a domain controller, and domain sign-ins on that computer depend on the channel. By default the computer itself starts a password change every 30 days. Active Directory never expires a machine password, so a PC that was simply switched off for months still works. The usual real causes are restoring an old checkpoint or image, which brings back a password the domain has since replaced, or a computer account that was reset, deleted, or taken over by another machine with the same name. Test-ComputerSecureChannel reports whether the channel is healthy, and adding -Repair with a domain credential resets it in place. Reset-ComputerMachinePassword is the next option. Leaving and rejoining the domain also works, but it takes two restarts and is the last resort. Don't delete the computer object, since a new one has a different SID and loses its group memberships.",
+                            TechnicalExplanation = "Every domain-joined computer has its own account in Active Directory, with a password that the computer and the domain both know. The computer uses it to build a secure channel to a domain controller, and domain sign-ins on that computer depend on the channel. By default the computer itself starts a password change every 30 days. Active Directory never expires a machine password, so a PC that was simply switched off for months still works. The usual real causes are restoring an old checkpoint or image, which brings back a password the domain has since replaced, or a computer account that was reset, deleted, or taken over by another machine with the same name. Test-ComputerSecureChannel reports whether the channel is healthy, and adding -Repair with a domain credential resets it in place. Reset-ComputerMachinePassword is the next option. Leaving and rejoining the domain also works, but it takes two restarts and is the last resort. Don't delete the computer object, since a new one has a different SID (security identifier) and loses its group memberships.",
                             Title = "Trust relationship with the domain failed"
                         },
                         new
@@ -2814,15 +2814,15 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("5ad4d533-6843-622d-0c9a-4dfb3261a2eb"),
                             Category = "ActiveDirectory",
                             ProblemStatement = "Accounts created this morning on HQ-DC01 can't sign in at the branch office, where PCs use the local domain controller BR-DC02. Password resets made at headquarters aren't working at the branch either. Internet access at the branch is fine.",
-                            TechnicalExplanation = "Domain controllers copy changes to each other, and when that stops, each site slowly works from a different version of the directory. Start with repadmin /replsummary for a forest-wide view of failures and how old they are, then repadmin /showrepl on the failing DC for each partition's last attempt, result, and last success. Error 1722, 'The RPC server is unavailable', is a connectivity error: the destination DC couldn't connect to the source DC. Microsoft notes that DNS lookup failures cause a large share of these, because DCs locate each other through records in the _msdcs zone. dcdiag /test:dns checks that, and nltest /dsgetdc tests the DC locator. A DC must use internal DNS servers that host the Active Directory zones. A public resolver doesn't hold those records, and an alternate server is only tried when the preferred one doesn't answer. Other causes of 1722 are blocked ports, namely TCP 135 for the endpoint mapper and the dynamic RPC range. Don't leave replication broken for long. A DC that stays out of sync past the tombstone lifetime, usually 180 days, can bring deleted objects back.",
+                            TechnicalExplanation = "Domain controllers copy changes to each other, and when that stops, each site slowly works from a different version of the directory. Start with repadmin /replsummary for a forest-wide view of failures and how old they are, then repadmin /showrepl on the failing DC (domain controller) for each partition's last attempt, result, and last success. Error 1722, 'The RPC (remote procedure call) server is unavailable', is a connectivity error: the destination DC couldn't connect to the source DC. Microsoft notes that DNS (Domain Name System) lookup failures cause a large share of these, because DCs locate each other through records in the _msdcs zone. dcdiag /test:dns checks that, and nltest /dsgetdc tests the DC locator. A DC must use internal DNS servers that host the Active Directory zones. A public resolver doesn't hold those records, and an alternate server is only tried when the preferred one doesn't answer. Other causes of 1722 are blocked ports, namely TCP (Transmission Control Protocol) 135 for the endpoint mapper and the dynamic RPC range. Don't leave replication broken for long. A DC that stays out of sync past the tombstone lifetime, usually 180 days, can bring deleted objects back.",
                             Title = "New accounts missing at a branch (replication error 1722)"
                         },
                         new
                         {
                             Id = new Guid("8fed5b49-1c48-68d0-d6c5-806475f0323f"),
                             Category = "ActiveDirectory",
-                            ProblemStatement = "A colleague built a GPO called Sales Drive Map with user settings and linked it to the Staff OU. To limit it to the sales team, they removed Authenticated Users from Security Filtering and added the Sales-Users group. Nobody in Sales gets the drive, and gpupdate /force doesn't help.",
-                            TechnicalExplanation = "A GPO applies to a user only if it is linked where the user's account lives, and the user has both Read and Apply group policy permissions on it. Security Filtering is a shortcut for granting those two permissions. There's one more requirement that catches people out. Since security update MS16-072 in June 2016, Windows fetches user policy with the computer's security context, where it used to use the user's. The computer account therefore needs Read permission on any GPO that applies to the signed-in user. By default it gets that through Authenticated Users, a group that includes computer accounts. Removing Authenticated Users from Security Filtering takes away Read as well as Apply. The fix is on the GPO's Delegation tab: add Authenticated Users or Domain Computers with Read only. That lets computers read the GPO without applying it to everyone. On the client, gpresult /h produces a report of which GPOs were applied or denied, and why. A Deny entry always beats an Allow.",
+                            ProblemStatement = "A colleague built a GPO (Group Policy Object) called Sales Drive Map with user settings and linked it to the Staff OU (organizational unit). To limit it to the sales team, they removed Authenticated Users from Security Filtering and added the Sales-Users group. Nobody in Sales gets the drive, and gpupdate /force doesn't help.",
+                            TechnicalExplanation = "A GPO (Group Policy Object) applies to a user only if it is linked where the user's account lives, and the user has both Read and Apply group policy permissions on it. Security Filtering is a shortcut for granting those two permissions. There's one more requirement that catches people out. Since security update MS16-072 in June 2016, Windows fetches user policy with the computer's security context, where it used to use the user's. The computer account therefore needs Read permission on any GPO that applies to the signed-in user. By default it gets that through Authenticated Users, a group that includes computer accounts. Removing Authenticated Users from Security Filtering takes away Read as well as Apply. The fix is on the GPO's Delegation tab: add Authenticated Users or Domain Computers with Read only. That lets computers read the GPO without applying it to everyone. On the client, gpresult /h produces a report of which GPOs were applied or denied, and why. A Deny entry always beats an Allow.",
                             Title = "Group Policy isn't applying to a security group"
                         },
                         new
@@ -2830,7 +2830,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("0030a01b-87b2-eebf-b546-93c88c9cbac3"),
                             Category = "WindowsServer",
                             ProblemStatement = "Monitoring reports that the C: drive on WEB-SRV01 has 1% free space. Windows Update is failing on the server, and the web application has started logging write errors.",
-                            TechnicalExplanation = "A full system drive stops updates, logging, and sometimes the applications themselves, so act quickly, but measure before deleting anything. List the largest folders first. On servers the space usually goes to logs that nobody rotates, such as IIS logs under C:\\inetpub\\logs\\LogFiles, along with dump files, temp folders and old installers. The WinSxS folder is the Windows component store. It holds the files Windows needs to service itself, and Microsoft warns that deleting files from it can leave a system unable to boot or update. Reduce it with the built-in tools. Dism /Online /Cleanup-Image /AnalyzeComponentStore reports how much can be reclaimed, and /StartComponentCleanup removes superseded component versions straight away, where the scheduled task waits 30 days. Adding /ResetBase removes every superseded version, and after that the updates already installed can't be uninstalled. Then fix the cause: put retention on the logs or move them to a data volume, and alert on free space well before it's critical.",
+                            TechnicalExplanation = "A full system drive stops updates, logging, and sometimes the applications themselves, so act quickly, but measure before deleting anything. List the largest folders first. On servers the space usually goes to logs that nobody rotates, such as IIS (Internet Information Services) logs under C:\\inetpub\\logs\\LogFiles, along with dump files, temp folders and old installers. The WinSxS folder is the Windows component store. It holds the files Windows needs to service itself, and Microsoft warns that deleting files from it can leave a system unable to boot or update. Reduce it with the built-in tools. Dism /Online /Cleanup-Image /AnalyzeComponentStore reports how much can be reclaimed, and /StartComponentCleanup removes superseded component versions straight away, where the scheduled task waits 30 days. Adding /ResetBase removes every superseded version, and after that the updates already installed can't be uninstalled. Then fix the cause: put retention on the logs or move them to a data volume, and alert on free space well before it's critical.",
                             Title = "System drive full on a web server"
                         },
                         new
@@ -2838,7 +2838,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("c83bf57c-c873-bf4a-6940-737ab5c9cd24"),
                             Category = "WindowsServer",
                             ProblemStatement = "Since last night's security hardening change, no administrator can open a Remote Desktop session to FILE-SRV03. The client reports 'Remote Desktop can't connect to the remote computer'. The server answers ping, and its file shares still work. You have access to its Hyper-V console.",
-                            TechnicalExplanation = "This error means the client never reached a working RDP listener, and Microsoft's guidance splits the causes into the listener and the network. With console access, run qwinsta on the server. A line for rdp-tcp in the Listen state means the listener is up. If it's missing, check that fDenyTSConnections is 0, both under HKLM\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server and in the policy path if one is set, and that the Remote Desktop Services service (TermService) is running. Next, connect from the console with mstsc to localhost. If that works, the server side is healthy and the fault is between client and server. Test-NetConnection with -Port 3389 from another machine tests the TCP port itself, which ping can't do because ping uses ICMP. A False result points to the Windows Firewall rules named Remote Desktop - User Mode (TCP-In and UDP-In), a network firewall, or a changed port number. Failures after that point, such as credentials, Network Level Authentication, certificates, or membership of Remote Desktop Users, produce different messages because the connection has already been made.",
+                            TechnicalExplanation = "This error means the client never reached a working RDP (Remote Desktop Protocol) listener, and Microsoft's guidance splits the causes into the listener and the network. With console access, run qwinsta on the server. A line for rdp-tcp in the Listen state means the listener is up. If it's missing, check that fDenyTSConnections is 0, both under HKLM\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server and in the policy path if one is set, and that the Remote Desktop Services service (TermService) is running. Next, connect from the console with mstsc to localhost. If that works, the server side is healthy and the fault is between client and server. Test-NetConnection with -Port 3389 from another machine tests the TCP (Transmission Control Protocol) port itself, which ping can't do because ping uses ICMP (Internet Control Message Protocol). A False result points to the Windows Firewall rules named Remote Desktop - User Mode (TCP-In and UDP-In), a network firewall, or a changed port number. Failures after that point, such as credentials, Network Level Authentication, certificates, or membership of Remote Desktop Users, produce different messages because the connection has already been made.",
                             Title = "Remote Desktop can't connect to a server"
                         },
                         new
@@ -2854,7 +2854,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("3735d78e-3fdf-e9bc-84ba-41b5d2225e0e"),
                             Category = "WindowsServer",
                             ProblemStatement = "Tomas joined Accounting today and gets 'Access is denied' when he opens \\\\FILE-SRV01\\Finance. His colleagues can open it. He was added to the Finance-RW group an hour ago and has been signed in since this morning.",
-                            TechnicalExplanation = "A shared folder has two sets of permissions. Share permissions apply only to access over the network, and NTFS permissions apply to every kind of access. Over the network both are evaluated and the more restrictive result wins, so Full Control on the share with Read in NTFS gives Read. Common practice is to keep share permissions broad, for example Authenticated Users with Full Control or Change, and to do the real control in NTFS with groups. Within one set, a user's permissions from all their groups add up, but a Deny entry beats any Allow. The Effective Access tab under Advanced Security Settings calculates the NTFS result for a named user. Group membership has its own catch. A user's access token, which lists their groups, is built when they sign in. Adding someone to a group changes Active Directory, but not a token that already exists, so the user has to sign out and back in. whoami /groups shows the groups in the current token. Grant access to groups and not to individual accounts, or the permissions become unmanageable.",
+                            TechnicalExplanation = "A shared folder has two sets of permissions. Share permissions apply only to access over the network, and NTFS (New Technology File System) permissions apply to every kind of access. Over the network both are evaluated and the more restrictive result wins, so Full Control on the share with Read in NTFS gives Read. Common practice is to keep share permissions broad, for example Authenticated Users with Full Control or Change, and to do the real control in NTFS with groups. Within one set, a user's permissions from all their groups add up, but a Deny entry beats any Allow. The Effective Access tab under Advanced Security Settings calculates the NTFS result for a named user. Group membership has its own catch. A user's access token, which lists their groups, is built when they sign in. Adding someone to a group changes Active Directory, but not a token that already exists, so the user has to sign out and back in. whoami /groups shows the groups in the current token. Grant access to groups and not to individual accounts, or the permissions become unmanageable.",
                             Title = "Access denied on a file share"
                         });
                 });
@@ -2899,7 +2899,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("7baf03c7-e445-9275-d136-72e655c7b8f2"),
                             CorrectAction = "Open the Exchange admin center and go to Mail flow > Message trace",
                             CorrectOptionId = new Guid("d20fef98-5bdc-5811-b49c-19dd007d16f0"),
-                            Explanation = "The problem appears to be on the service side, and message trace is the record of how Exchange Online handled the message.",
+                            Explanation = "Internal mail works and nothing is in Junk, so Outlook and the mailbox are fine and the message was stopped before delivery. Message trace is Exchange Online's record of every message it handled. It shows whether a message was received, and whether it was Delivered, Quarantined, Failed or still Pending. If the trace finds nothing at all, the message never reached Microsoft 365 and the problem is on the sender's side.",
                             Order = 1,
                             Prompt = "Nothing on the client looks wrong. Where should you start?",
                             ScenarioCardId = new Guid("dae9de1c-e49c-7472-ff3b-d6588e82961d")
@@ -2909,7 +2909,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("601ffe8b-0de5-9e57-9875-6f9be645da90"),
                             CorrectAction = "Set the sender to billing@northwind-supply.example, the recipient to Priya, and a date range covering the missing invoices",
                             CorrectOptionId = new Guid("3cccfd20-ffc3-7925-ddc5-fd0776b23475"),
-                            Explanation = "Filtering on both parties and the right window returns only the relevant messages, and the sender and recipient appear exactly as Exchange Online recorded them.",
+                            Explanation = "A trace needs the sender, the recipient and a date range. Using both addresses returns only the supplier's messages to Priya, and the window has to reach back to the first missing invoice. Searches of the last 10 days come back within moments, and older ones run as a downloadable report, up to 90 days back. Each result then shows a status and the events behind it.",
                             Order = 2,
                             Prompt = "Message trace is open. How do you scope the search?",
                             ScenarioCardId = new Guid("dae9de1c-e49c-7472-ff3b-d6588e82961d")
@@ -2919,7 +2919,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("72bf031d-2d13-1a34-549a-b71b4faffb68"),
                             CorrectAction = "Open Quarantine in the Microsoft Defender portal, review the messages, and release them if they are legitimate",
                             CorrectOptionId = new Guid("6dc484fc-6a2c-1b37-d9a1-61aff3f1ba3e"),
-                            Explanation = "Quarantined messages are held in the Defender portal. Reviewing them first confirms that they really are from the supplier before they reach the user.",
+                            Explanation = "Quarantined means Exchange Online Protection or Defender for Office 365 judged the message unsafe and held it, so it never reached any mailbox folder and the sender got no bounce. High confidence spam is the strongest spam verdict, an SCL (spam confidence level) of 9. In the Defender portal, go to Email & collaboration > Review > Quarantine. Check the sender, the authentication results and a preview before releasing, because an invoice is exactly what a phishing email imitates.",
                             Order = 3,
                             Prompt = "The trace shows the supplier's messages with the status Quarantined, flagged as high confidence spam. What is your next step?",
                             ScenarioCardId = new Guid("dae9de1c-e49c-7472-ff3b-d6588e82961d")
@@ -2929,7 +2929,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("4fbf285b-f7f3-0850-2261-611d7f98d9cc"),
                             CorrectAction = "Report them as false positives through Submissions in the Defender portal and create a Tenant Allow/Block List allow entry from the submission",
                             CorrectOptionId = new Guid("0768862b-787f-c1ac-0dab-10d983918959"),
-                            Explanation = "Submitting teaches the filters, and the allow entry is targeted and expires, so it is the Microsoft-recommended way to handle a false positive.",
+                            Explanation = "Releasing fixes today's messages only. A submission marked as clean sends the message to Microsoft for analysis, and it can create an allow entry in the Tenant Allow/Block List at the same time. That entry covers this sender only and expires, by default 45 days after it was last used. The broad shortcuts are riskier, because they skip filtering for anyone who forges the supplier's address.",
                             Order = 4,
                             Prompt = "The messages were legitimate. How do you stop this from recurring?",
                             ScenarioCardId = new Guid("dae9de1c-e49c-7472-ff3b-d6588e82961d")
@@ -2939,7 +2939,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("caf329a9-cc48-c862-b83a-adbafdf11b1b"),
                             CorrectAction = "Automatic forwarding to an external recipient was blocked by your own organization's policy",
                             CorrectOptionId = new Guid("39d71219-8f9b-0660-01b4-2f2a206552b0"),
-                            Explanation = "The text of this NDR is 'Access denied, your organization does not allow external forwarding', so the block is in your tenant rather than at the partner.",
+                            Explanation = "An NDR (non-delivery report), or bounce message, carries an enhanced status code. 5.x.x is a permanent failure, and 5.7.x is a security or policy block. 5.7.520 comes with the text 'Access denied, your organization does not allow external forwarding'. So Exchange Online in your own tenant refused the message before it left, and nothing at the partner is at fault. Reading the code first tells you which side to investigate.",
                             Order = 1,
                             Prompt = "Before changing anything, what does the code 5.7.520 tell you?",
                             ScenarioCardId = new Guid("6f67ae98-4a03-2943-e2d3-cd7ab58e559a")
@@ -2949,7 +2949,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("399d9d86-b7dd-b66a-6074-15cddd0bf5bc"),
                             CorrectAction = "The automatic forwarding setting in the outbound anti-spam policy in the Microsoft Defender portal",
                             CorrectOptionId = new Guid("2156afbf-5b3e-7d3a-ad67-bee2cca5a12e"),
-                            Explanation = "Automatic forwarding rules are configured in the outbound spam filter policy, under Threat policies > Anti-spam.",
+                            Explanation = "Automatic external forwarding is governed by outbound spam filter policies, under Email & collaboration > Policies & rules > Threat policies > Anti-spam in the Defender portal. The setting has three values: Automatic - System-controlled, On, and Off. The default, Automatic, behaves as Off, which is why a rule that a user is able to create still gets blocked. It's off by default because attackers who take over a mailbox often add a forwarding rule to copy mail out.",
                             Order = 2,
                             Prompt = "Which setting controls this behavior?",
                             ScenarioCardId = new Guid("6f67ae98-4a03-2943-e2d3-cd7ab58e559a")
@@ -2959,7 +2959,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("1321e4a7-c19a-7752-68a2-8d1f4257a090"),
                             CorrectAction = "Create a custom outbound policy with forwarding set to On and scope it to Marco",
                             CorrectOptionId = new Guid("7e771ff0-7d82-f98a-a728-f690626bcf9c"),
-                            Explanation = "A custom policy allows the exception for one approved user and leaves the secure default in place for everyone else.",
+                            Explanation = "Policies are scoped to users, groups or domains, and a custom policy takes precedence over the Default one. A custom outbound policy with forwarding set to On, applied only to Marco, allows the approved exception, and everyone else keeps the blocked default. Record who approved it, because each mailbox that can forward externally is one an attacker could use to leak mail.",
                             Order = 3,
                             Prompt = "The business has approved this forwarding for Marco. How should you apply the change?",
                             ScenarioCardId = new Guid("6f67ae98-4a03-2943-e2d3-cd7ab58e559a")
@@ -2969,7 +2969,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("f50ff392-2197-95b9-eaa7-2b62e0d10928"),
                             CorrectAction = "Send a test message that triggers the rule, then confirm delivery with a message trace",
                             CorrectOptionId = new Guid("a699bf99-a1bb-8cb7-62c2-532bbb7074a6"),
-                            Explanation = "Policy changes can take a little while to apply. A trace proves that the forwarded copy left the tenant and was delivered.",
+                            Explanation = "Policy changes in Microsoft 365 aren't instant, so wait before judging the result. Then test the real path. Send Marco a message that matches his rule, and run a message trace on it. The trace should show the original delivery and a second, forwarded message to the partner's address, with the status Delivered and no 5.7.520.",
                             Order = 4,
                             Prompt = "How do you confirm the fix?",
                             ScenarioCardId = new Guid("6f67ae98-4a03-2943-e2d3-cd7ab58e559a")
@@ -2979,7 +2979,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("e7de2726-9058-4dab-6026-21eb4d335180"),
                             CorrectAction = "Connect-ExchangeOnline -UserPrincipalName admin@contoso.example",
                             CorrectOptionId = new Guid("d3bae316-da15-9833-bd01-f5f769e6eee6"),
-                            Explanation = "The Exchange Online PowerShell V3 module signs in with modern authentication, supports MFA, and loads the Exchange Online cmdlets.",
+                            Explanation = "Connect-ExchangeOnline comes from the ExchangeOnlineManagement module, which you install once with Install-Module ExchangeOnlineManagement. It signs in with modern authentication, so MFA (multi-factor authentication) works, and it loads the Exchange cmdlets such as Get-InboxRule and Set-Mailbox. The older ways in are gone. Basic authentication for remote PowerShell is switched off, and the MSOnline module is retired.",
                             Order = 1,
                             Prompt = "How do you start the PowerShell session?",
                             ScenarioCardId = new Guid("bf707aa9-af50-2825-fddb-590cb6d999eb")
@@ -2989,7 +2989,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("6d2abeae-2397-c7a3-b761-089f45177081"),
                             CorrectAction = "Get-InboxRule -Mailbox grace@contoso.example -IncludeHidden | Format-List Name,Description",
                             CorrectOptionId = new Guid("b4d0af24-66be-f9e3-2f54-ba667ea2551c"),
-                            Explanation = "Inbox rules act after delivery, and -IncludeHidden returns rules that Outlook doesn't display. The Description property spells out each rule's conditions and actions.",
+                            Explanation = "Message trace only covers transport, and Delivered means the message reached the mailbox. Whatever happened next happened inside the mailbox, and inbox rules are the usual cause. Get-InboxRule lists them, and -IncludeHidden adds the rules that Outlook doesn't show, which attackers create on purpose. The Description property reads out each rule's conditions and actions in plain words. Also run Get-Mailbox and look at ForwardingSmtpAddress, the other common place to hide a redirect.",
                             Order = 2,
                             Prompt = "Trace already shows Delivered. Which command shows what happens to the mail inside the mailbox?",
                             ScenarioCardId = new Guid("bf707aa9-af50-2825-fddb-590cb6d999eb")
@@ -2997,9 +2997,9 @@ namespace SleepyDuck.Api.Migrations
                         new
                         {
                             Id = new Guid("61b306d2-dcbe-00e0-cb44-f92732a4ee51"),
-                            CorrectAction = "The mailbox is probably compromised, and an attacker created the rule to hide the bank's replies",
+                            CorrectAction = "The mailbox is compromised, and the attacker's rule hides the bank's replies (business email compromise)",
                             CorrectOptionId = new Guid("3844b8c9-e9c0-bfe2-d6da-ffb16c2e6cbc"),
-                            Explanation = "A one-character name, a hidden rule, and finance keywords moved to an unused folder are classic signs of business email compromise.",
+                            Explanation = "Each detail fits business email compromise. A name like '.' is hard to notice, the rule is hidden from Outlook, the keywords match the wire transfer, and RSS Subscriptions is a folder nobody opens. Marking the mail as read hides the unread count too. The purpose is to keep Grace from seeing the bank's replies while the attacker answers them, usually to change the payment details. This is now a security incident, not a mail flow ticket.",
                             Order = 3,
                             Prompt = "The output shows a hidden rule named '.' that moves messages containing 'bank' or 'wire' to RSS Subscriptions and marks them as read. What does this indicate?",
                             ScenarioCardId = new Guid("bf707aa9-af50-2825-fddb-590cb6d999eb")
@@ -3009,7 +3009,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("497b1140-0863-3bb1-9706-231416a7b32c"),
                             CorrectAction = "Remove the rule, clear any mailbox forwarding with Set-Mailbox, reset the password, and run Revoke-MgUserSignInSession",
                             CorrectOptionId = new Guid("4d4327bd-d2ba-2c3d-2e6c-0b3c2f23521a"),
-                            Explanation = "Removing the rule and forwarding stops the hiding, while the password reset and session revocation lock out the attacker so the rule can't be recreated.",
+                            Explanation = "Containment has two halves. Remove-InboxRule and Set-Mailbox with -ForwardingSmtpAddress $null undo what the attacker set up. Resetting the password and running Revoke-MgUserSignInSession remove the attacker's access, because revoking invalidates the refresh tokens that would otherwise keep working after a password change. Doing only the first half lets the attacker create the rule again. After that, review the sign-in logs and MFA methods, and warn Finance about the wire transfer.",
                             Order = 4,
                             Prompt = "How do you contain this from PowerShell?",
                             ScenarioCardId = new Guid("bf707aa9-af50-2825-fddb-590cb6d999eb")
@@ -3019,7 +3019,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("941e7c17-066e-1729-ea54-2d58af65c26d"),
                             CorrectAction = "Microsoft 365 admin center > Users > Active users > Add a user",
                             CorrectOptionId = new Guid("935002ba-bee2-9779-943a-b312ca61f234"),
-                            Explanation = "This wizard handles the account, the license assignment, and the per-app settings in one flow.",
+                            Explanation = "Active users > Add a user creates the Entra ID account and walks through the basics, then the usage location and license, then optional roles and profile details, in one pass. The mailbox and other services are provisioned once the license is assigned. For many users at once you'd use a CSV (comma-separated values) import or PowerShell, but for one new hire the wizard is the standard route.",
                             Order = 1,
                             Prompt = "Where do you create Dana's account?",
                             ScenarioCardId = new Guid("cbe103d6-0767-bf3e-c7c5-4d18dd6f4d37")
@@ -3027,9 +3027,9 @@ namespace SleepyDuck.Api.Migrations
                         new
                         {
                             Id = new Guid("a36f3e7c-c851-b3ce-5b5f-8261ccd91317"),
-                            CorrectAction = "The usage location for the user",
+                            CorrectAction = "The usage location, a country or region set on the user account",
                             CorrectOptionId = new Guid("73cc07cf-522c-80a0-2f20-ebb2094d694a"),
-                            Explanation = "Licenses can't be assigned without a usage location because service availability varies by country or region.",
+                            Explanation = "Not every Microsoft 365 service is available in every country, so the usage location tells Microsoft which services it can provide to this user. Assigning a license without one fails. It's a property of each user, and a missing value is the most common reason a license assignment fails, including with group-based licensing.",
                             Order = 2,
                             Prompt = "The wizard reaches product licenses. What must be set before the E3 license can be assigned?",
                             ScenarioCardId = new Guid("cbe103d6-0767-bf3e-c7c5-4d18dd6f4d37")
@@ -3039,7 +3039,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("015dd9c5-6161-0c58-b668-a5b11b501069"),
                             CorrectAction = "Select the E3 license, expand Apps, and turn off the SharePoint and Viva Engage service plans",
                             CorrectOptionId = new Guid("ba2a0665-f1c2-e01d-e785-e3e84b55caa3"),
-                            Explanation = "Disabling individual service plans within the license is the supported way to give a user a subset of a subscription.",
+                            Explanation = "A license such as E3 is a bundle of service plans: Exchange Online, SharePoint, Teams, the Office apps, Viva Engage and others. In the wizard, or later on the user's Licenses and apps tab, the Apps list lets you clear individual plans. Turning a plan off removes Dana's entitlement to that service and leaves the rest of E3 working. One thing to know is that OneDrive depends on the SharePoint plan, so turning SharePoint off removes OneDrive too.",
                             Order = 3,
                             Prompt = "How do you keep Dana from getting SharePoint and Viva Engage while keeping the rest of E3?",
                             ScenarioCardId = new Guid("cbe103d6-0767-bf3e-c7c5-4d18dd6f4d37")
@@ -3049,7 +3049,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("c4e4078b-5ba5-d86b-f7e4-2d13793e498a"),
                             CorrectAction = "Open Dana's user pane and check Licenses and apps to confirm that those two apps are off",
                             CorrectOptionId = new Guid("2462b9fc-0598-7027-c98c-848ad5ee7900"),
-                            Explanation = "This view shows what's actually provisioned for the user, including each service plan's state.",
+                            Explanation = "Verify what was actually saved, before the user arrives. The user's Licenses and apps tab shows the assigned license and the state of each service plan, so you can see E3 assigned with SharePoint and Viva Engage cleared. Other admin pages show tenant totals or a single service, which doesn't answer the HR requirement.",
                             Order = 4,
                             Prompt = "How do you verify the result before Monday?",
                             ScenarioCardId = new Guid("cbe103d6-0767-bf3e-c7c5-4d18dd6f4d37")
@@ -3059,7 +3059,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("0746394d-1ec2-c78f-4b8e-ed734c66af0f"),
                             CorrectAction = "Use group-based licensing in Microsoft Entra ID on a Marketing security group",
                             CorrectOptionId = new Guid("60cbd552-12bb-64e6-5995-19bd41b9be5e"),
-                            Explanation = "Membership drives the assignment, so joiners get the license and leavers release it without any admin effort.",
+                            Explanation = "With group-based licensing you assign the license to a group once, and Entra ID gives it to every member. A new hire who is added to the group gets E3 automatically, and someone who is removed loses it and the license returns to the pool. It needs a security group or a Microsoft 365 group, and Entra ID P1, which E3 includes. If membership is dynamic, based on the department attribute, even adding people to the group is automatic.",
                             Order = 1,
                             Prompt = "What is the best way to reduce the manual licensing work?",
                             ScenarioCardId = new Guid("f89d8adf-76a1-3564-5e6d-4c663173c0ae")
@@ -3069,7 +3069,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("ff244dd0-d2b0-17b4-ffcd-87eee615d266"),
                             CorrectAction = "Turn off the Viva Engage service plan in the group's license assignment options",
                             CorrectOptionId = new Guid("8726dfa7-a305-edea-4c4f-a38ba8c95e77"),
-                            Explanation = "The group's assignment options apply the same service plan configuration to every member.",
+                            Explanation = "The service plan switches that exist for a single user also exist on a group's license assignment. Clearing Viva Engage there applies to every current and future member. If a user holds the same license from two places, the enabled plans are combined, so a plan only stays off if every assignment leaves it off.",
                             Order = 2,
                             Prompt = "When you assign E3 to the group, how do you exclude Viva Engage?",
                             ScenarioCardId = new Guid("f89d8adf-76a1-3564-5e6d-4c663173c0ae")
@@ -3079,7 +3079,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("134765e8-456a-7523-7bb0-d74aabba779b"),
                             CorrectAction = "On the group's Licenses page in Microsoft Entra ID, review the users with assignment errors",
                             CorrectOptionId = new Guid("6d8acffe-2c72-3bee-4687-d90fc6a8a641"),
-                            Explanation = "Entra ID records assignment errors per user in the group's licensing view, along with the reason for each.",
+                            Explanation = "Group licensing is processed in the background, one user at a time, and a user who fails doesn't stop the others. The group's Licenses page shows how many members are in an error state, and opening it lists each user with a reason, such as a missing usage location, not enough licenses, or conflicting service plans. The same information is in the Entra audit logs.",
                             Order = 3,
                             Prompt = "Three users show a license error. Where do you find out why?",
                             ScenarioCardId = new Guid("f89d8adf-76a1-3564-5e6d-4c663173c0ae")
@@ -3089,7 +3089,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("838d0d9a-847e-2dbd-3839-3b5ba965d837"),
                             CorrectAction = "Set the usage location on those users, then reprocess the assignment if it doesn't retry by itself",
                             CorrectOptionId = new Guid("54a61447-18a3-ca45-356c-23b643a7ac5d"),
-                            Explanation = "Once the missing property is set, the group can assign the license. Reprocessing gets it done without waiting.",
+                            Explanation = "The error names the missing property, so fix that property and nothing else. Set the usage location on the three users, and Entra ID normally retries the assignment by itself. The Reprocess button on the group's Licenses page forces it straight away. To prevent it, set the usage location when users are created, or sync it from HR data.",
                             Order = 4,
                             Prompt = "The error says the users have no usage location. How do you fix it?",
                             ScenarioCardId = new Guid("f89d8adf-76a1-3564-5e6d-4c663173c0ae")
@@ -3099,7 +3099,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("3b41f970-ac1e-417f-a972-41a2dc3fbc75"),
                             CorrectAction = "Open Luis's failed sign-in in the Entra sign-in logs and review its Conditional Access tab",
                             CorrectOptionId = new Guid("7d6513d9-9842-821b-5d57-503f7049d217"),
-                            Explanation = "The sign-in log entry shows the error code, the location, and the result of every policy evaluated, including the one that blocked access.",
+                            Explanation = "Every sign-in attempt is logged in Entra ID under Sign-in logs, including failed ones. The failed entry gives the error code, the IP (Internet Protocol) address and the location it mapped to, the app, and the device. Its Conditional Access tab lists every policy that was evaluated and whether each one succeeded, failed or didn't apply. That names the policy that blocked Luis, so you don't have to guess.",
                             Order = 1,
                             Prompt = "Where do you find out why the sign-in was blocked?",
                             ScenarioCardId = new Guid("dc625090-483f-4846-95a4-f7c8b8d9fcc9")
@@ -3107,9 +3107,9 @@ namespace SleepyDuck.Api.Migrations
                         new
                         {
                             Id = new Guid("0c432c4d-2b22-b689-6f3a-b783aa2ce4f7"),
-                            CorrectAction = "The policy blocked the sign-in because Portugal isn't in the allowed countries location",
+                            CorrectAction = "The policy blocked the sign-in because Portugal isn't in the allowed countries named location",
                             CorrectOptionId = new Guid("91a68799-ba2d-22f3-5d17-733430c93f96"),
-                            Explanation = "Country locations come from the sign-in's public IP. Luis's IP maps to Portugal, which the policy blocks.",
+                            Explanation = "A Conditional Access policy is an if-then rule: if these users, apps and conditions match, then block, or grant access with requirements such as MFA. This policy's condition is any location outside the 'allowed countries' named location, and its control is Block. Entra works out the country from the public IP address of the sign-in. Luis's IP is Portuguese, so the condition matched. A block ends the sign-in at once, which is why he was never asked for MFA.",
                             Order = 2,
                             Prompt = "The log shows error 53003, location Portugal, and the policy 'Block sign-ins outside allowed countries' with the result Failure. What is the cause?",
                             ScenarioCardId = new Guid("dc625090-483f-4846-95a4-f7c8b8d9fcc9")
@@ -3119,7 +3119,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("063e942b-84c2-66c3-3815-01f571f03414"),
                             CorrectAction = "Add Luis to a travel exclusion group that the policy excludes, with a set removal date",
                             CorrectOptionId = new Guid("036ac3e0-c3b8-9245-68ef-35468cb7a221"),
-                            Explanation = "The exception covers only the approved user for the approved period, and the policy keeps protecting everyone else.",
+                            Explanation = "Policies have Include and Exclude lists, and Exclude wins. Putting Luis in a group that the policy excludes lets only him through, and only while he's in the group. Set a removal date, or use an access review, so the exception doesn't become permanent. The other options all change the policy for everybody.",
                             Order = 3,
                             Prompt = "Management approves access for the two-week trip. How do you apply it?",
                             ScenarioCardId = new Guid("dc625090-483f-4846-95a4-f7c8b8d9fcc9")
@@ -3129,7 +3129,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("2c7d8b12-d8a4-1d97-e00a-9bf9d70aa62c"),
                             CorrectAction = "Use What If for Luis with Portugal as the country, and check the block policy isn't applied",
                             CorrectOptionId = new Guid("47535515-8039-9bc4-c932-4a40b9b40605"),
-                            Explanation = "What If simulates the sign-in against every policy, so it proves the exclusion works. Luis's next sign-in log entry then confirms it in production.",
+                            Explanation = "What If is a tool on the Conditional Access page. You pick a user, an app and conditions such as country or IP address, and it lists which policies would apply and which wouldn't. Running it for Luis from Portugal should show the block policy among the policies that will not apply, because of the exclusion. That proves the change before he tries. His next real sign-in in the sign-in logs is the final confirmation.",
                             Order = 4,
                             Prompt = "How do you confirm the exception before Luis tries again?",
                             ScenarioCardId = new Guid("dc625090-483f-4846-95a4-f7c8b8d9fcc9")
@@ -3139,7 +3139,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("dcffec3d-d15e-05e2-0909-5624f1040fe4"),
                             CorrectAction = "Microsoft 365 Group",
                             CorrectOptionId = new Guid("3f60d62e-e46e-1198-68a3-f6e4d90ee16b"),
-                            Explanation = "It's the only option here that includes a shared mailbox, calendar, files, and a Planner board.",
+                            Explanation = "Match the group type to what the team needs. A distribution list is only an address that delivers mail to its members. A mail-enabled security group does that and can also be used to grant permissions. A Microsoft 365 Group creates a shared mailbox and calendar, a SharePoint site for files, and a Planner plan, all with one membership. The Events team asked for all four, so only the Microsoft 365 Group fits.",
                             Order = 1,
                             Prompt = "Which group type fits the request?",
                             ScenarioCardId = new Guid("622dd8dc-4aac-6e2b-3835-08d9f45e45dc")
@@ -3149,7 +3149,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("cf9e64f8-d1aa-bcf6-5093-22a47eb5ba6f"),
                             CorrectAction = "Microsoft 365 admin center > Teams & groups > Active teams & groups, then add a Microsoft 365 group",
                             CorrectOptionId = new Guid("160cde88-cde7-129c-c9e5-141bb2eb9ff4"),
-                            Explanation = "This is the standard admin path, and it provisions the connected group resources.",
+                            Explanation = "Creating it under Teams & groups > Active teams & groups in the Microsoft 365 admin center provisions the mailbox, calendar, SharePoint site and Planner together. You choose a name, an email address, owners, members, and whether it's public or private. A group created with a team in Teams or a plan in Planner is the same kind of object underneath.",
                             Order = 2,
                             Prompt = "Where do you create it?",
                             ScenarioCardId = new Guid("622dd8dc-4aac-6e2b-3835-08d9f45e45dc")
@@ -3159,7 +3159,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("b731b4cb-9f14-159f-5c15-56786d65694d"),
                             CorrectAction = "At least one owner, ideally two, who will manage its members",
                             CorrectOptionId = new Guid("cdb7507b-cd75-11b5-5de2-9e25205adc9e"),
-                            Explanation = "Owners keep the group's membership and settings current without admin involvement, and a second owner guards against orphaning it.",
+                            Explanation = "Owners can add and remove members and change the group's settings, so the team runs itself without tickets to IT. With two owners, the group isn't left ownerless when one of them leaves the company. A group with no owner can only be managed by an admin.",
                             Order = 3,
                             Prompt = "What must you assign when creating the group?",
                             ScenarioCardId = new Guid("622dd8dc-4aac-6e2b-3835-08d9f45e45dc")
@@ -3167,9 +3167,9 @@ namespace SleepyDuck.Api.Migrations
                         new
                         {
                             Id = new Guid("a7ba522e-0217-6b71-33a8-76cb23de155d"),
-                            CorrectAction = "Turn on the setting that allows people outside the organization to email the group",
+                            CorrectAction = "Turn on 'Allow external senders to email this group' in the group's settings",
                             CorrectOptionId = new Guid("4c377546-c175-4b1e-6f9d-4802ae45ad2c"),
-                            Explanation = "By default, a Microsoft 365 Group only accepts mail from internal senders. This setting opens it to external senders.",
+                            Explanation = "A Microsoft 365 Group rejects mail from senders outside the organization by default, so the partners get a bounce. The fix is the group setting 'Allow external senders to email this group', on the group's Settings tab in the admin center. In PowerShell it's Set-UnifiedGroup with -RequireSenderAuthenticationEnabled $false. Distribution lists have the same default and the same kind of switch.",
                             Order = 4,
                             Prompt = "Partners report that their emails to the group are being rejected. What should you change?",
                             ScenarioCardId = new Guid("622dd8dc-4aac-6e2b-3835-08d9f45e45dc")
@@ -3179,7 +3179,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("cb94ec6e-cd30-6075-cc2b-8567ecd3858b"),
                             CorrectAction = "Send As",
                             CorrectOptionId = new Guid("22af66fb-be7c-92c5-0603-5a6300f477da"),
-                            Explanation = "Only Send As hides the delegate completely. The recipient sees just the group's address.",
+                            Explanation = "There are two ways to send for another address. With Send As, the message looks as if it came from support@contoso.example and the delegate isn't shown anywhere. With Send on Behalf, the From line reads 'Aisha on behalf of Support'. The customer must not see Aisha, so it has to be Send As. Full Access is a third permission, for opening a mailbox, and it doesn't include sending.",
                             Order = 1,
                             Prompt = "Which permission meets the requirement?",
                             ScenarioCardId = new Guid("b7e23b93-9bda-3eb6-bbc5-3c556368b7c5")
@@ -3189,9 +3189,9 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("03fe44d1-045b-dd43-5c2a-8f28a9bf0e88"),
                             CorrectAction = "Exchange admin center > Recipients > Groups > Distribution list > the group's Delegates settings",
                             CorrectOptionId = new Guid("84468aab-5f77-86f2-a554-a9053e21fe58"),
-                            Explanation = "Delegate permissions for a group, including Send As, are managed on the group in the Exchange admin center.",
+                            Explanation = "In the Exchange admin center, open Recipients > Groups, pick the Distribution list tab, select the group, and edit Manage delegates in its settings. There you add Aisha and choose the Send As permission. The permission is stored on the group, which is why it's set there and not on Aisha's account.",
                             Order = 2,
-                            Prompt = "Where do you grant it in the admin UI?",
+                            Prompt = "Where do you grant it in the admin UI (user interface)?",
                             ScenarioCardId = new Guid("b7e23b93-9bda-3eb6-bbc5-3c556368b7c5")
                         },
                         new
@@ -3199,7 +3199,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("a80dc289-87e8-7b23-fa54-93d9b8b1f698"),
                             CorrectAction = "Add-RecipientPermission -Identity support@contoso.example -Trustee aisha@contoso.example -AccessRights SendAs",
                             CorrectOptionId = new Guid("12725860-b218-e9fc-79a4-662fc050b6d4"),
-                            Explanation = "In Exchange Online, Add-RecipientPermission is the cmdlet that grants Send As.",
+                            Explanation = "Add-RecipientPermission is the Exchange Online cmdlet for Send As. -Identity is the address being sent as, -Trustee is the person who gets the right, and -AccessRights SendAs is the right. Check it with Get-RecipientPermission -Identity support@contoso.example. Send on Behalf uses a different cmdlet and parameter, Set-DistributionGroup -GrantSendOnBehalfTo.",
                             Order = 3,
                             Prompt = "You'd rather script this. Which PowerShell command is right?",
                             ScenarioCardId = new Guid("b7e23b93-9bda-3eb6-bbc5-3c556368b7c5")
@@ -3209,7 +3209,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("381ec257-5b7d-2896-21d5-ba29c9e460f2"),
                             CorrectAction = "Allow time for the permission to replicate, then have Aisha choose the support address in the From field",
                             CorrectOptionId = new Guid("93fb1a01-9362-df8a-b437-78584b23a1f4"),
-                            Explanation = "Permissions can take a while to take effect, and Outlook sends from the user's own address unless the From field is changed.",
+                            Explanation = "Two things commonly go wrong straight after the grant. The permission can take up to an hour to apply across Exchange Online. And Outlook keeps sending from Aisha's own address until she shows the From field and chooses the support address. If Outlook's cached entry for the address bounces, typing it out in full or using Outlook on the web avoids it.",
                             Order = 4,
                             Prompt = "Aisha still can't send as the group right after you grant it. What's the most likely next step?",
                             ScenarioCardId = new Guid("b7e23b93-9bda-3eb6-bbc5-3c556368b7c5")
@@ -3219,7 +3219,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("f2457426-5608-421d-48c7-4da2540fc244"),
                             CorrectAction = "The Project Atlas site's sharing settings in the SharePoint admin center, then any domain limits",
                             CorrectOptionId = new Guid("0270171a-9e67-92af-ebbe-95486b07d401"),
-                            Explanation = "Below the organization level, the site setting and domain restrictions are the layers that can block one partner but not another.",
+                            Explanation = "SharePoint sharing is decided in layers. The organization setting is the most permissive level any site can have. Each site has its own level, which can be the same or stricter. Domain allow or block lists can then restrict which external domains are permitted, at either level. One partner works and the other doesn't, so the block depends on the domain, and the site's settings and the domain limits are where to look.",
                             Order = 1,
                             Prompt = "The organization level already allows guests. Where do you look first?",
                             ScenarioCardId = new Guid("c892bf25-98a8-f270-b2c2-9ccd15cc1750")
@@ -3229,7 +3229,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("8abc1259-4578-20fe-b5b3-92e0d403c3cb"),
                             CorrectAction = "fabrikam.example isn't on the organization's allowed domains list",
                             CorrectOptionId = new Guid("bb2bb18c-7ecb-0589-c5f3-82f69ef0cb9f"),
-                            Explanation = "An allow list blocks every domain that isn't on it, which is why adatum.example works and fabrikam.example doesn't.",
+                            Explanation = "'Limit external sharing by domain' has two modes. In allow mode, only the listed domains can be shared with, and every other domain is blocked. In block mode, only the listed domains are refused. This tenant uses allow mode with a single entry, adatum.example, so fabrikam.example is refused with the policy message the owners saw. The site wasn't the cause, since it has no list of its own and already allows guests.",
                             Order = 2,
                             Prompt = "The site allows New and existing guests and has no domain list. Under Policies > Sharing, the organization limits sharing to allowed domains, and only adatum.example is listed. What's the cause?",
                             ScenarioCardId = new Guid("c892bf25-98a8-f270-b2c2-9ccd15cc1750")
@@ -3239,7 +3239,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("464963e8-41e7-2f0a-b974-f85e9779d400"),
                             CorrectAction = "Add fabrikam.example to the allowed domains, and to the Entra B2B allow list if one is used",
                             CorrectOptionId = new Guid("637ec6aa-8892-4b6e-08c6-3ea3d727db9f"),
-                            Explanation = "This admits exactly the approved partner, and keeping the Entra list in step prevents a second block when the guest is invited.",
+                            Explanation = "Add the approved domain to the allow list under Policies > Sharing in the SharePoint admin center. That admits Fabrikam and nobody else. Sharing with a new guest also creates a Microsoft Entra B2B guest account, and Entra has its own allow or deny list under External collaboration settings. If that list is in use and Fabrikam is missing, the invitation fails at that second gate, so update both.",
                             Order = 3,
                             Prompt = "Security approves Fabrikam as a partner. What do you change?",
                             ScenarioCardId = new Guid("c892bf25-98a8-f270-b2c2-9ccd15cc1750")
@@ -3249,7 +3249,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("8a7412cf-1371-43c7-2d96-9fc2d62e9afb"),
                             CorrectAction = "Have an owner share again, then confirm the consultant can redeem the invitation and open the file",
                             CorrectOptionId = new Guid("fa35dc3d-26ac-ad12-e8af-2f41da5a7254"),
-                            Explanation = "Only the full path proves it works, from invitation to sign-in to file access. Sharing changes can take a few minutes to apply.",
+                            Explanation = "Test the whole path the consultant will use. An owner shares the file again, the consultant receives the invitation, signs in or enters a one-time passcode to redeem it, and opens the file. Each of those steps can fail separately, so seeing the domain in the list isn't enough. Allow a few minutes after the change before testing.",
                             Order = 4,
                             Prompt = "How do you confirm the fix?",
                             ScenarioCardId = new Guid("c892bf25-98a8-f270-b2c2-9ccd15cc1750")
@@ -3259,7 +3259,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("c592c3bc-9a51-6552-3f57-d4dcb0433bcd"),
                             CorrectAction = "Try adding the same guest to a different team to see whether the block is tenant-wide or only on this team",
                             CorrectOptionId = new Guid("0e74996b-99eb-69eb-650d-338073472253"),
-                            Explanation = "Guest blocks come either from tenant-wide settings or from one team's label or group setting. One test tells you which layer to inspect.",
+                            Explanation = "Several settings must all allow a guest: Teams guest access, the Entra external collaboration settings, the Microsoft 365 Groups guest settings, and any sensitivity label on the team. The first three are tenant-wide, and a label affects one team. Trying the same guest in another team separates these in one test. If it fails everywhere, look at a tenant setting. If it fails only here, look at this team.",
                             Order = 1,
                             Prompt = "What's the quickest way to narrow down the problem?",
                             ScenarioCardId = new Guid("0a9c0e04-1982-c0cb-7c90-748d8bba604c")
@@ -3267,9 +3267,9 @@ namespace SleepyDuck.Api.Migrations
                         new
                         {
                             Id = new Guid("f430db22-4555-1b5b-092d-f0e293522887"),
-                            CorrectAction = "Whether that label's group settings stop owners from adding guests",
+                            CorrectAction = "Whether the label's container settings turn off external user access for the team",
                             CorrectOptionId = new Guid("dce58029-463c-b6d4-f87c-6a46bbbe3203"),
-                            Explanation = "Container sensitivity labels can control guest access for a Microsoft 365 group, and they override what the owner can do in that team.",
+                            Explanation = "A sensitivity label applied to a team is a container label. It doesn't encrypt anything by being there. It sets rules for the team itself, including privacy and whether external users can be added. If the label's external user access option is off, owners can't add guests to that team, even though the tenant allows guests. You check this on the label in the Microsoft Purview portal, in its groups and sites settings.",
                             Order = 2,
                             Prompt = "Other teams can add the guest. Vendor Onboarding has the sensitivity label 'Confidential - Internal'. What do you check?",
                             ScenarioCardId = new Guid("0a9c0e04-1982-c0cb-7c90-748d8bba604c")
@@ -3279,7 +3279,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("d084c57d-b6c7-1f50-07a0-f865cad1e9d1"),
                             CorrectAction = "Get the data owner's approval for a label that allows guests, then relabel the team",
                             CorrectOptionId = new Guid("afcefab1-8966-a130-15c7-9bb76d63d92b"),
-                            Explanation = "The label records a classification decision, so the owner of the data must approve the change instead of IT working around it.",
+                            Explanation = "The label isn't a fault to fix. Someone classified this team as internal only. If the business now needs a partner in it, the data owner has to accept that and approve a label whose settings allow guests. Then you change the team's label, and adding the guest works. Removing the label or creating an internal account gets the same result by going around the control, and an interviewer will be listening for that difference.",
                             Order = 3,
                             Prompt = "The label blocks guests by design, but the business needs the partner in this team. What is the right fix?",
                             ScenarioCardId = new Guid("0a9c0e04-1982-c0cb-7c90-748d8bba604c")
@@ -3289,7 +3289,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("60dbfd7e-99e4-5f80-f1f6-e7abed929318"),
                             CorrectAction = "Switch to the Contoso organization in Teams, using the account switcher on the profile picture",
                             CorrectOptionId = new Guid("b7df667c-36a7-5b9c-1ef3-b94e1bba3d31"),
-                            Explanation = "Guest membership lives in the host tenant, and Teams only shows that tenant's teams after the guest switches to it.",
+                            Explanation = "A guest account lives in your tenant, Contoso, and not in the guest's home tenant. Teams opens in the home organization by default and shows only its teams. The guest has to select their profile picture and switch to Contoso in the list of organizations. The Vendor Onboarding team appears there.",
                             Order = 4,
                             Prompt = "The guest accepted the invitation but says the team doesn't show up in Teams. What do you tell them?",
                             ScenarioCardId = new Guid("0a9c0e04-1982-c0cb-7c90-748d8bba604c")
@@ -3299,7 +3299,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("ff17c50d-64bc-3ab3-c65c-1ab209a66d20"),
                             CorrectAction = "Exchange admin center > Mail flow > Rules > Add a rule",
                             CorrectOptionId = new Guid("d460fca6-883a-6606-b9f2-8ffce267c6a3"),
-                            Explanation = "Mail flow rules live in the Exchange admin center and apply at the transport level, so they cover every client.",
+                            Explanation = "Mail flow rules, also called transport rules, run on Exchange Online's servers while a message is in transit. That means they apply to every message for every user, whatever app or device is used, and users can't turn them off. Each rule has conditions, actions and optional exceptions. They are created in the Exchange admin center under Mail flow > Rules, or with New-TransportRule.",
                             Order = 1,
                             Prompt = "Where do you build this?",
                             ScenarioCardId = new Guid("b380cf20-1ffe-0fef-51f6-1dbccd700a3a")
@@ -3309,7 +3309,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("d5b4ee7f-c21d-fb94-eb7d-08b3019e91d1"),
                             CorrectAction = "The sender is located > Outside the organization",
                             CorrectOptionId = new Guid("44b20642-eb21-df96-2810-a759d53cd0db"),
-                            Explanation = "This matches mail whose sender is external to the tenant, which is exactly what Security requested.",
+                            Explanation = "A rule's condition decides which messages it touches. 'The sender is located > Outside the organization' matches mail from any sender who isn't in one of the tenant's accepted domains, which means inbound external mail. Getting the direction right matters. The recipient version of this condition would match your own outbound mail.",
                             Order = 2,
                             Prompt = "Which condition targets the right messages?",
                             ScenarioCardId = new Guid("b380cf20-1ffe-0fef-51f6-1dbccd700a3a")
@@ -3319,7 +3319,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("f76aa264-8000-fdc4-00be-401c07f07021"),
                             CorrectAction = "Apply a disclaimer > append a disclaimer, with the fallback action set to Wrap",
                             CorrectOptionId = new Guid("b6e36112-b3a1-b33c-b990-fbde99b53b9d"),
-                            Explanation = "Append places the text at the end of the message, and Wrap makes sure that a message that can't be modified still carries the warning in an outer message.",
+                            Explanation = "The action 'Apply a disclaimer to the message' has two forms. Append adds the text at the bottom, and prepend adds it at the top. Security asked for the bottom, so append. Some messages can't be changed, for example encrypted or signed ones, and the fallback action covers them. Wrap puts the original inside a new message that carries the disclaimer, Ignore delivers it with no disclaimer, and Reject bounces it. Wrap keeps the warning without losing mail.",
                             Order = 3,
                             Prompt = "Which action adds the warning to the bottom of each message, and what should happen if it can't be inserted?",
                             ScenarioCardId = new Guid("b380cf20-1ffe-0fef-51f6-1dbccd700a3a")
@@ -3329,7 +3329,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("e1eddee0-50d8-68e2-1a79-66a4dc743b1f"),
                             CorrectAction = "Run it in test mode, review the results, then switch to Enforce and enable the rule",
                             CorrectOptionId = new Guid("fba7a7e8-434b-877a-5feb-e200a33700e5"),
-                            Explanation = "Test mode shows how the rule matches without changing live mail. New rules can also start disabled, so check that it's enabled.",
+                            Explanation = "A new rule can run in three modes: Enforce, Test with Policy Tips, and Test without Policy Tips. In a test mode the rule's actions aren't applied, but matches are recorded, so message trace shows what it would have done. Once the matches look right, switch to Enforce and check that the rule is enabled. A wrong condition on an enforced rule changes every message at once.",
                             Order = 4,
                             Prompt = "The rule is saved. How do you roll it out safely?",
                             ScenarioCardId = new Guid("b380cf20-1ffe-0fef-51f6-1dbccd700a3a")
@@ -3339,7 +3339,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("5fe20ef1-1f7b-cd82-6161-354cf1b74257"),
                             CorrectAction = "Run a message trace on a vendor message and open the details to see which rules it matched",
                             CorrectOptionId = new Guid("d4d08348-b024-5c67-bc66-932cc5d15b17"),
-                            Explanation = "Trace details record the mail flow rules that were applied to the message, so you can see what ran.",
+                            Explanation = "Don't reason from the rule list. Look at one real message. Run a message trace for a vendor message, open it, and read the events. The trace lists each mail flow rule that the message matched. If the disclaimer rule isn't in that list, the question becomes why it didn't run, and whichever rule did match is the first suspect.",
                             Order = 1,
                             Prompt = "How do you find out what happened to one of the vendor's messages?",
                             ScenarioCardId = new Guid("6b1529d8-0a15-c1cd-a50b-dad56cd70d27")
@@ -3349,7 +3349,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("c920ade0-50a2-4281-bdb3-79714daf7a0d"),
                             CorrectAction = "The priority order of the two rules, and whether 'Vendor Bypass' has 'Stop processing more rules' turned on",
                             CorrectOptionId = new Guid("bda5420f-6ca5-9b0e-909c-20d8f9508437"),
-                            Explanation = "A higher-priority rule with this option on prevents later rules from running for messages it matches.",
+                            Explanation = "Rules run in priority order, starting from 0. Each rule has an option called 'Stop processing more rules'. When a message matches a rule with that option on, no lower rule is evaluated for that message. 'Vendor Bypass' matches only vendor.example, so if it sits above the disclaimer rule and has the option on, it explains why exactly one sender loses the disclaimer.",
                             Order = 2,
                             Prompt = "The trace shows that a rule named 'Vendor Bypass' matched and your disclaimer rule didn't. What do you check?",
                             ScenarioCardId = new Guid("6b1529d8-0a15-c1cd-a50b-dad56cd70d27")
@@ -3359,7 +3359,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("3d623bd9-091b-bf4a-8d79-7c3b087fb6ee"),
                             CorrectAction = "Move the disclaimer rule above 'Vendor Bypass', or turn off 'Stop processing more rules' if it's not needed",
                             CorrectOptionId = new Guid("96c27442-e73e-3980-194c-52515dfaa797"),
-                            Explanation = "Either change lets the disclaimer rule run while keeping the vendor rule's other behavior.",
+                            Explanation = "Two small changes fix this. Move the disclaimer rule to a higher priority than 'Vendor Bypass', so it runs first. Or clear 'Stop processing more rules' on 'Vendor Bypass', so later rules still run. Find out why the bypass rule exists before choosing, and leave whatever else it does alone.",
                             Order = 3,
                             Prompt = "That's the cause. What is the cleanest fix?",
                             ScenarioCardId = new Guid("6b1529d8-0a15-c1cd-a50b-dad56cd70d27")
@@ -3369,7 +3369,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("801fb6ed-6c3f-95a7-9828-690e0b11d9ae"),
                             CorrectAction = "Have a vendor message come through, then confirm the disclaimer and check the trace details",
                             CorrectOptionId = new Guid("484f1987-fec2-3a86-5d4e-6410967edbcb"),
-                            Explanation = "A real message and its trace prove the expected rule fired. Rule changes can take a short time to apply.",
+                            Explanation = "Verify the same way you diagnosed it. Wait for the change to apply, get a real message from vendor.example, and check that it carries the disclaimer. Then open its message trace and confirm that the disclaimer rule now appears among the matched rules. A test from inside the company wouldn't match the external sender condition.",
                             Order = 4,
                             Prompt = "How do you confirm the change worked?",
                             ScenarioCardId = new Guid("6b1529d8-0a15-c1cd-a50b-dad56cd70d27")
@@ -3379,7 +3379,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("7159f258-9824-2105-ccae-acebca7cb3fc"),
                             CorrectAction = "Search Threat Explorer in the Defender portal by sender address and subject for today",
                             CorrectOptionId = new Guid("124ca41d-746d-d99c-beb1-5876e3769954"),
-                            Explanation = "Explorer returns every matching message with its recipients, delivery location and URL clicks in one view.",
+                            Explanation = "Threat Explorer, under Email & collaboration > Explorer in the Defender portal, searches all mail in the tenant. Filter on the sender address, the subject or the URL (uniform resource locator), and it returns every copy with its recipient, where it was delivered (Inbox, Junk or quarantine), and whether anyone clicked the link. It comes with Defender for Office 365 Plan 2. Three reports usually mean many more recipients, and this is how you find the full scope.",
                             Order = 1,
                             Prompt = "How do you find everyone who received the message?",
                             ScenarioCardId = new Guid("342cc552-23d1-4282-8205-22cb79b47a8e")
@@ -3389,7 +3389,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("72ec1818-d0bc-e20e-0322-953997a0d723"),
                             CorrectAction = "Select the messages in Explorer, take a Soft delete action, and track it in the Action center",
                             CorrectOptionId = new Guid("b1bcbdba-725f-b6c4-780e-a56f3b78800f"),
-                            Explanation = "Remediating from Explorer pulls delivered copies out of every mailbox at once, and the Action center records the result.",
+                            Explanation = "From the Explorer results you select the messages and choose Take action. A soft delete moves each copy to the Recoverable Items folder, where users can't see it but an admin can still recover it. The Action center records which mailboxes were cleaned and which failed. It's faster and more complete than asking 140 people to delete a message.",
                             Order = 2,
                             Prompt = "Explorer shows 140 recipients, with 128 copies still in Inboxes. How do you remove them?",
                             ScenarioCardId = new Guid("342cc552-23d1-4282-8205-22cb79b47a8e")
@@ -3399,7 +3399,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("fce75af6-65e2-355a-ba86-18691e800a33"),
                             CorrectAction = "Add block entries for the domain and URL in the Tenant Allow/Block List",
                             CorrectOptionId = new Guid("926b859f-b559-4c9a-ff26-102e7e81b2a3"),
-                            Explanation = "Block entries stop new mail from the domain, and Safe Links blocks the URL at click time even in messages that get through.",
+                            Explanation = "The Tenant Allow/Block List, under Threat policies in the Defender portal, takes block entries for domains and addresses, URLs, and files. A domain block stops further mail from payroll-portal.example. A URL block makes Safe Links stop the click, which also covers a copy sent from a different address. The sender passed SPF and DKIM for a domain the attacker owns, so authentication checks won't catch it.",
                             Order = 3,
                             Prompt = "How do you block further messages and the link itself?",
                             ScenarioCardId = new Guid("342cc552-23d1-4282-8205-22cb79b47a8e")
@@ -3409,7 +3409,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("03a808f5-e30b-8239-33fc-4b53b61f7f8c"),
                             CorrectAction = "Treat both accounts as compromised: reset passwords, revoke sessions, and review sign-ins",
                             CorrectOptionId = new Guid("e1b4ccce-9836-e4aa-9fec-348b544d8ead"),
-                            Explanation = "A click through to a credential page may have captured a password, and revoking sessions cuts off any tokens the attacker already has.",
+                            Explanation = "Clicking past the warning means the user reached the fake sign-in page and may have typed a password. Assume they did. Reset the password, revoke sessions so stolen tokens stop working, and review the sign-in logs for sign-ins from unfamiliar locations. Also check for new inbox rules, forwarding and newly registered MFA (multi-factor authentication) methods, which attackers add to keep access.",
                             Order = 4,
                             Prompt = "Explorer's URL clicks show that two users clicked through the Safe Links warning. What do you do next?",
                             ScenarioCardId = new Guid("342cc552-23d1-4282-8205-22cb79b47a8e")
@@ -3417,9 +3417,9 @@ namespace SleepyDuck.Api.Migrations
                         new
                         {
                             Id = new Guid("6ed8f58a-a744-11bb-2126-12be215bda38"),
-                            CorrectAction = "SIP signaling is working, so the fault is in the RTP media path",
+                            CorrectAction = "SIP (Session Initiation Protocol) signaling is working, so the fault is in the RTP (Real-time Transport Protocol) media path",
                             CorrectOptionId = new Guid("b58d8e8f-6c3c-e483-13aa-e372d338fffc"),
-                            Explanation = "A call that rings and connects has completed its SIP exchange. Audio travels in a separate RTP stream that can fail on its own.",
+                            Explanation = "A VoIP (Voice over IP) call uses two protocols. SIP is the signaling that makes the phone ring and connects the call. RTP carries the audio, as a separate UDP (User Datagram Protocol) stream in each direction, on different ports. These calls ring and connect, so SIP works. One direction of audio is missing, so one RTP stream isn't arriving. That narrows the fault to the media path, and the new firewall is the obvious suspect.",
                             Order = 1,
                             Prompt = "Calls connect normally, but audio only flows one way. What does that tell you?",
                             ScenarioCardId = new Guid("1b904159-4dbb-c44f-8839-9e0df34b7b47")
@@ -3429,7 +3429,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("9d2372ef-5c7c-50c9-2269-c4dbad4d333a"),
                             CorrectAction = "Take a packet capture during a test call and inspect the SIP and RTP streams in Wireshark",
                             CorrectOptionId = new Guid("bb10e7a4-be03-9eb6-19dd-8f032473b523"),
-                            Explanation = "A capture shows the SDP each side advertised and which RTP streams actually exist. Wireshark's Telephony > VoIP Calls view lays this out for each call.",
+                            Explanation = "A packet capture shows what's on the wire. In Wireshark, Telephony > VoIP Calls lists each call, and Flow Sequence draws the SIP messages. Inside the INVITE and the 200 OK is the SDP (Session Description Protocol), where each side states the IP (Internet Protocol) address and port it wants audio sent to. Telephony > RTP > RTP Streams shows which audio streams exist. With those you can see whether a stream was never sent or was sent to the wrong place.",
                             Order = 2,
                             Prompt = "How do you get evidence of what is happening to the audio?",
                             ScenarioCardId = new Guid("1b904159-4dbb-c44f-8839-9e0df34b7b47")
@@ -3439,7 +3439,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("6d7f1865-4c10-3114-9e5a-22d813c5a1a8"),
                             CorrectAction = "The phone is advertising a private IP, so the far end sends RTP to an unroutable address",
                             CorrectOptionId = new Guid("7774ca8c-5423-119f-2707-0206aa7e33b1"),
-                            Explanation = "The SDP c= line tells the other side where to send audio. A 192.168.x.x address means nothing on the internet, so the return stream never arrives.",
+                            Explanation = "In SDP, the c= line is the address where that side wants to receive audio. The phone put its private LAN (local area network) address there, 192.168.10.25. The provider sends its RTP to that address, and private addresses can't be routed on the internet, so those packets go nowhere. Audio from the phone still gets out, because outbound packets pass through NAT (Network Address Translation) normally. That's why the staff hear nothing and the other party hears them.",
                             Order = 3,
                             Prompt = "In the capture, the phone's SDP says c=IN IP4 192.168.10.25. RTP from the phone leaves the site, but no RTP comes back. What is the cause?",
                             ScenarioCardId = new Guid("1b904159-4dbb-c44f-8839-9e0df34b7b47")
@@ -3449,7 +3449,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("c7faa051-2a06-39ce-1657-2d77bd0ce29d"),
                             CorrectAction = "Configure NAT traversal so SDP carries a reachable address, and allow the RTP port range",
                             CorrectOptionId = new Guid("6fa53860-2e71-390b-3a1e-3451b0438fdb"),
-                            Explanation = "STUN, or an SBC or PBX using symmetric RTP, gets audio back through NAT. The firewall must also pass the provider's RTP UDP range.",
+                            Explanation = "The far end needs a public address and port to send audio to. STUN (Session Traversal Utilities for NAT) lets the phone learn its public address and put it in the SDP. Or the provider's SBC (session border controller) can use symmetric RTP, where it ignores the SDP address and replies to wherever the phone's audio came from. The firewall must also allow the provider's RTP UDP port range. If SIP ALG (Application Layer Gateway) on the new firewall is rewriting packets badly, turn it off.",
                             Order = 4,
                             Prompt = "What is the right fix?",
                             ScenarioCardId = new Guid("1b904159-4dbb-c44f-8839-9e0df34b7b47")
@@ -3459,7 +3459,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("eafc22a2-6edc-9744-e2b3-64a8d6a4f190"),
                             CorrectAction = "Test calls in both directions, confirming two-way audio and two RTP streams in a capture",
                             CorrectOptionId = new Guid("ee34b6e1-caae-d2f7-e96b-7f3608efde07"),
-                            Explanation = "Testing inbound and outbound calls covers both call paths, and the capture proves media flows each way instead of relying on one good impression.",
+                            Explanation = "Test what was broken, in both directions. Make an outbound call and an inbound call through the PBX, and check that both people can hear each other. Then confirm in a capture that there are two RTP streams, one each way. Registration and internal calls worked during the fault, so they can't prove the fix.",
                             Order = 5,
                             Prompt = "How do you confirm the fix?",
                             ScenarioCardId = new Guid("1b904159-4dbb-c44f-8839-9e0df34b7b47")
@@ -3469,9 +3469,9 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("e527425e-6370-df76-1dc4-db9ec3a8d762"),
                             CorrectAction = "No final response to the request arrived in time, so find where the request stopped",
                             CorrectOptionId = new Guid("6215c595-afce-3fff-4be4-79a792d1e500"),
-                            Explanation = "408 is about time running out. The request got no final answer, so the next job is to find which hop it stopped at.",
+                            Explanation = "SIP response codes follow the same pattern as HTTP (Hypertext Transfer Protocol). 4xx is a request failure, and 408 Request Timeout means a request was sent and no final response came back in time. It doesn't say why. A 408 is generated by whichever device gave up waiting, so the work is to find how far the INVITE got.",
                             Order = 1,
-                            Prompt = "What does SIP 408 Request Timeout tell you?",
+                            Prompt = "What does SIP (Session Initiation Protocol) 408 Request Timeout tell you?",
                             ScenarioCardId = new Guid("2a935101-a258-07c0-d4cf-7d4141dd7a76")
                         },
                         new
@@ -3479,7 +3479,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("52ce1b34-42bb-920e-f7df-5b25a7b5f887"),
                             CorrectAction = "Capture the call's SIP signaling on the PBX with sngrep or tcpdump and read the ladder",
                             CorrectOptionId = new Guid("41b26ba6-08b4-6bc7-dacb-9146806599bd"),
-                            Explanation = "A SIP ladder shows each request and response in order, so you can see exactly what the PBX sent and what it got back.",
+                            Explanation = "sngrep runs on the PBX and draws each call as a ladder diagram, which shows every SIP message between the PBX and the phone in order, with timing. tcpdump can save the same traffic for Wireshark. The ladder shows whether the PBX sent the INVITE, where it sent it, and whether anything came back.",
                             Order = 2,
                             Prompt = "How do you see where the call is failing?",
                             ScenarioCardId = new Guid("2a935101-a258-07c0-d4cf-7d4141dd7a76")
@@ -3489,7 +3489,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("289ddf82-0d83-5ef9-be65-7555c81292a5"),
                             CorrectAction = "The INVITE isn't reaching the phone, or its replies aren't returning, until Timer B expires",
                             CorrectOptionId = new Guid("240a7c08-788f-1bf9-8519-7deadd933afd"),
-                            Explanation = "Retransmission means nothing came back. A phone that received the INVITE would answer with a provisional response, and 32 seconds matches Timer B.",
+                            Explanation = "Over UDP (User Datagram Protocol), SIP resends a request that gets no response. Timer A starts at T1, which is 500 ms by default, and doubles each time, which gives the gaps of 0.5, 1, 2 and 4 seconds. A phone that receives an INVITE answers almost at once with 100 Trying, then 180 Ringing. Neither appears, so the INVITE never arrived, or the answers were lost. After 32 seconds, which is Timer B, the PBX gives up and returns 408 to the caller.",
                             Order = 3,
                             Prompt = "The ladder shows the PBX resending the INVITE to the phone's registered public address at 0.5, 1, 2 and 4 seconds, with no 100 Trying or 180 Ringing. What does this mean?",
                             ScenarioCardId = new Guid("2a935101-a258-07c0-d4cf-7d4141dd7a76")
@@ -3499,7 +3499,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("ddfc9042-5cc7-104f-6975-f66f1185f5ff"),
                             CorrectAction = "Enable SIP keep-alives, sent more often than the router's 60-second UDP timeout",
                             CorrectOptionId = new Guid("efc48710-a31a-23ea-c4d5-072974035e7f"),
-                            Explanation = "CRLF or OPTIONS keep-alives refresh the NAT mapping, so inbound INVITEs have an open path. This also explains why rebooting helps for a short time.",
+                            Explanation = "When the phone registers, the home router creates a NAT (Network Address Translation) mapping from the phone to the PBX, and the PBX sends calls back through that mapping. The router deletes an idle UDP mapping after 60 seconds. The registration stays valid for much longer, so the PBX keeps sending INVITEs to a mapping that no longer exists, and the router drops them. A keep-alive every 20 to 30 seconds keeps the mapping open. This explains the other clues too. A reboot re-registers and opens a new mapping for a minute, and outbound calls open their own.",
                             Order = 4,
                             Prompt = "The phone last registered 40 minutes ago, and the home router's UDP timeout is 60 seconds. What is the best fix?",
                             ScenarioCardId = new Guid("2a935101-a258-07c0-d4cf-7d4141dd7a76")
@@ -3509,7 +3509,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("a10c9f50-2ca5-f40b-8205-c945ecfdf9b9"),
                             CorrectAction = "Wait well past the 60-second UDP timeout, then call in and confirm 100 Trying and 180 Ringing",
                             CorrectOptionId = new Guid("c6bc9318-7b2a-d1ae-0863-97e6910ff952"),
-                            Explanation = "The fault only appears once the mapping has aged out, so the test has to wait for that. A ladder with provisional responses confirms the path stayed open.",
+                            Explanation = "Reproduce the conditions of the failure. The fault needs the NAT mapping to expire, so leave the phone idle for several minutes, well past 60 seconds, then call it. The ladder should now show the INVITE answered by 100 Trying and 180 Ringing, and the phone should ring. A test straight after a reboot would have passed before the fix.",
                             Order = 5,
                             Prompt = "How do you prove the fix works?",
                             ScenarioCardId = new Guid("2a935101-a258-07c0-d4cf-7d4141dd7a76")
@@ -3517,9 +3517,9 @@ namespace SleepyDuck.Api.Migrations
                         new
                         {
                             Id = new Guid("a27dfa65-41e1-a147-3929-a1645ab27517"),
-                            CorrectAction = "Ping the default gateway, then an external IP, each with about 100 packets",
+                            CorrectAction = "Ping the default gateway, then an external IP (Internet Protocol), each with about 100 packets",
                             CorrectOptionId = new Guid("98cb03d2-669a-afcd-c99b-1a814f5164aa"),
-                            Explanation = "This quickly separates a LAN problem from a WAN problem. A larger count catches intermittent loss that a few packets would miss.",
+                            Explanation = "Start by finding out which side of the gateway the loss is on. Ping the default gateway to test the LAN, then an external address to test the path beyond it. Use around 100 packets, for example ping -c 100, because the result is a percentage and a few packets can easily miss occasional loss. A clean gateway with loss outside points to the WAN (wide area network).",
                             Order = 1,
                             Prompt = "Where do you start?",
                             ScenarioCardId = new Guid("6f34a4ec-fd2b-e8f6-1e43-9a284dd34538")
@@ -3529,7 +3529,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("de253677-1db2-549e-2dc2-35fc21a057ca"),
                             CorrectAction = "mtr -rwc 200 203.0.113.50",
                             CorrectOptionId = new Guid("3f891340-abb7-ff2a-759f-d5af1c642202"),
-                            Explanation = "Report mode with 200 probes per hop gives a statistically useful picture of loss at every hop on the path.",
+                            Explanation = "MTR (My Traceroute) combines traceroute and ping. It finds every router on the path and then probes each one many times, reporting loss and latency per hop. In this command, -r is report mode, -w keeps full hostnames, and -c 200 sends 200 probes to each hop. With 200 probes, a 5% loss shows up reliably.",
                             Order = 2,
                             Prompt = "The gateway shows 0% loss, and the external IP shows 5%. Which command shows where the loss begins?",
                             ScenarioCardId = new Guid("6f34a4ec-fd2b-e8f6-1e43-9a284dd34538")
@@ -3537,9 +3537,9 @@ namespace SleepyDuck.Api.Migrations
                         new
                         {
                             Id = new Guid("4fb282d0-d4f4-ed6d-1709-4aac04ae40f6"),
-                            CorrectAction = "Ignore hop 5, since loss that doesn't carry on is likely ICMP rate limiting",
+                            CorrectAction = "Ignore hop 5, since loss that doesn't carry on is likely ICMP (Internet Control Message Protocol) rate limiting",
                             CorrectOptionId = new Guid("17292a51-1060-ae78-a723-cc526a39a062"),
-                            Explanation = "If hop 5 were really dropping traffic, later hops would show loss too. It's just giving low priority to replies aimed at itself.",
+                            Explanation = "Each line of MTR is that router's reply to probes addressed to it, and routers generate those ICMP replies in their control plane, at low priority and often rate limited. Traffic passing through a router is forwarded by the data plane, which is separate and much faster. If hop 5 were dropping forwarded packets, hops 6 to 9 would show loss as well, because their probes pass through it. They show 0%, so hop 5 is forwarding fine. The rule is that loss only counts when it continues to the final hop.",
                             Order = 3,
                             Prompt = "MTR shows hop 5 at 40% loss, but hops 6 to 9, including the destination, show 0%. What do you conclude?",
                             ScenarioCardId = new Guid("6f34a4ec-fd2b-e8f6-1e43-9a284dd34538")
@@ -3549,9 +3549,9 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("727d0862-2c61-a12c-dcce-0eda318276cd"),
                             CorrectAction = "Real loss begins at hop 3 or the link into it, which is your ISP handoff",
                             CorrectOptionId = new Guid("db871cd6-e24f-8833-2ed3-9219e7fd09df"),
-                            Explanation = "Loss that starts at a hop and continues to the destination is genuine. Here that places it at the firewall-to-ISP link or the ISP's gateway.",
+                            Explanation = "This is the pattern of real loss. It begins at one hop, and every hop after it shows about the same figure, right through to the destination. The first hop with loss is hop 3, so the fault is at hop 3 or on the link between hop 2 and hop 3. Hop 2 is your firewall and hop 3 is the ISP's gateway, so that link is the handoff to the ISP.",
                             Order = 4,
-                            Prompt = "A later MTR shows 0% at hops 1 and 2, then 6% at hop 3, and about 6% on every hop through to the destination. Hop 2 is your firewall, and hop 3 is the ISP's gateway. What does this show?",
+                            Prompt = "A later MTR shows 0% at hops 1 and 2, then 6% at hop 3, and about 6% on every hop through to the destination. Hop 2 is your firewall, and hop 3 is the ISP (internet service provider)'s gateway. What does this show?",
                             ScenarioCardId = new Guid("6f34a4ec-fd2b-e8f6-1e43-9a284dd34538")
                         },
                         new
@@ -3559,7 +3559,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("aeb378c3-7bc3-be9c-01c0-28bca1357a1d"),
                             CorrectAction = "Check the WAN interface for errors and saturation, then run MTR from the far side too",
                             CorrectOptionId = new Guid("670546da-0863-2b07-7df3-e514ff0882b8"),
-                            Explanation = "Interface errors, a duplex mismatch or a full link would mean the fault is yours. Return paths can differ, so a reverse MTR gives the ISP the full picture.",
+                            Explanation = "The suspect link has two ends, and one of them is yours. Check the firewall's WAN interface counters for CRC (cyclic redundancy check) errors, a speed or duplex mismatch, and utilization near the limit, since any of those would make it your fault to fix. Traffic often returns by a different route, and MTR only shows the outbound path, so a second MTR run from the far side toward you covers the return path.",
                             Order = 5,
                             Prompt = "What should you do before contacting the ISP?",
                             ScenarioCardId = new Guid("6f34a4ec-fd2b-e8f6-1e43-9a284dd34538")
@@ -3569,7 +3569,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("22105984-345f-f942-460c-ef2a7966ae39"),
                             CorrectAction = "Open an ISP ticket with timestamped MTR reports from both directions",
                             CorrectOptionId = new Guid("95df5a64-6424-2817-fedb-50c917a16a57"),
-                            Explanation = "This gives the ISP proof that the loss starts at its handoff and that your side has been ruled out, which shortens the investigation.",
+                            Explanation = "An ISP acts fastest on evidence. Send MTR reports with timestamps from both directions, which show loss starting at its gateway, along with the clean interface counters that rule out your equipment. That lets the engineer go straight to the handoff. A vague report of slow internet starts with the first-line script.",
                             Order = 6,
                             Prompt = "The firewall's interface is clean and under 40% utilized. What is the right escalation?",
                             ScenarioCardId = new Guid("6f34a4ec-fd2b-e8f6-1e43-9a284dd34538")
@@ -3577,9 +3577,9 @@ namespace SleepyDuck.Api.Migrations
                         new
                         {
                             Id = new Guid("b8a8f230-7cd2-3774-3659-42c5c02bdd07"),
-                            CorrectAction = "The client got no DHCP offer and assigned itself a link-local APIPA address",
+                            CorrectAction = "The client got no DHCP offer and assigned itself a link-local APIPA (Automatic Private IP Addressing) address",
                             CorrectOptionId = new Guid("a36154ed-0c31-07bd-9a93-9a6356eca927"),
-                            Explanation = "Clients use APIPA when DHCP fails. It's a useful clue, since it means the problem is getting a lease, not routing or DNS.",
+                            Explanation = "A DHCP lease takes four messages: Discover, Offer, Request and Acknowledge. The client broadcasts a Discover and waits for a server's Offer. If no offer comes, Windows and macOS give themselves an address in 169.254.0.0/16, called APIPA or link-local. It only works on the local segment and has no gateway. So this address always means the client asked for a lease and got no answer.",
                             Order = 1,
                             Prompt = "What does a 169.254.x.x address tell you?",
                             ScenarioCardId = new Guid("e5b5a9b9-099b-c951-5fe7-002659158d1c")
@@ -3589,7 +3589,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("47871ad9-ca0a-3561-703e-4013a846f0ff"),
                             CorrectAction = "The VLAN 20 scope statistics on the DHCP server, with Get-DhcpServerv4ScopeStatistics",
                             CorrectOptionId = new Guid("4e773647-2d8b-f2ec-f765-b5490084fa43"),
-                            Explanation = "Existing clients working suggests the server is reachable. Scope statistics show right away whether the pool has run out of addresses.",
+                            Explanation = "Two things can leave a client without an offer. Either the server can't be reached, or it has nothing to give. Clients that already hold a lease are renewing successfully, so the server is reachable. Get-DhcpServerv4ScopeStatistics, or the scope's statistics in the DHCP console, shows addresses in use, addresses free and the percentage used, which confirms an empty pool in one command.",
                             Order = 2,
                             Prompt = "Existing devices work, but new ones don't. What do you check first?",
                             ScenarioCardId = new Guid("e5b5a9b9-099b-c951-5fe7-002659158d1c")
@@ -3597,9 +3597,9 @@ namespace SleepyDuck.Api.Migrations
                         new
                         {
                             Id = new Guid("6df6fd12-6ad1-216d-b137-9d14be120a0c"),
-                            CorrectAction = "Short-stay devices are holding addresses for 8 days, draining a small /24 scope",
+                            CorrectAction = "Short-stay devices hold 8-day leases, exhausting the 254 addresses of the /24 scope",
                             CorrectOptionId = new Guid("1c0170cb-513e-4d53-1091-004426c62597"),
-                            Explanation = "Visitors' devices keep their addresses long after they've left, so the pool fills up with leases nobody is really using.",
+                            Explanation = "A lease reserves an address for its whole duration, even after the device has left the building. A /24 gives 254 usable addresses, and the Windows default lease is 8 days. During a week-long conference, each visitor's phone holds an address for 8 days after one visit. A phone that uses a private Wi-Fi address can appear as a new client on a later day and take another one. The demand is real, and the leases are held far too long for it.",
                             Order = 3,
                             Prompt = "The scope shows 100% in use. The lease list is full of phones from the conference, with 8-day leases and many private MAC addresses. What is the root cause?",
                             ScenarioCardId = new Guid("e5b5a9b9-099b-c951-5fe7-002659158d1c")
@@ -3609,7 +3609,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("a1516d18-5455-b304-22e4-45110fd25ad4"),
                             CorrectAction = "Shorten the lease to a few hours, reclaim stale leases, and turn on conflict detection",
                             CorrectOptionId = new Guid("aab95c8f-e2b6-566f-942a-7f8ee6734073"),
-                            Explanation = "A shorter lease stops this from recurring, and removing stale leases frees addresses now. Conflict detection guards against an address still being in use.",
+                            Explanation = "The quick fix has three parts. Shorten the lease on this scope to a few hours, so addresses return soon after a visitor leaves. That only takes effect when a client renews or gets a new lease. Delete the stale leases to free addresses now. Turn on conflict detection, which makes the server ping an address before offering it, in case a device is still using one you deleted.",
                             Order = 4,
                             Prompt = "What is the best immediate fix?",
                             ScenarioCardId = new Guid("e5b5a9b9-099b-c951-5fe7-002659158d1c")
@@ -3619,7 +3619,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("ad2cf786-3bfd-48f9-51d0-aa203e8dae0c"),
                             CorrectAction = "Move guests to a separate VLAN, or widen the subnet to a /23 during a change window",
                             CorrectOptionId = new Guid("ece36e9d-109d-d294-3aef-c95cdc28dd96"),
-                            Explanation = "Both add real capacity. A /23 means changing the gateway mask and the scope together, while a guest VLAN also keeps visitors away from staff devices.",
+                            Explanation = "The lease change manages the pool better, but it doesn't make it bigger. Widening to a /23 doubles the subnet to 510 usable addresses, and the mask must change on the gateway, the scope and any static devices together. A separate guest VLAN with its own scope gives visitors their own pool and also keeps them off the staff network, which is the better design.",
                             Order = 5,
                             Prompt = "Service is back. How do you prevent it from happening again?",
                             ScenarioCardId = new Guid("e5b5a9b9-099b-c951-5fe7-002659158d1c")
@@ -3629,7 +3629,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("827bc225-d24a-2406-a175-96abdf975124"),
                             CorrectAction = "Compare dig intranet.corp.example with dscacheutil -q host -a name intranet.corp.example",
                             CorrectOptionId = new Guid("86062839-10b5-0812-331e-54d1d8c1d53c"),
-                            Explanation = "dig asks the DNS server directly, while dscacheutil goes through the macOS resolver that apps use. A difference between them points at the Mac.",
+                            Explanation = "On a Mac there are two ways to look up a name, and they can disagree. dig sends a query straight to the DNS server and shows that server's answer. dscacheutil -q host goes through the macOS system resolver, mDNSResponder, which is what Safari and other apps use, and it includes the cache and local overrides. Running both tells you whether DNS is wrong or only this Mac is.",
                             Order = 1,
                             Prompt = "How do you tell whether this is a local cache or a real DNS problem?",
                             ScenarioCardId = new Guid("95e42524-b675-8aab-3bae-f938012f09ed")
@@ -3639,9 +3639,9 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("05b59863-e25d-c8b4-6d55-b1a8d1aa1d8b"),
                             CorrectAction = "DNS is correct, and the Mac's system resolver is serving a stale answer",
                             CorrectOptionId = new Guid("4501088b-f981-0a3b-1f4a-9bba82d87024"),
-                            Explanation = "The DNS server gave the right answer directly. Only the local path that apps use is still wrong, so the fault is on the Mac.",
+                            Explanation = "dig's answer comes from the DNS server, and it's the new address, so the record is correct. dscacheutil's answer comes from the Mac's own resolver, and it's the old one. The gap between them is local to this Mac: a cached result, or something that overrides DNS. The Windows laptops already suggested the server side was fine, and this confirms it.",
                             Order = 2,
-                            Prompt = "dig returns the new IP, and dscacheutil returns the old one. What does that show?",
+                            Prompt = "dig returns the new IP (Internet Protocol), and dscacheutil returns the old one. What does that show?",
                             ScenarioCardId = new Guid("95e42524-b675-8aab-3bae-f938012f09ed")
                         },
                         new
@@ -3649,7 +3649,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("168538da-791e-8797-6e3b-6ef8ef1967ae"),
                             CorrectAction = "sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder",
                             CorrectOptionId = new Guid("282a33bb-4946-160f-ca3d-71d6cb48d26d"),
-                            Explanation = "This flushes the directory service cache, then signals mDNSResponder to drop its cached DNS results.",
+                            Explanation = "macOS keeps its DNS cache in the mDNSResponder process. dscacheutil -flushcache clears the Directory Service cache, and killall -HUP mDNSResponder sends the hang-up signal, which tells the daemon to throw away its cache and carry on running. Both need sudo. The command prints nothing when it works, so check by running dscacheutil -q host again.",
                             Order = 3,
                             Prompt = "Which command clears the DNS cache on macOS?",
                             ScenarioCardId = new Guid("95e42524-b675-8aab-3bae-f938012f09ed")
@@ -3659,7 +3659,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("8a7e8678-b58e-7a7e-5a25-03b9887dde9b"),
                             CorrectAction = "Look for an entry in /etc/hosts, then review the resolvers with scutil --dns",
                             CorrectOptionId = new Guid("b464b113-e7e6-a4d2-e95c-73a8f592bbc8"),
-                            Explanation = "The system resolver consults more than the DNS cache. A hosts entry overrides DNS, and a VPN can add a scoped resolver for a domain.",
+                            Explanation = "The system resolver has sources other than DNS, and a flush doesn't touch them. The file /etc/hosts is read first, so a line for intranet.corp.example there, perhaps left from testing, overrides DNS permanently. scutil --dns lists every resolver the Mac uses, including ones a VPN (virtual private network) adds for specific domains, which may point at a DNS server that still has the old record.",
                             Order = 4,
                             Prompt = "After the flush, dscacheutil still returns the old IP, even though dig returns the new one. What do you check next?",
                             ScenarioCardId = new Guid("95e42524-b675-8aab-3bae-f938012f09ed")
@@ -3669,7 +3669,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("4bdf0807-333d-6f83-56ef-401d5e3c7539"),
                             CorrectAction = "Match the drop times in the Mac's eapolclient logs against the RADIUS server's logs",
                             CorrectOptionId = new Guid("01b89867-bffe-fe68-deca-0a7668e9b607"),
-                            Explanation = "Authentication has two sides. The Mac shows what the client saw, and RADIUS shows why the request was accepted or rejected.",
+                            Explanation = "802.1X has three parts. The Mac is the supplicant, the access point is the authenticator, and the RADIUS server decides. To see why it fails you need both ends. On the Mac, the eapolclient process writes the EAP (Extensible Authentication Protocol) conversation to the system log, which you can read with the log show command. The RADIUS server's log gives its reason for each accept or reject. Match the two at the times of the drops.",
                             Order = 1,
                             Prompt = "Where do you gather evidence first?",
                             ScenarioCardId = new Guid("cd16467d-d0a1-c6dd-0137-f60b5f5aeb29")
@@ -3679,9 +3679,9 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("f4184cb1-5cc2-308c-718a-94b03094ae58"),
                             CorrectAction = "The Macs' 802.1X profile doesn't trust the renewed RADIUS certificate chain",
                             CorrectOptionId = new Guid("78ac1865-2d5d-24aa-5182-1f66387d873a"),
-                            Explanation = "An unknown CA alert means the client rejected the server's certificate. The timing matches the renewal, and the Macs are the ones using a fixed trust profile.",
+                            Explanation = "In PEAP (Protected Extensible Authentication Protocol) and EAP-TLS (Extensible Authentication Protocol with Transport Layer Security), the RADIUS server presents its certificate first, and the client checks it before sending any credentials. The Mac's configuration profile lists exactly which CA and server names to trust. The renewed certificate comes from a chain that isn't in that list, so the Mac ends the handshake with an unknown CA alert. The password is never sent, so it can't be the problem.",
                             Order = 2,
-                            Prompt = "The Mac logs show a TLS failure during EAP, and RADIUS logs an unknown CA alert from the client at each drop. Passwords are correct. What is the cause?",
+                            Prompt = "The Mac logs show a TLS (Transport Layer Security) failure during EAP, and RADIUS logs an unknown CA (certificate authority) alert from the client at each drop. Passwords are correct. What is the cause?",
                             ScenarioCardId = new Guid("cd16467d-d0a1-c6dd-0137-f60b5f5aeb29")
                         },
                         new
@@ -3689,7 +3689,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("1b4e9af1-6bd6-e9be-bb73-7783c80fd720"),
                             CorrectAction = "Certificates are only checked when authenticating, and reauthentication happens at session timeout",
                             CorrectOptionId = new Guid("7bf9073f-2bfb-84d2-c6e2-5eb6efc7bc15"),
-                            Explanation = "A connected session isn't re-validated continuously. The new certificate only comes into play at the next authentication, which fits the 8-hour pattern.",
+                            Explanation = "The certificate is only checked during an authentication. Macs that were already connected kept their sessions after the renewal. The wireless controller or RADIUS server sets a session timeout, here 8 hours, and when it expires the client must authenticate again. That was the first time each Mac saw the new certificate, and that's when it failed. It's a pattern worth knowing: a change can break things at the next reauthentication, not at once.",
                             Order = 3,
                             Prompt = "Why did the Macs only drop about 8 hours later, and not the moment the certificate changed?",
                             ScenarioCardId = new Guid("cd16467d-d0a1-c6dd-0137-f60b5f5aeb29")
@@ -3699,7 +3699,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("c727d9c4-6194-7a90-8830-55d7a0befbe9"),
                             CorrectAction = "Push an updated MDM profile with the new CA chain and trusted server names",
                             CorrectOptionId = new Guid("b88f1407-4524-a1b3-51c8-dc618ab2adf6"),
-                            Explanation = "This restores proper validation on every managed Mac at once, and users don't need to make any trust decisions.",
+                            Explanation = "The Macs' trust settings come from the MDM profile, so that's where the fix goes. Update the Wi-Fi payload with the new root and intermediate CA certificates and the RADIUS server's name under trusted server names, and push it. Every Mac picks it up without user action. Validation stays on, and validation is what stops a fake access point with the same SSID from collecting passwords.",
                             Order = 4,
                             Prompt = "What is the correct fix?",
                             ScenarioCardId = new Guid("cd16467d-d0a1-c6dd-0137-f60b5f5aeb29")
@@ -3707,9 +3707,9 @@ namespace SleepyDuck.Api.Migrations
                         new
                         {
                             Id = new Guid("44d94fa5-e61d-069d-cfb9-924d08432914"),
-                            CorrectAction = "Confirm the profile is installed, then verify NPS event 6272 through a full session timeout",
+                            CorrectAction = "Confirm the profile is installed, then verify NPS (Network Policy Server) event 6272 through a full session timeout",
                             CorrectOptionId = new Guid("1d0c9262-1082-0158-5548-7b23d93fa67b"),
-                            Explanation = "The fault appeared at reauthentication, so a successful grant after a full 8-hour session is the evidence that counts.",
+                            Explanation = "The failure only appeared at reauthentication, so a first connection doesn't prove the fix. Confirm the new profile is on the Macs, then watch the same Macs past a full 8-hour session. On NPS, event 6272 means access was granted and 6273 means it was denied. A 6272 for a Mac's reauthentication after the timeout, with no 6273, is the proof.",
                             Order = 5,
                             Prompt = "How do you confirm the fix has worked?",
                             ScenarioCardId = new Guid("cd16467d-d0a1-c6dd-0137-f60b5f5aeb29")
@@ -3717,9 +3717,9 @@ namespace SleepyDuck.Api.Migrations
                         new
                         {
                             Id = new Guid("ac5dd38e-1a07-400b-ccc4-1234a88947fc"),
-                            CorrectAction = "Find what is still sending the old password before unlocking the account again",
+                            CorrectAction = "Trace the source of the bad password attempts before unlocking the account again",
                             CorrectOptionId = new Guid("7b6ecbdc-658e-96dc-9be0-7d08b2db578c"),
-                            Explanation = "A lockout on a timer has a machine behind it. Until that source is found, each unlock only lasts until its next attempt.",
+                            Explanation = "Each wrong password raises the account's badPwdCount attribute, and the account locks when the count reaches the lockout threshold within the observation window set in the password policy. Dana isn't at her desk when it happens and it repeats every 20 minutes, so a device or program is sending her old password on a schedule. Unlocking resets the counter, and the next few attempts lock it again. The real job is to find the source, and the logs can name it.",
                             Order = 1,
                             Prompt = "The help desk wants to unlock the account a seventh time. What should happen first?",
                             ScenarioCardId = new Guid("652a4793-984d-cf69-18d2-336dda12226c")
@@ -3727,9 +3727,9 @@ namespace SleepyDuck.Api.Migrations
                         new
                         {
                             Id = new Guid("e8673c4e-05bf-a7b6-0142-4ce806209b8a"),
-                            CorrectAction = "The Security log on the PDC emulator, filtered to event 4740 for Dana's account",
+                            CorrectAction = "The Security log on the PDC (primary domain controller) emulator, filtered to event 4740 for Dana's account",
                             CorrectOptionId = new Guid("4b7e9f1f-148d-12ad-d30b-399bd597dafb"),
-                            Explanation = "Lockouts are processed on the PDC emulator, and event 4740 there records the computer that the failed attempts came from.",
+                            Explanation = "Every domain controller forwards a failed password to the PDC emulator, because it always holds the newest password, and lockouts are recorded there. Find it with (Get-ADDomain).PDCEmulator. In its Security log, event 4740, 'A user account was locked out', has a Caller Computer Name field with the computer the bad attempts came from. The event is only written if Audit User Account Management is turned on.",
                             Order = 2,
                             Prompt = "Where do you look to find out where the bad passwords are coming from?",
                             ScenarioCardId = new Guid("652a4793-984d-cf69-18d2-336dda12226c")
@@ -3739,7 +3739,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("cd23ae92-016f-a392-71df-6bcabeb13658"),
                             CorrectAction = "On RECEPTION-PC02, read the 4625 events to see which logon type is failing",
                             CorrectOptionId = new Guid("e019d919-1d05-1d0b-872b-9455ef6478cb"),
-                            Explanation = "Event 4625 on the source computer records each failed logon and its logon type, which shows what kind of thing is sending the password.",
+                            Explanation = "Event 4740 gave you the computer. Event 4625, 'An account failed to log on', in that computer's Security log gives you the kind of logon. Its Logon Type field tells you what is doing it: 2 is someone at the keyboard, 3 is a network connection such as a mapped drive, 4 is a scheduled task, 5 is a service, and 10 is Remote Desktop. The event also names the process.",
                             Order = 3,
                             Prompt = "Event 4740 shows Caller Computer Name: RECEPTION-PC02, a shared front-desk PC Dana covered last week. What next?",
                             ScenarioCardId = new Guid("652a4793-984d-cf69-18d2-336dda12226c")
@@ -3749,7 +3749,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("ef96842e-8c24-101f-8659-f94681f081eb"),
                             CorrectAction = "A scheduled task on that PC saved under Dana's account with her old password",
                             CorrectOptionId = new Guid("2137810b-ea64-6631-70f6-84bf2a2dddff"),
-                            Explanation = "Logon type 4 is a batch logon, which is how scheduled tasks sign in. The regular interval matches a task trigger.",
+                            Explanation = "Logon type 4 is a batch logon, which is what Task Scheduler uses to run a task as a stored account. The task saves the password when it's created and never learns about a change. Each run sends the old password, and a trigger every 20 minutes matches the lockout interval. Dana covered that PC last week, which is when she would have set it up.",
                             Order = 4,
                             Prompt = "The 4625 events for Dana's account on that PC all show Logon Type 4, about 20 minutes apart. What is the likely cause?",
                             ScenarioCardId = new Guid("652a4793-984d-cf69-18d2-336dda12226c")
@@ -3759,7 +3759,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("e09f929e-6f3c-722a-87f3-4ac140cbc805"),
                             CorrectAction = "Fix or remove the task's saved credentials, unlock the account, then watch for new 4740 events",
                             CorrectOptionId = new Guid("977598cc-6515-5a8f-fbd8-4a4767a783e5"),
-                            Explanation = "Removing the source stops the bad attempts. Watching for further lockout events proves that there wasn't a second source.",
+                            Explanation = "Deal with the cause, then the symptom, then verify. Update the task's stored password, or better, remove it or run it under a service account so it isn't tied to a person. Then unlock Dana's account. Then watch the PDC emulator for new 4740 events for a few cycles. If any appear with a different caller computer, there's a second source, such as a phone or a mapped drive.",
                             Order = 5,
                             Prompt = "You find a report-export task running as Dana. How do you finish the ticket?",
                             ScenarioCardId = new Guid("652a4793-984d-cf69-18d2-336dda12226c")
@@ -3769,7 +3769,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("9e9f93a6-1b29-36de-3739-271c1cd80551"),
                             CorrectAction = "The PC's secure channel is broken, as its machine account password doesn't match the domain's",
                             CorrectOptionId = new Guid("ef4a8924-b2db-87c9-fdb8-2ff9ce857314"),
-                            Explanation = "The computer proves its identity to the domain with its own account password. When the two sides disagree, the secure channel fails and so do domain sign-ins.",
+                            Explanation = "Every domain-joined PC has a computer account in Active Directory with its own password, which the PC changes by itself every 30 days. The Netlogon service uses that password to open a secure channel to a domain controller, and it needs the channel to check users' sign-ins. If the password stored on the PC doesn't match the one in Active Directory, the domain controller refuses the channel. Every domain user on that PC then gets this error.",
                             Order = 1,
                             Prompt = "What does this error mean?",
                             ScenarioCardId = new Guid("d4b16ac7-5976-0af5-8fbd-2d0d1bb56417")
@@ -3777,9 +3777,9 @@ namespace SleepyDuck.Api.Migrations
                         new
                         {
                             Id = new Guid("9f3c2bc3-09ba-ac1e-813f-517cf3b19e5d"),
-                            CorrectAction = "Sign in with a local administrator account",
+                            CorrectAction = "Sign in with a local administrator account, typed as .\\Administrator",
                             CorrectOptionId = new Guid("2fc27848-f026-ebb2-33e6-7465f7973cbe"),
-                            Explanation = "A local account is checked against the PC's own account database, so it doesn't need the secure channel.",
+                            Explanation = "A local account is stored on the PC itself, in the SAM (Security Account Manager) database, and it's verified there without any domain controller. That's why it still works when the secure channel is down. Use the built-in Administrator or a local admin managed by LAPS (Local Administrator Password Solution), signing in as .\\Administrator so Windows checks the local database.",
                             Order = 2,
                             Prompt = "Domain sign-ins fail on this PC. How do you get in to repair it?",
                             ScenarioCardId = new Guid("d4b16ac7-5976-0af5-8fbd-2d0d1bb56417")
@@ -3789,7 +3789,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("0df582d4-5cfb-142b-b463-c2a9c99f77b9"),
                             CorrectAction = "Run Test-ComputerSecureChannel -Verbose in an elevated PowerShell window",
                             CorrectOptionId = new Guid("984d5d00-801f-4c63-02f0-c1b1cf070eb4"),
-                            Explanation = "The cmdlet tests the channel between the local computer and its domain, and returns False when it's broken.",
+                            Explanation = "Test-ComputerSecureChannel checks whether the PC can authenticate to a domain controller with its machine account password. It returns True for a healthy channel and False for a broken one, and -Verbose adds the reason. nltest /sc_verify with the domain name does the same check. It turns the error message into a confirmed diagnosis before you change anything.",
                             Order = 3,
                             Prompt = "How do you confirm that the secure channel is the problem?",
                             ScenarioCardId = new Guid("d4b16ac7-5976-0af5-8fbd-2d0d1bb56417")
@@ -3799,7 +3799,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("f16d6501-0c6d-1f56-ec85-145fab0ff024"),
                             CorrectAction = "Run Test-ComputerSecureChannel -Repair -Credential with a domain account allowed to reset it",
                             CorrectOptionId = new Guid("7233e2c4-b9d0-3872-eb32-85d612ecc73d"),
-                            Explanation = "This resets the machine account password on both sides in place, usually with no restart and with the computer object left intact.",
+                            Explanation = "With -Repair, the cmdlet sets a new machine password and writes it to both the PC and its account in Active Directory, using the domain credential you supply. The computer object, its SID (security identifier) and its group memberships stay as they are, and normally no restart is needed. Reset-ComputerMachinePassword is the alternative. Leaving and rejoining the domain also works, but it takes two restarts and is the last resort.",
                             Order = 4,
                             Prompt = "The test returns False. What is the least disruptive fix?",
                             ScenarioCardId = new Guid("d4b16ac7-5976-0af5-8fbd-2d0d1bb56417")
@@ -3809,7 +3809,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("81b4863b-3305-e700-519f-7b935733ab79"),
                             CorrectAction = "The checkpoint restored an old machine password that the domain had since replaced",
                             CorrectOptionId = new Guid("536fd4b0-9ef5-8ce3-43b4-06d1d634c344"),
-                            Explanation = "The PC changed its password after the checkpoint was taken. Reverting put back the old one, while Active Directory kept the new one.",
+                            Explanation = "The machine password changes every 30 days, and the checkpoint was ten weeks old. Since then the PC changed its password at least twice, and Active Directory stores the newest one. Reverting brought back the PC's copy from ten weeks ago, which the domain no longer accepts. Being switched off isn't the cause, because Active Directory never expires a machine password. Restoring old state is.",
                             Order = 5,
                             Prompt = "The manager asks why reverting the checkpoint caused this. What do you say?",
                             ScenarioCardId = new Guid("d4b16ac7-5976-0af5-8fbd-2d0d1bb56417")
@@ -3819,7 +3819,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("5dcf5928-cfee-73c7-2963-82771c2fa035"),
                             CorrectAction = "repadmin /replsummary",
                             CorrectOptionId = new Guid("81f0cdf0-8994-9673-f5ec-3bd445189727"),
-                            Explanation = "It summarizes failures and the largest replication delay for every domain controller, so you can see at once which ones are behind.",
+                            Explanation = "repadmin /replsummary contacts every domain controller and prints one line each, as a source and as a destination: how many replication attempts failed, the longest time since a success, and the error code. It shows in seconds which DC (domain controller) is behind and for how long. repadmin /showrepl on that DC then gives the detail for each partition and partner.",
                             Order = 1,
                             Prompt = "Which command gives you the quickest overall view of replication health?",
                             ScenarioCardId = new Guid("5ad4d533-6843-622d-0c9a-4dfb3261a2eb")
@@ -3827,9 +3827,9 @@ namespace SleepyDuck.Api.Migrations
                         new
                         {
                             Id = new Guid("46baf750-afaa-a6df-25f8-be25c4030396"),
-                            CorrectAction = "BR-DC02 can't connect to the RPC service on its source DC, so suspect DNS or the network path",
+                            CorrectAction = "BR-DC02 can't connect to the RPC (remote procedure call) service on its source DC, so suspect DNS (Domain Name System) or the network path",
                             CorrectOptionId = new Guid("a4693142-8050-b250-0992-fd85e70e386c"),
-                            Explanation = "1722 means the RPC server is unavailable. It's a connection failure, not a problem with the directory data.",
+                            Explanation = "Replication is pull-based. BR-DC02 connects to HQ-DC01 over RPC and asks for changes. Error 1722, 'The RPC server is unavailable', means that connection couldn't be made. The causes are a name that doesn't resolve, a blocked port, which is TCP (Transmission Control Protocol) 135 for the endpoint mapper and then a dynamic port from 49152 to 65535, or a source server that is down. HQ-DC01 is serving headquarters, so look at DNS and the path between the sites.",
                             Order = 2,
                             Prompt = "The summary shows BR-DC02 failing inbound replication for two days with error 1722. What does that error tell you?",
                             ScenarioCardId = new Guid("5ad4d533-6843-622d-0c9a-4dfb3261a2eb")
@@ -3839,7 +3839,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("5b1a587e-a9b6-bb9a-db52-8b4bb1ea699c"),
                             CorrectAction = "Run dcdiag /test:dns /v on BR-DC02 and check it can resolve HQ-DC01's records",
                             CorrectOptionId = new Guid("aad7f01d-c2df-024f-23c2-123738c61365"),
-                            Explanation = "DNS lookup failures are behind a large share of 1722 errors, so name resolution is the first thing to rule in or out.",
+                            Explanation = "A domain controller finds its partner through DNS, using a CNAME (canonical name) record for the partner's GUID (globally unique identifier) in the _msdcs zone and then its host record. dcdiag /test:dns checks that the DC's DNS client settings are sound and that these records can be resolved and registered. DNS is the most common cause of 1722 and quick to test, so do it before looking at firewalls.",
                             Order = 3,
                             Prompt = "What do you test first?",
                             ScenarioCardId = new Guid("5ad4d533-6843-622d-0c9a-4dfb3261a2eb")
@@ -3847,11 +3847,11 @@ namespace SleepyDuck.Api.Migrations
                         new
                         {
                             Id = new Guid("6b5fcfe4-9e73-5b7b-3be8-5a3b7d9609bd"),
-                            CorrectAction = "Point BR-DC02 back at the internal AD DNS servers, then clear its resolver cache",
+                            CorrectAction = "Point BR-DC02 back at the internal AD (Active Directory) DNS servers, then clear its resolver cache",
                             CorrectOptionId = new Guid("83170555-f267-28bf-4b29-837d61b1b5e9"),
-                            Explanation = "Only the internal DNS servers hold the domain's records. Clearing the cache with ipconfig /flushdns removes the failed lookups.",
+                            Explanation = "The records that domain controllers need exist only on the internal DNS servers that host the Active Directory zones. 8.8.8.8 is a public resolver. It answers quickly that those names don't exist, and Windows accepts that answer and doesn't try the alternate server. Set the preferred DNS back to an internal DNS server, then run ipconfig /flushdns to clear the cached failures. Running ipconfig /registerdns and restarting Netlogon re-registers the DC's own records.",
                             Order = 4,
-                            Prompt = "The DNS test fails. BR-DC02's network adapter lists 8.8.8.8 as its preferred DNS server, set during an ISP outage last week. What is the fix?",
+                            Prompt = "The DNS test fails. BR-DC02's network adapter lists 8.8.8.8 as its preferred DNS server, set during an ISP (internet service provider) outage last week. What is the fix?",
                             ScenarioCardId = new Guid("5ad4d533-6843-622d-0c9a-4dfb3261a2eb")
                         },
                         new
@@ -3859,7 +3859,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("33df7c88-aba8-a5d6-15dd-ecab9ec7d8f5"),
                             CorrectAction = "Force a sync, then check repadmin /replsummary for zero failures and a current last success",
                             CorrectOptionId = new Guid("3ea280ee-ec6e-0471-0c9e-5d75fd7ad19e"),
-                            Explanation = "A clean summary with a fresh success time shows the backlog has been delivered, including this morning's accounts.",
+                            Explanation = "Replication between sites runs on a schedule, so force it with repadmin /syncall /AdeP, or with Replicate Now in Active Directory Sites and Services. Then run repadmin /replsummary again. BR-DC02 should show 0 failures and a largest delta of minutes, not two days. As a final check, an account created this morning should exist on BR-DC02 and be able to sign in at the branch.",
                             Order = 5,
                             Prompt = "How do you confirm that replication has recovered?",
                             ScenarioCardId = new Guid("5ad4d533-6843-622d-0c9a-4dfb3261a2eb")
@@ -3869,7 +3869,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("d243f093-453e-c659-371e-cbfea2afe06f"),
                             CorrectAction = "Run gpresult /h report.html as the user and read which GPOs were applied or denied",
                             CorrectOptionId = new Guid("0defef44-8c4d-54f1-0d45-3604e75f712e"),
-                            Explanation = "The report shows what the client actually processed and the reason for anything it skipped, so you aren't guessing from the server side.",
+                            Explanation = "gpresult shows what Group Policy actually did on this PC for this user. The /h switch writes an HTML (Hypertext Markup Language) report that lists the applied GPOs, the denied GPOs with a reason such as security filtering or access denied, and the user's group memberships. Run it as the affected user. It replaces guessing in the management console with evidence from the client.",
                             Order = 1,
                             Prompt = "What do you do first on an affected sales PC?",
                             ScenarioCardId = new Guid("8fed5b49-1c48-68d0-d6c5-806475f0323f")
@@ -3879,7 +3879,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("47128444-22c0-6c9c-a6c6-08e9092d61bb"),
                             CorrectAction = "The GPO's Delegation tab, to see whether computer accounts can read it",
                             CorrectOptionId = new Guid("40b679b9-2718-22b0-feec-7f34ec8f4771"),
-                            Explanation = "The link and the group membership are right, so permissions on the GPO are what's left, and access denied points the same way.",
+                            Explanation = "For a GPO to apply to a user, three things must hold. It's linked to an OU that contains the user, the user has Read and Apply group policy permission on it, and the PC can read it. The report shows the link, the OU and the group membership are right. Access denied is a permissions message, and the Delegation tab shows the GPO's full permission list.",
                             Order = 2,
                             Prompt = "The report doesn't list Sales Drive Map as applied, and it flags an access denied error for user policy. The user is in Sales-Users and in the Staff OU. What do you check?",
                             ScenarioCardId = new Guid("8fed5b49-1c48-68d0-d6c5-806475f0323f")
@@ -3887,9 +3887,9 @@ namespace SleepyDuck.Api.Migrations
                         new
                         {
                             Id = new Guid("80fd1395-920b-e2ed-69ae-a7d58585b232"),
-                            CorrectAction = "User policy is now fetched as the computer, and no entry lets the PCs read this GPO",
+                            CorrectAction = "User policy is fetched in the computer's security context, and no entry gives the PCs Read",
                             CorrectOptionId = new Guid("cd5e3ac0-3706-65ed-9529-053e402b48c7"),
-                            Explanation = "Since MS16-072, the computer account needs Read on user GPOs. It had that through Authenticated Users until the group was removed.",
+                            Explanation = "Since the MS16-072 update in 2016, Windows downloads user policy using the computer account, where it used to use the user's. So the computer needs Read on the GPO, both on its object in Active Directory and on its files in SYSVOL. Normally it has that through Authenticated Users, which includes computer accounts. Removing that group from Security Filtering took away Read as well as Apply. Nothing in this list covers the sales PCs, so they can't read the GPO, and it's skipped.",
                             Order = 3,
                             Prompt = "The Delegation tab lists Sales-Users, Domain Admins, Enterprise Admins, SYSTEM and Enterprise Domain Controllers. Why does that break the GPO?",
                             ScenarioCardId = new Guid("8fed5b49-1c48-68d0-d6c5-806475f0323f")
@@ -3899,7 +3899,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("1823c892-3611-380b-80d0-0441fa9616af"),
                             CorrectAction = "On the Delegation tab, add Domain Computers or Authenticated Users with Read only",
                             CorrectOptionId = new Guid("a326a61c-d914-7cea-726f-f8927dbd3049"),
-                            Explanation = "Read without Apply group policy lets the PCs fetch the GPO, while Security Filtering still limits who it applies to.",
+                            Explanation = "Security Filtering grants two permissions together, Read and Apply group policy. The Delegation tab can grant Read by itself. Adding Domain Computers, or Authenticated Users, with Read lets every PC fetch the GPO. Only Sales-Users has Apply, so the drive still maps for the sales team alone.",
                             Order = 4,
                             Prompt = "What is the right fix?",
                             ScenarioCardId = new Guid("8fed5b49-1c48-68d0-d6c5-806475f0323f")
@@ -3909,7 +3909,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("a27e640d-0e2a-593d-076c-79e03a865aa6"),
                             CorrectAction = "Run gpupdate /force on a sales PC, then confirm gpresult /r lists the GPO as applied",
                             CorrectOptionId = new Guid("b130bf08-00a0-3481-255e-44d08a5d5106"),
-                            Explanation = "Checking on a real sales PC as a sales user tests the exact path that was failing.",
+                            Explanation = "Test the path that was failing: a sales user on a sales PC. gpupdate /force refreshes policy, and gpresult /r should then list Sales Drive Map under the user's applied GPOs, with the drive showing in File Explorer. A user outside Sales-Users shouldn't get the drive, which confirms the filtering still works.",
                             Order = 5,
                             Prompt = "How do you confirm the fix?",
                             ScenarioCardId = new Guid("8fed5b49-1c48-68d0-d6c5-806475f0323f")
@@ -3919,7 +3919,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("0bc8f092-7180-70af-de66-08f4dbc38b44"),
                             CorrectAction = "Find what is using the space by listing the largest folders on C:",
                             CorrectOptionId = new Guid("bebd0375-d682-c89d-bc9f-26128dd08d8b"),
-                            Explanation = "Measuring first shows where the space went, so that you remove the right thing and can explain the cause.",
+                            Explanation = "A full disk needs fast action, but deleting the wrong thing on a system drive can stop the server from booting. Measure first. A tool such as WinDirStat or TreeSize, or a PowerShell loop that totals folder sizes, shows the largest folders in minutes. That tells you what to remove, and it gives you the root cause for the ticket.",
                             Order = 1,
                             Prompt = "What do you do first?",
                             ScenarioCardId = new Guid("0030a01b-87b2-eebf-b546-93c88c9cbac3")
@@ -3929,9 +3929,9 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("2797eeb9-d549-3804-7e57-f8a581231baf"),
                             CorrectAction = "Archive or delete the old IIS logs, keeping whatever the app owner must retain",
                             CorrectOptionId = new Guid("971f85df-0978-823c-6e1b-5b8fdf93a08f"),
-                            Explanation = "Old web logs are the largest item and are safe to remove once retention needs are met. This frees space with no risk to Windows.",
+                            Explanation = "Take the biggest and safest item first. IIS writes a log file per site per day under C:\\inetpub\\logs\\LogFiles and never deletes them, so they grow without limit. They're only records, so removing old ones can't harm Windows or the site. Ask the application owner or security how long logs must be kept, archive what's needed to another volume, and delete the rest. That frees up to 38 GB.",
                             Order = 2,
-                            Prompt = "You find 38 GB of IIS logs going back four years in C:\\inetpub\\logs\\LogFiles, and a 14 GB WinSxS folder. What is the best first move?",
+                            Prompt = "You find 38 GB of IIS (Internet Information Services) logs going back four years in C:\\inetpub\\logs\\LogFiles, and a 14 GB WinSxS folder. What is the best first move?",
                             ScenarioCardId = new Guid("0030a01b-87b2-eebf-b546-93c88c9cbac3")
                         },
                         new
@@ -3939,7 +3939,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("d416ab8d-e55a-d48e-bbc5-60b9c0393fce"),
                             CorrectAction = "Run Dism /Online /Cleanup-Image /AnalyzeComponentStore, then /StartComponentCleanup",
                             CorrectOptionId = new Guid("8983e9e5-8453-c9b6-e302-fb05ba4cfb24"),
-                            Explanation = "The analysis reports what can be reclaimed, and the cleanup removes superseded component versions in the supported way.",
+                            Explanation = "WinSxS is the component store, which holds every version of Windows components so that updates can be installed and rolled back. It must only be cleaned with DISM (Deployment Image Servicing and Management). /AnalyzeComponentStore reports its real size and whether cleanup is recommended. /StartComponentCleanup then removes versions that newer updates have replaced. Deleting files in it by hand can leave Windows unable to update or boot.",
                             Order = 3,
                             Prompt = "How do you safely reduce the WinSxS folder?",
                             ScenarioCardId = new Guid("0030a01b-87b2-eebf-b546-93c88c9cbac3")
@@ -3949,7 +3949,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("0761f0d3-9538-cb1a-0567-2a2688758f77"),
                             CorrectAction = "It removes every superseded component version, so installed updates can't be uninstalled",
                             CorrectOptionId = new Guid("71b364e1-4744-e17d-408d-f410cf4533e9"),
-                            Explanation = "ResetBase frees the most space, but it removes the rollback path for existing updates. Updates installed later can still be uninstalled.",
+                            Explanation = "A normal cleanup keeps what's needed to uninstall recent updates. /ResetBase removes every superseded version, which frees more space but makes the installed updates permanent. If one of them later turns out to cause a problem, it can't be rolled back. Updates installed afterwards can still be uninstalled. On a production server, use it only when the installed updates are known to be stable.",
                             Order = 4,
                             Prompt = "A colleague suggests adding /ResetBase to the cleanup. What is the trade-off?",
                             ScenarioCardId = new Guid("0030a01b-87b2-eebf-b546-93c88c9cbac3")
@@ -3959,7 +3959,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("94417086-b2e1-926e-f906-10354c29eed4"),
                             CorrectAction = "Set log retention or move logs off C:, and alert on free space much earlier",
                             CorrectOptionId = new Guid("16019707-f235-5b1e-9fa9-e98e2b644b9e"),
-                            Explanation = "The logs caused the incident, so they need a limit. Earlier alerts leave time to act before anything fails.",
+                            Explanation = "Fix the cause, or the disk fills again. Set a retention for the IIS logs, for example a scheduled task that deletes files older than 30 or 90 days, or move the log directory to a data volume in the IIS logging settings. Then set monitoring to warn at around 20% free, so there's time to act before updates and the application start failing.",
                             Order = 5,
                             Prompt = "Space is back to 45% free. How do you stop this from happening again?",
                             ScenarioCardId = new Guid("0030a01b-87b2-eebf-b546-93c88c9cbac3")
@@ -3969,7 +3969,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("cb4e9501-87f1-e8ad-655f-e8352e33230d"),
                             CorrectAction = "Sign in at the console and run qwinsta to check for an rdp-tcp listener in the Listen state",
                             CorrectOptionId = new Guid("fb77ffe1-752d-5c10-e79a-fc85e1c6f77b"),
-                            Explanation = "This shows whether the server is accepting RDP connections at all, which splits the problem into listener and network.",
+                            Explanation = "RDP (Remote Desktop Protocol) needs a listener on the server, which by default waits on TCP (Transmission Control Protocol) port 3389. qwinsta, short for query session, lists sessions and listeners. A line for rdp-tcp with the state Listen means the Remote Desktop service is up and accepting connections. If it's missing, the fault is on the server: RDP is disabled (fDenyTSConnections set to 1) or the TermService service is stopped. If it's there, the fault is between the client and the listener.",
                             Order = 1,
                             Prompt = "The server is running. Where do you start?",
                             ScenarioCardId = new Guid("c83bf57c-c873-bf4a-6940-737ab5c9cd24")
@@ -3979,7 +3979,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("ba1f52d7-0140-810e-9011-86be84ffcc04"),
                             CorrectAction = "Connect with mstsc to localhost from the console, then test port 3389 from another PC",
                             CorrectOptionId = new Guid("e10161e5-5290-931d-f2f0-111a27a7276f"),
-                            Explanation = "A local connection proves the RDP service works. Test-NetConnection with -Port 3389 from elsewhere then tests the path to it.",
+                            Explanation = "Test from the inside outwards. mstsc to localhost on the server uses the RDP service without crossing the network or the firewall, so if it works, the service is healthy. Then, from another PC, Test-NetConnection FILE-SRV03 -Port 3389 tries a TCP connection to the RDP port. TcpTestSucceeded: True means the port is reachable, and False means something is blocking it. Ping can't answer this, because it uses ICMP (Internet Control Message Protocol) and not TCP 3389.",
                             Order = 2,
                             Prompt = "qwinsta shows rdp-tcp in the Listen state. How do you tell a server fault from a network fault?",
                             ScenarioCardId = new Guid("c83bf57c-c873-bf4a-6940-737ab5c9cd24")
@@ -3989,7 +3989,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("08877fab-aa11-4280-5064-4ea65ce68431"),
                             CorrectAction = "Something is blocking TCP 3389 before the listener, most likely the server's own firewall",
                             CorrectOptionId = new Guid("6191c191-c93c-870a-267b-8a6c3b4c3baa"),
-                            Explanation = "The service is healthy and the port is unreachable from the same subnet, which leaves little other than the host firewall.",
+                            Explanation = "Put the results together. The service works locally, and the port can't be reached from a PC on the same subnet. Same subnet means no router or network firewall sits in between. The only thing left between that PC and the listener is Windows Firewall on the server itself, and a hardening change the night before is a likely reason for a disabled rule.",
                             Order = 3,
                             Prompt = "The localhost session works. From a PC on the same subnet, the port test returns TcpTestSucceeded: False. What does this show?",
                             ScenarioCardId = new Guid("c83bf57c-c873-bf4a-6940-737ab5c9cd24")
@@ -3999,7 +3999,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("f8232f6b-91ca-e0e3-c107-a7f160498688"),
                             CorrectAction = "Enable the Remote Desktop firewall rule group for the profiles the server uses",
                             CorrectOptionId = new Guid("d37af0a2-48d2-4e13-9851-8f6a9706b5be"),
-                            Explanation = "The built-in rules allow exactly the traffic RDP needs. Get-NetFirewallRule -DisplayGroup \"Remote Desktop\" | Set-NetFirewallRule -Enabled True does it in one line.",
+                            Explanation = "Windows has built-in firewall rules for Remote Desktop, in the Remote Desktop group, including Remote Desktop - User Mode (TCP-In) for port 3389. Enabling that group for the active profile, usually Domain, allows RDP and nothing else. In PowerShell: Get-NetFirewallRule -DisplayGroup \"Remote Desktop\" | Set-NetFirewallRule -Enabled True. The broader options work too, but they open far more than the one port.",
                             Order = 4,
                             Prompt = "In Windows Defender Firewall on the server, the rule Remote Desktop - User Mode (TCP-In) is disabled. What is the fix?",
                             ScenarioCardId = new Guid("c83bf57c-c873-bf4a-6940-737ab5c9cd24")
@@ -4009,7 +4009,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("3af3551d-598b-03d4-073b-0476f20f2ae5"),
                             CorrectAction = "Repeat the port test, connect by RDP, and correct the hardening change so it can't recur",
                             CorrectOptionId = new Guid("7f28d5cb-4999-f0c9-3e5a-f0cf87eb2d02"),
-                            Explanation = "The same tests that failed should now pass. Fixing the script or GPO behind the change stops it from disabling the rule again.",
+                            Explanation = "Repeat the tests that failed. Test-NetConnection on port 3389 should return True, and an administrator should be able to open a session from their own PC. Then find what disabled the rule. If the hardening script or GPO (Group Policy Object) still does it, the rule goes off again at the next run or policy refresh. Fix it at the source, with an exception that allows RDP from the admin network.",
                             Order = 5,
                             Prompt = "How do you finish the job?",
                             ScenarioCardId = new Guid("c83bf57c-c873-bf4a-6940-737ab5c9cd24")
@@ -4019,7 +4019,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("f93efc9c-07c6-acbc-49de-3b76c3114274"),
                             CorrectAction = "The System event log, in Service Control Manager events such as 7038 and 7041",
                             CorrectOptionId = new Guid("258e3b17-a03a-6d5f-cefa-02bfe3b7c431"),
-                            Explanation = "Error 1069 is generic. The Service Control Manager event states which account failed to log on and why.",
+                            Explanation = "Error 1069 only says that the service's account couldn't log on. The Service Control Manager writes the reason to the System event log. Event 7038 names the account and gives the cause: wrong password, account disabled, account locked out, or password must be changed. Event 7041 means the account lacks the 'Log on as a service' right. Filter the System log by the source Service Control Manager.",
                             Order = 1,
                             Prompt = "Where do you find the exact reason for the failure?",
                             ScenarioCardId = new Guid("20bededb-1c1b-db05-f84c-9259d2b7576e")
@@ -4029,7 +4029,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("a77f3ca5-f1b0-8c8e-40fd-ae12f22d8932"),
                             CorrectAction = "The password saved in the service no longer matches the account's password in the domain",
                             CorrectOptionId = new Guid("885881fb-4c09-800f-35f9-07d55d828add"),
-                            Explanation = "The event names the configured password as the failure, and the account's password was rotated last week.",
+                            Explanation = "A service that runs as a user account stores that account's password on the server, encrypted as an LSA (Local Security Authority) secret. At each start, Windows signs the account in with the stored password. The security team changed the password in Active Directory last week, and nobody updated the copy stored in the service. Event 7038 says exactly that: the currently configured password is incorrect.",
                             Order = 2,
                             Prompt = "Event 7038 says the service was unable to log on as CORP\\svc-sync with the currently configured password, because the user name or password is incorrect. What does this mean?",
                             ScenarioCardId = new Guid("20bededb-1c1b-db05-f84c-9259d2b7576e")
@@ -4039,7 +4039,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("9b6afe20-efae-b65a-f874-9a204d0934c0"),
                             CorrectAction = "A running service keeps its logon session, so the saved password is only used at the next start",
                             CorrectOptionId = new Guid("902f20ea-2bce-9172-f1a1-7094be61b162"),
-                            Explanation = "The service signed in before the rotation and kept running. The restart was the first time Windows tried the saved password again.",
+                            Explanation = "The stored password is only used when the service starts. The service started before the rotation and stayed signed in, so it kept running on its existing session. Sunday's patching restart stopped it, and the next start was the first time the old stored password was tried. This gap between the change and the failure is why password rotations cause outages days later.",
                             Order = 3,
                             Prompt = "The password was rotated a week ago. Why did the service only fail on Sunday?",
                             ScenarioCardId = new Guid("20bededb-1c1b-db05-f84c-9259d2b7576e")
@@ -4049,7 +4049,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("dcd398d4-d765-62e7-8fc8-72c86f8e28ea"),
                             CorrectAction = "Enter the new password on the service's Log On tab, then start the service",
                             CorrectOptionId = new Guid("fd7fa08d-1091-c8e6-a313-ecf9fac7e289"),
-                            Explanation = "This brings the saved password back in line with the domain, which is the mismatch the event described.",
+                            Explanation = "Open services.msc, go to the service's properties, and on the Log On tab enter the new password for CORP\\svc-sync. Then start the service. From the command line it's sc.exe config with obj= and password=. Don't keep retrying the start with the old password, because each attempt is a failed logon and can lock the account.",
                             Order = 4,
                             Prompt = "What is the right fix?",
                             ScenarioCardId = new Guid("20bededb-1c1b-db05-f84c-9259d2b7576e")
@@ -4059,7 +4059,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("b70a712e-865b-04bf-a392-cb31612c6602"),
                             CorrectAction = "Move the service to a group managed service account, whose password is handled automatically",
                             CorrectOptionId = new Guid("6c8b289f-5995-2419-ac5b-48791a1d059e"),
-                            Explanation = "With a gMSA, Active Directory rotates the password and the server retrieves it, so there's no saved password to go stale.",
+                            Explanation = "A group managed service account, or gMSA, is an Active Directory account built for services. Active Directory generates and rotates its password automatically, every 30 days by default, and the servers allowed to use it retrieve the password themselves. Nobody types it, and no stored copy goes stale. It needs a KDS (Key Distribution Service) root key in the domain and a service that supports running as a gMSA.",
                             Order = 5,
                             Prompt = "How do you stop the next password rotation from causing the same outage?",
                             ScenarioCardId = new Guid("20bededb-1c1b-db05-f84c-9259d2b7576e")
@@ -4067,11 +4067,11 @@ namespace SleepyDuck.Api.Migrations
                         new
                         {
                             Id = new Guid("5cd1b589-61da-ec0e-197d-1d25db78d540"),
-                            CorrectAction = "Both are checked, and the more restrictive of the two results applies",
+                            CorrectAction = "Share permissions first, then NTFS (New Technology File System) permissions, and he gets only what both sets allow",
                             CorrectOptionId = new Guid("0859d2cd-4953-bf70-a7ac-da7a15794396"),
-                            Explanation = "A user has to pass both. Whichever set allows less decides what they can do.",
+                            Explanation = "A network connection to \\\\FILE-SRV01\\Finance passes two gates. First the SMB (Server Message Block) server checks the share permissions on the Finance share, which only apply to access over the network. Then it checks the NTFS permissions on the folder itself, which apply to every kind of access. Windows works out his total in each set from all his groups, and the more restrictive of the two totals is what he gets. Full Control on the share with Read in NTFS gives Read, and Read on the share with Modify in NTFS also gives Read. For this ticket it means a block in either set is enough to cause 'Access is denied', so you have to look at both.",
                             Order = 1,
-                            Prompt = "How do share permissions and NTFS permissions combine when someone connects over the network?",
+                            Prompt = "Tomas opens \\\\FILE-SRV01\\Finance over the network. Which permissions does the server check, and how do they combine?",
                             ScenarioCardId = new Guid("3735d78e-3fdf-e9bc-84ba-41b5d2225e0e")
                         },
                         new
@@ -4079,7 +4079,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("4147b7ba-d58b-9347-f599-20e4a26a1459"),
                             CorrectAction = "On the server, review the share permissions and the folder's Security tab, with Effective Access",
                             CorrectOptionId = new Guid("b81509b3-a6c0-0081-5662-b40a9258417b"),
-                            Explanation = "These are the two sets that decide access. Effective Access calculates the NTFS result for his account.",
+                            Explanation = "Check both sets on the server. Share permissions are on the folder's Sharing tab under Advanced Sharing > Permissions, or from Get-SmbShareAccess -Name Finance. NTFS permissions are on the Security tab. Under Advanced, the Effective Access tab works out the NTFS result for a user you pick, adding up all the groups they belong to and applying any Deny entries. It reads his membership from Active Directory, so it shows what he should get, which can differ from what his current session has.",
                             Order = 2,
                             Prompt = "Where do you look to see what access Tomas should have?",
                             ScenarioCardId = new Guid("3735d78e-3fdf-e9bc-84ba-41b5d2225e0e")
@@ -4089,7 +4089,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("1f27afdc-f222-3873-de10-acdd29d0f531"),
                             CorrectAction = "His access token was built when he signed in, before he was added to the group",
                             CorrectOptionId = new Guid("4ed09213-02ba-7f1c-9b98-2b748666c403"),
-                            Explanation = "The token is a snapshot of group membership at sign-in. The server checks his token, and it doesn't contain the group yet.",
+                            Explanation = "The permissions are right. The share lets any authenticated user through with Full Control, and NTFS gives Modify to Finance-RW, so NTFS decides and members get Modify. Tomas is a member in Active Directory, but whoami /groups shows his current access token, and the group isn't in it. Windows builds the token once, at sign-in, from the groups he had at that moment. He signed in this morning and was added an hour ago. The token carries the SID (security identifier) of every group he belongs to, and the file server compares those SIDs with the entries in the folder's ACL (access control list). His token has no SID for Finance-RW, so no entry grants him access and the server denies it.",
                             Order = 3,
                             Prompt = "The share grants Authenticated Users Full Control, and NTFS grants Finance-RW Modify. On Tomas's PC, whoami /groups doesn't list Finance-RW. What is the cause?",
                             ScenarioCardId = new Guid("3735d78e-3fdf-e9bc-84ba-41b5d2225e0e")
@@ -4097,9 +4097,9 @@ namespace SleepyDuck.Api.Migrations
                         new
                         {
                             Id = new Guid("981d38df-be64-d403-71f2-931cdbd8145e"),
-                            CorrectAction = "Have Tomas sign out and sign back in, so that he gets a new token",
+                            CorrectAction = "Have Tomas sign out and sign back in, so that Windows builds a new access token",
                             CorrectOptionId = new Guid("d1a8d064-0831-1ac7-30f1-d03541b64bb8"),
-                            Explanation = "Signing in again builds a token that includes Finance-RW, and the existing permissions then let him in.",
+                            Explanation = "A new sign-in makes Windows build a new access token and request new Kerberos tickets, and the group SIDs inside them now include Finance-RW. Nothing on the server needs to change, because the permissions were already correct. Afterwards, whoami /groups should list Finance-RW, and the share should open. Running klist purge can refresh the tickets without a sign-out, but signing out and in is the reliable answer.",
                             Order = 4,
                             Prompt = "What is the fix?",
                             ScenarioCardId = new Guid("3735d78e-3fdf-e9bc-84ba-41b5d2225e0e")
@@ -4109,7 +4109,7 @@ namespace SleepyDuck.Api.Migrations
                             Id = new Guid("92a7b352-6586-497c-9dd7-dfd96ab09c4f"),
                             CorrectAction = "Give an Auditors group Read & execute in the folder's NTFS permissions",
                             CorrectOptionId = new Guid("2c9c30d2-9f27-becc-0692-09dfdae14a80"),
-                            Explanation = "The share already allows more than that, so NTFS decides the result. A group keeps the permission manageable as auditors come and go.",
+                            Explanation = "Use the same model as before: the share stays broad, and NTFS does the real control. The share gives Authenticated Users Full Control, so the NTFS entry decides what auditors get. Read & execute lets them open and list files but not change them. Grant it to a group, not to named people, so access follows membership as auditors come and go.",
                             Order = 5,
                             Prompt = "Later, auditors need read-only access to the same folder. How do you set it up?",
                             ScenarioCardId = new Guid("3735d78e-3fdf-e9bc-84ba-41b5d2225e0e")

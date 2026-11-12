@@ -32,20 +32,23 @@ const WRONG_REVEAL_MS = 1100;
 /** Matches .exit-card in styles.css. */
 const CARD_EXIT_MS = 220;
 
+const INVERT_ON_HOVER =
+  'hover:bg-ink-charcoal hover:text-ink-paper dark:hover:bg-ink-bone dark:hover:text-ink-coal';
+
 const OPTION_CLASSES: Record<OptionState, string> = {
-  idle: 'cursor-pointer border-oasis-mist hover:border-oasis-olive hover:bg-oasis-olive/10 dark:border-oasis-edge dark:hover:border-oasis-sage dark:hover:bg-oasis-sage/10',
-  pending: 'border-oasis-olive bg-oasis-olive/10 dark:border-oasis-sage dark:bg-oasis-sage/10',
-  correct: 'border-oasis-olive bg-oasis-olive text-oasis-sand dark:border-oasis-sage [&_.kbd]:border-oasis-sand/50 [&_.kbd]:text-oasis-sand',
-  wrong: 'shake border-oasis-clay bg-oasis-clay text-oasis-sand dark:border-oasis-clay-soft [&_.kbd]:border-oasis-sand/50 [&_.kbd]:text-oasis-sand',
-  dimmed: 'border-oasis-mist opacity-50 dark:border-oasis-edge',
+  idle: `rule cursor-pointer ${INVERT_ON_HOVER}`,
+  pending: 'rule fill-ink',
+  correct: 'rule fill-ink',
+  wrong: 'shake border-ink-blood bg-ink-blood text-ink-paper',
+  dimmed: 'rule opacity-40',
 };
 
 const RATING_CLASSES: Record<ReviewRating, string> = {
-  Again: 'hover:bg-oasis-clay/10 dark:hover:bg-oasis-clay-soft/10',
-  Hard: 'hover:bg-oasis-ochre/15',
-  Good: 'hover:bg-oasis-olive/10 dark:hover:bg-oasis-sage/10',
-  Easy: 'hover:bg-oasis-olive/20 dark:hover:bg-oasis-sage/20',
-  VeryEasy: 'hover:bg-oasis-olive/30 dark:hover:bg-oasis-sage/30',
+  Again: 'hover:bg-ink-blood hover:text-ink-paper',
+  Hard: INVERT_ON_HOVER,
+  Good: INVERT_ON_HOVER,
+  Easy: INVERT_ON_HOVER,
+  VeryEasy: INVERT_ON_HOVER,
 };
 
 @Component({

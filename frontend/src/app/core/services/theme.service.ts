@@ -3,7 +3,7 @@ import { DOCUMENT, inject, Injectable, signal } from '@angular/core';
 export type Theme = 'dark' | 'light';
 
 const STORAGE_KEY = 'sleepyduck-theme';
-const THEME_COLORS: Record<Theme, string> = { dark: '#1E1E2F', light: '#F0EDE8' };
+const THEME_COLORS: Record<Theme, string> = { dark: '#121212', light: '#F4F4F0' };
 
 /** Dark is the default. The script in index.html restores a saved choice before first paint. */
 @Injectable({ providedIn: 'root' })

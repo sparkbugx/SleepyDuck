@@ -1,18 +1,18 @@
 <div class="mx-auto max-w-2xl">
   <div class="mb-5 flex items-center gap-4">
-    <a routerLink="/dashboard" class="text-soft rounded text-sm transition-colors duration-200 hover:text-oasis-ink dark:hover:text-oasis-sand">Exit</a>
+    <a routerLink="/dashboard" class="text-soft eyebrow underline decoration-2 underline-offset-4 transition-colors duration-100 hover:text-ink-charcoal dark:hover:text-ink-bone">Exit</a>
     <div
-      class="h-1 flex-1 overflow-hidden rounded-sm bg-oasis-mist dark:bg-oasis-edge"
+      class="rule h-3 flex-1 overflow-hidden border-2"
       role="progressbar"
       aria-label="Session progress"
       [attr.aria-valuenow]="sessionPercent()"
       aria-valuemin="0"
       aria-valuemax="100"
     >
-      <div class="h-full bg-oasis-olive transition-all duration-500 ease-out dark:bg-oasis-sage" [style.width.%]="sessionPercent()"></div>
+      <div class="h-full bg-ink-charcoal transition-all duration-300 ease-out dark:bg-ink-bone" [style.width.%]="sessionPercent()"></div>
     </div>
     @if (cards().length) {
-      <span class="text-soft font-mono text-xs tabular-nums">
+      <span class="text-strong font-mono text-xs font-bold tabular-nums">
         {{ cardIndex() + 1 }}/{{ cards().length }}
       </span>
     }
@@ -25,31 +25,33 @@
 
     @case ('load-error') {
       <div class="surface enter-up p-8 text-center">
-        <h1 class="text-strong font-display text-xl font-semibold">Your session couldn't be loaded</h1>
+        <h1 class="heading text-xl">Your session couldn't be loaded</h1>
         <p class="text-soft mt-2 text-sm">Check that the API is running, then try again.</p>
         <button type="button" class="btn-secondary mt-6" (click)="load()">Try again</button>
       </div>
     }
 
     @case ('empty') {
-      <div class="surface enter-up p-10 text-center">
-        <h1 class="text-strong font-display text-3xl font-semibold tracking-tight">Nothing due</h1>
+      <div class="surface enter-up px-6 py-8 text-center sm:p-10">
+        <img src="mascot-2.jpg" alt="" width="736" height="699" class="ink-art mx-auto h-auto w-full max-w-60 sm:max-w-80" />
+        <h1 class="heading mt-6 text-3xl sm:text-4xl">No cards left</h1>
         <p class="text-soft mt-2 text-sm">You're all caught up on this deck.</p>
         <a routerLink="/dashboard" class="btn-primary mt-6">Back to dashboard</a>
       </div>
     }
 
     @case ('complete') {
-      <div class="surface enter-up p-10 text-center">
-        <h1 class="text-strong font-display text-3xl font-semibold tracking-tight">Session complete</h1>
+      <div class="surface enter-up px-6 py-8 text-center sm:p-10">
+        <img src="mascot-2.jpg" alt="" width="736" height="699" class="ink-art mx-auto h-auto w-full max-w-60 sm:max-w-80" />
+        <h1 class="heading mt-6 text-3xl sm:text-4xl">Session cleared</h1>
         <div class="mt-6 flex justify-center gap-12">
           <div>
-            <p class="text-accent font-display text-4xl font-semibold tabular-nums">{{ clearedCount() }}</p>
-            <p class="text-soft mt-1 text-sm">Cleared</p>
+            <p class="heading text-4xl tabular-nums">{{ clearedCount() }}</p>
+            <p class="text-soft eyebrow mt-1">Cleared</p>
           </div>
           <div>
-            <p class="text-fail font-display text-4xl font-semibold tabular-nums">{{ failedCount() }}</p>
-            <p class="text-soft mt-1 text-sm">To relearn</p>
+            <p class="text-fail font-display text-4xl font-extrabold tracking-tighter tabular-nums">{{ failedCount() }}</p>
+            <p class="text-soft eyebrow mt-1">To relearn</p>
           </div>
         </div>
         @if (failedCount() > 0) {
@@ -63,25 +65,22 @@
       @for (card of visibleCard(); track card.id) {
         <article class="surface enter-up p-5 sm:p-7" [class.exit-card]="exiting()" [class.pointer-events-none]="exiting()">
           <p class="text-soft eyebrow">
-            <span class="text-accent">{{ categoryLabels[card.category] }}</span>
+            <span class="fill-ink px-1.5 py-0.5">{{ categoryLabels[card.category] }}</span>
             · {{ masteryLabels[card.progress?.masteryLevel ?? 'New'] }}
           </p>
 
-          <h1 class="text-strong mt-3 font-display text-2xl font-semibold tracking-tight sm:text-3xl">{{ card.title }}</h1>
+          <h1 class="heading mt-4 text-2xl leading-tight sm:text-3xl">{{ card.title }}</h1>
           <p class="mt-3 text-[15px] leading-relaxed">{{ card.problemStatement }}</p>
 
-          <div class="mt-5 flex items-center gap-1" aria-hidden="true">
+          <div class="text-strong mt-5 flex items-center gap-1" aria-hidden="true">
             @for (step of card.steps; track step.id; let index = $index) {
               <span
-                class="h-1 flex-1 rounded-sm transition-colors duration-500"
-                [class.bg-oasis-olive]="index < clearedSteps().length"
-                [class.dark:bg-oasis-sage]="index < clearedSteps().length"
-                [class.bg-oasis-ink]="index === clearedSteps().length && phase() === 'answering'"
-                [class.dark:bg-oasis-sand]="index === clearedSteps().length && phase() === 'answering'"
-                [class.bg-oasis-clay]="index === clearedSteps().length && phase() === 'failed'"
-                [class.dark:bg-oasis-clay-soft]="index === clearedSteps().length && phase() === 'failed'"
-                [class.bg-oasis-mist]="index > clearedSteps().length"
-                [class.dark:bg-oasis-edge]="index > clearedSteps().length"
+                class="rule h-3 flex-1 border-2 transition-colors duration-300"
+                [class.bg-ink-charcoal]="index < clearedSteps().length"
+                [class.dark:bg-ink-bone]="index < clearedSteps().length"
+                [class.hatch]="index === clearedSteps().length && phase() === 'answering'"
+                [class.bg-ink-blood]="index === clearedSteps().length && phase() === 'failed'"
+                [class.!border-ink-blood]="index === clearedSteps().length && phase() === 'failed'"
               ></span>
             }
           </div>
@@ -94,13 +93,13 @@
                     <p class="text-accent eyebrow">
                       Step {{ step.order }} of {{ card.steps.length }}
                     </p>
-                    <h2 class="text-strong mt-1.5 font-semibold">{{ step.prompt }}</h2>
+                    <h2 class="text-strong mt-1.5 text-lg font-bold">{{ step.prompt }}</h2>
 
-                    <div class="mt-4 space-y-2">
+                    <div class="mt-4 space-y-2.5">
                       @for (option of step.options; track option.id; let index = $index) {
                         <button
                           type="button"
-                          class="flex w-full items-start gap-3 rounded-lg border p-3.5 text-left text-sm leading-relaxed transition-colors duration-200 [overflow-wrap:anywhere]"
+                          class="flex w-full items-start gap-3 rounded-none border-2 p-3.5 text-left text-sm leading-relaxed transition-colors duration-100 [overflow-wrap:anywhere]"
                           [class]="optionClasses(option)"
                           [disabled]="selectedOptionId() !== null"
                           (click)="choose(option)"
@@ -121,18 +120,18 @@
               @if (phase() === 'success') {
                 <section animate.enter="enter-up" class="pt-5" aria-live="polite">
                   <div class="flex items-center gap-3">
-                    <span class="pop flex size-9 items-center justify-center rounded-full bg-oasis-olive text-oasis-sand">
-                      <svg class="size-5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.500" aria-hidden="true">
-                        <path d="M4.500 10.500l3.500 3.500 7.500-8" stroke-linecap="round" stroke-linejoin="round" />
+                    <span class="pop fill-ink flex size-9 items-center justify-center">
+                      <svg class="size-5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                        <path d="M4.500 10.500l3.500 3.500 7.500-8" stroke-linecap="square" stroke-linejoin="miter" />
                       </svg>
                     </span>
-                    <h2 class="text-strong font-display text-xl font-semibold">Incident resolved</h2>
+                    <h2 class="heading text-xl">Incident resolved</h2>
                   </div>
 
-                  <ol class="rule mt-4 divide-y divide-oasis-mist border-y dark:divide-oasis-edge">
+                  <ol class="rule mt-4 divide-y-2 divide-ink-charcoal border-y-2 dark:divide-ink-bone">
                     @for (cleared of clearedSteps(); track $index) {
                       <li class="flex gap-3 py-3">
-                        <span class="text-soft font-mono text-xs leading-6">{{ $index + 1 }}</span>
+                        <span class="text-strong font-mono text-xs leading-6 font-bold">{{ $index + 1 }}</span>
                         <div class="min-w-0">
                           <p class="text-strong text-sm font-semibold [overflow-wrap:anywhere]">{{ cleared.action }}</p>
                           <p class="text-soft mt-1 text-sm leading-relaxed">{{ cleared.explanation }}</p>
@@ -146,18 +145,18 @@
                     <p class="mt-2">{{ answer()?.technicalExplanation }}</p>
                   </div>
 
-                  <p class="text-strong mt-5 text-sm font-semibold">How hard was that?</p>
-                  <div class="rule mt-2.5 grid divide-y divide-oasis-mist overflow-hidden rounded-lg border sm:grid-cols-5 sm:divide-x sm:divide-y-0 dark:divide-oasis-edge">
+                  <p class="text-strong eyebrow mt-6">How hard was that?</p>
+                  <div class="rule shadow-hard-sm mt-2.5 grid divide-y-2 divide-ink-charcoal border-2 sm:grid-cols-5 sm:divide-x-2 sm:divide-y-0 dark:divide-ink-bone">
                     @for (preview of answer()?.ratingPreviews; track preview.rating; let index = $index) {
                       <button
                         type="button"
-                        class="flex cursor-pointer items-center justify-between gap-1 px-3.5 py-3 transition-colors sm:flex-col sm:justify-center sm:px-1 duration-200 disabled:cursor-default disabled:opacity-50"
+                        class="text-strong flex cursor-pointer items-center justify-between gap-1 px-3.5 py-3 transition-colors duration-100 sm:flex-col sm:justify-center sm:px-1 disabled:cursor-default disabled:opacity-50"
                         [class]="ratingClasses[preview.rating]"
                         [disabled]="submitting()"
                         (click)="rate(preview)"
                       >
-                        <span class="text-strong text-sm font-semibold">{{ ratingLabels[preview.rating] }}</span>
-                        <span class="text-soft font-mono text-xs tabular-nums">{{ formatInterval(preview.intervalDays) }}</span>
+                        <span class="font-mono text-sm font-bold uppercase">{{ ratingLabels[preview.rating] }}</span>
+                        <span class="font-mono text-xs tabular-nums opacity-70">{{ formatInterval(preview.intervalDays) }}</span>
                         <span class="sr-only">. Press {{ index + 1 }}.</span>
                       </button>
                     }
@@ -172,13 +171,13 @@
               @if (phase() === 'failed') {
                 <section animate.enter="enter-up" class="pt-5" aria-live="polite">
                   <div class="flex items-center gap-3">
-                    <span class="pop flex size-9 shrink-0 items-center justify-center rounded-full bg-oasis-clay text-oasis-sand">
-                      <svg class="size-5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.500" aria-hidden="true">
-                        <path d="M5.500 5.500l9 9m0-9l-9 9" stroke-linecap="round" />
+                    <span class="pop flex size-9 shrink-0 items-center justify-center bg-ink-blood text-ink-paper">
+                      <svg class="size-5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                        <path d="M5.500 5.500l9 9m0-9l-9 9" stroke-linecap="square" />
                       </svg>
                     </span>
                     <div>
-                      <h2 class="text-strong font-display text-xl font-semibold">Not the right call</h2>
+                      <h2 class="heading text-xl">Not the right call</h2>
                       <p class="text-soft text-xs">Marked as Again. This card returns in about 10 minutes.</p>
                     </div>
                   </div>

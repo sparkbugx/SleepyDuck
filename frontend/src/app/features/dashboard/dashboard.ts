@@ -13,9 +13,9 @@ const NEW_CARDS_PER_SESSION = 10;
 type CardSegment = 'mastered' | 'studied' | 'new';
 
 const SEGMENT_CLASSES: Record<CardSegment, string> = {
-  mastered: 'bg-oasis-olive dark:bg-oasis-sage',
-  studied: 'bg-oasis-olive/40 dark:bg-oasis-sage/40',
-  new: 'bg-oasis-mist dark:bg-oasis-edge',
+  mastered: 'bg-ink-charcoal dark:bg-ink-bone',
+  studied: 'hatch',
+  new: 'bg-transparent',
 };
 
 @Component({
