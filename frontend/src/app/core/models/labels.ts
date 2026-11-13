@@ -12,7 +12,7 @@ export const CATEGORY_GROUPS: CategoryGroup[] = [
   },
   {
     label: 'VOIP & Network Support',
-    categories: ['VoipSupport', 'NetworkTroubleshooting', 'MacNetworkIssues'],
+    categories: ['VoipSupport', 'NetworkTroubleshooting', 'DnsTroubleshooting', 'MacNetworkIssues'],
   },
   {
     label: 'Active Directory & Windows Server',
@@ -27,6 +27,7 @@ export const CATEGORY_LABELS: Record<ScenarioCategory, string> = {
   MailFlowRules: 'Mail Flow Rules',
   VoipSupport: 'VOIP Support',
   NetworkTroubleshooting: 'Network Troubleshooting',
+  DnsTroubleshooting: 'DNS Troubleshooting',
   MacNetworkIssues: 'Mac Network Issues',
   ActiveDirectory: 'Active Directory',
   WindowsServer: 'Windows Server',

@@ -49,6 +49,7 @@ Seed the PostgreSQL database (via EF Core Data Seeding) with robust, multi-step 
 - **Mail Flow Rules:** e.g., Creating a transport rule to append an external sender disclaimer to all incoming emails.
 - **VOIP Support:** e.g., One-way audio and SIP 408 Request Timeout errors.
 - **Network Troubleshooting:** e.g., Packet loss analysis with MTR and ping, and DHCP scope exhaustion.
+- **DNS Troubleshooting:** e.g., Failed forwarders on a Windows DNS server, a cached record after a change (TTL), short names that don't resolve over a VPN, and stale dynamic records.
 - **Mac Network Issues:** e.g., The macOS DNS cache and mDNSResponder, and 802.1X Wi-Fi drops.
 - **Active Directory:** e.g., Repeated account lockouts, a failed trust relationship, replication error 1722, and a GPO that doesn't apply.
 - **Windows Server:** e.g., A full system drive, Remote Desktop that can't connect, a service logon failure, and access denied on a file share.

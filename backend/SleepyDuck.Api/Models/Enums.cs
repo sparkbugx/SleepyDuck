@@ -11,6 +11,7 @@ public enum ScenarioCategory
     MacNetworkIssues,
     ActiveDirectory,
     WindowsServer,
+    DnsTroubleshooting,
 }
 
 public enum MasteryLevel

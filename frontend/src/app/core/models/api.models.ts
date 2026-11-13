@@ -9,7 +9,8 @@ export type ScenarioCategory =
   | 'NetworkTroubleshooting'
   | 'MacNetworkIssues'
   | 'ActiveDirectory'
-  | 'WindowsServer';
+  | 'WindowsServer'
+  | 'DnsTroubleshooting';
 
 export type MasteryLevel = 'New' | 'Learning' | 'Reviewing' | 'Mastered';
 

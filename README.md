@@ -1,6 +1,6 @@
 # SleepyDuck
 
-Sequential Scenario Flashcards: spaced repetition (SM-2) applied to multi-step IT support troubleshooting, tuned for interview cramming. Topics cover Microsoft 365 administration, VOIP support, network troubleshooting, Mac network issues, Active Directory, and Windows Server. Each card is an incident you work through step by step. One wrong action fails the card.
+Sequential Scenario Flashcards: spaced repetition (SM-2) applied to multi-step IT support troubleshooting, tuned for interview cramming. Topics cover Microsoft 365 administration, VOIP support, network troubleshooting, DNS troubleshooting, Mac network issues, Active Directory, and Windows Server. Each card is an incident you work through step by step. One wrong action fails the card.
 
 | Folder      | Stack                                                                    |
 | ----------- | ------------------------------------------------------------------------ |
@@ -159,7 +159,7 @@ Press `Ctrl+C` in the API and frontend terminals, then run `docker compose down`
 
 ## Topics
 
-The dashboard groups the deck into three sections. There are 27 cards.
+The dashboard groups the deck into three sections. There are 31 cards.
 
 | Section                            | Topic                   | Cards |
 | ---------------------------------- | ----------------------- | ----- |
@@ -169,9 +169,19 @@ The dashboard groups the deck into three sections. There are 27 cards.
 |                                    | Mail Flow Rules         | 3     |
 | VOIP & Network Support             | VOIP Support            | 2     |
 |                                    | Network Troubleshooting | 2     |
+|                                    | DNS Troubleshooting     | 4     |
 |                                    | Mac Network Issues      | 2     |
 | Active Directory & Windows Server  | Active Directory        | 4     |
 |                                    | Windows Server          | 4     |
+
+### DNS Troubleshooting
+
+| Card                                              | What it drills                                                                      |
+| ------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| External names fail while internal names resolve  | Ping against `nslookup`, asking a public resolver, `Get-DnsServerForwarder`         |
+| Old address served after a record change          | Authoritative and recursive servers, TTL and caching, `Clear-DnsServerCache`        |
+| Short names fail but full names resolve           | DNS suffixes in `ipconfig /all`, `Resolve-DnsName`, the suffix on a VPN profile     |
+| Hostname resolves to the wrong computer           | Stale A records, secure dynamic updates, `ipconfig /registerdns`, scavenging        |
 
 ### Active Directory
 
