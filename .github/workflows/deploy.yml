@@ -1,0 +1,22 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+
+concurrency: deploy-production
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Desplegar en Dokku
+        uses: dokku/github-action@master
+        with:
+          git_remote_url: ssh://dokku@187.77.214.124:22/sleepyduck
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          branch: main
