@@ -56,9 +56,10 @@ node --version     # v22.x
 
 ### 2. Start PostgreSQL
 
-Open Docker Desktop and wait until it says the engine is running. Then, from the project root:
+Open Docker Desktop and wait until it says the engine is running. Then, from the project root, create your `.env` (the database login and the app sign-in account, read by Docker and the API; it is git-ignored) and start the container:
 
 ```powershell
+Copy-Item .env.example .env   # then set POSTGRES_PASSWORD, AUTH_EMAIL and AUTH_PASSWORD
 docker compose up -d --wait
 ```
 
@@ -126,9 +127,10 @@ node --version     # v22.x
 
 ### 2. Start PostgreSQL
 
-From the project root:
+From the project root, create your `.env` (the database login and the app sign-in account, read by Docker and the API; it is git-ignored) and start the container:
 
 ```sh
+cp .env.example .env   # then set POSTGRES_PASSWORD, AUTH_EMAIL and AUTH_PASSWORD
 docker compose up -d --wait
 ```
 

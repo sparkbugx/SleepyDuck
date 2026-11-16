@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 
+import { AuthService } from '../services/auth.service';
 import { ThemeService } from '../services/theme.service';
 
 /** Header and centered column shared by the signed-in pages. */
@@ -39,6 +40,7 @@ import { ThemeService } from '../services/theme.service';
               </svg>
             }
           </button>
+          <button type="button" class="btn-secondary !px-3 !py-2 text-xs" (click)="signOut()">Sign out</button>
         </div>
       </header>
 
@@ -50,4 +52,10 @@ import { ThemeService } from '../services/theme.service';
 })
 export class Shell {
   protected readonly theme = inject(ThemeService);
+  private readonly auth = inject(AuthService);
+  private readonly router = inject(Router);
+
+  protected signOut(): void {
+    this.auth.logout().subscribe(() => void this.router.navigate(['/login']));
+  }
 }

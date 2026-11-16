@@ -1,14 +1,18 @@
 import { Routes } from '@angular/router';
 
+import { authGuard, signedOutGuard } from './core/services/auth.service';
+
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
   {
     path: 'login',
     title: 'Sign in · SleepyDuck',
+    canActivate: [signedOutGuard],
     loadComponent: () => import('./features/login/login').then((m) => m.Login),
   },
   {
     path: '',
+    canActivate: [authGuard],
     loadComponent: () => import('./core/layout/shell').then((m) => m.Shell),
     children: [
       {

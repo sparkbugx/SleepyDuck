@@ -18,3 +18,7 @@ dist/
 .idea/
 
 PENDING.md
+
+# Secrets
+.env
+!.env.example
