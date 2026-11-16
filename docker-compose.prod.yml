@@ -1,0 +1,46 @@
+services:
+  app:
+    image: ghcr.io/sparkbugx/sleepyduck:latest
+    restart: unless-stopped
+    environment:
+      AUTH_EMAIL: ${AUTH_EMAIL}
+      AUTH_PASSWORD: ${AUTH_PASSWORD}
+      POSTGRES_HOST: db
+      POSTGRES_DB: sleepyduck
+      POSTGRES_USER: sleepyduck
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - default
+      - traefik-proxy
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=traefik-proxy
+      - traefik.http.routers.sleepyduck.rule=Host(`sleepyduck.nodox.cloud`)
+      - traefik.http.routers.sleepyduck.entrypoints=websecure
+      - traefik.http.routers.sleepyduck.tls.certresolver=letsencrypt
+      - traefik.http.services.sleepyduck.loadbalancer.server.port=80
+
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: sleepyduck
+      POSTGRES_USER: sleepyduck
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U sleepyduck -d sleepyduck"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  pgdata:
+
+networks:
+  traefik-proxy:
+    external: true
