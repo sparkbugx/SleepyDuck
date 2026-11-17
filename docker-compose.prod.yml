@@ -1,6 +1,7 @@
 services:
   app:
     image: ghcr.io/sparkbugx/sleepyduck:latest
+    pull_policy: always
     restart: unless-stopped
     environment:
       AUTH_EMAIL: ${AUTH_EMAIL}
